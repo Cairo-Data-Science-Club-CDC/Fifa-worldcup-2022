@@ -61,12 +61,12 @@ gt::gt(head(tbls_lst$list_of_hosts))
 ```
 
 ```{=html}
-<div id="qduyyzgfif" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="lmkuvpodpu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#qduyyzgfif .gt_table {
+#lmkuvpodpu .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -91,7 +91,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-left-color: #D3D3D3;
 }
 
-#qduyyzgfif .gt_heading {
+#lmkuvpodpu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -103,7 +103,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-right-color: #D3D3D3;
 }
 
-#qduyyzgfif .gt_title {
+#lmkuvpodpu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -115,7 +115,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-bottom-width: 0;
 }
 
-#qduyyzgfif .gt_subtitle {
+#lmkuvpodpu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -127,13 +127,13 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-top-width: 0;
 }
 
-#qduyyzgfif .gt_bottom_border {
+#lmkuvpodpu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qduyyzgfif .gt_col_headings {
+#lmkuvpodpu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -148,7 +148,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-right-color: #D3D3D3;
 }
 
-#qduyyzgfif .gt_col_heading {
+#lmkuvpodpu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -168,7 +168,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   overflow-x: hidden;
 }
 
-#qduyyzgfif .gt_column_spanner_outer {
+#lmkuvpodpu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -180,15 +180,15 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 4px;
 }
 
-#qduyyzgfif .gt_column_spanner_outer:first-child {
+#lmkuvpodpu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qduyyzgfif .gt_column_spanner_outer:last-child {
+#lmkuvpodpu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qduyyzgfif .gt_column_spanner {
+#lmkuvpodpu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -200,7 +200,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   width: 100%;
 }
 
-#qduyyzgfif .gt_group_heading {
+#lmkuvpodpu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -225,7 +225,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   vertical-align: middle;
 }
 
-#qduyyzgfif .gt_empty_group_heading {
+#lmkuvpodpu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -240,15 +240,15 @@ gt::gt(head(tbls_lst$list_of_hosts))
   vertical-align: middle;
 }
 
-#qduyyzgfif .gt_from_md > :first-child {
+#lmkuvpodpu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qduyyzgfif .gt_from_md > :last-child {
+#lmkuvpodpu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qduyyzgfif .gt_row {
+#lmkuvpodpu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -267,7 +267,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   overflow-x: hidden;
 }
 
-#qduyyzgfif .gt_stub {
+#lmkuvpodpu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -280,7 +280,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#qduyyzgfif .gt_stub_row_group {
+#lmkuvpodpu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -294,11 +294,11 @@ gt::gt(head(tbls_lst$list_of_hosts))
   vertical-align: top;
 }
 
-#qduyyzgfif .gt_row_group_first td {
+#lmkuvpodpu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qduyyzgfif .gt_summary_row {
+#lmkuvpodpu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -308,16 +308,16 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#qduyyzgfif .gt_first_summary_row {
+#lmkuvpodpu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qduyyzgfif .gt_first_summary_row.thick {
+#lmkuvpodpu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qduyyzgfif .gt_last_summary_row {
+#lmkuvpodpu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -327,7 +327,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-bottom-color: #D3D3D3;
 }
 
-#qduyyzgfif .gt_grand_summary_row {
+#lmkuvpodpu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -337,7 +337,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#qduyyzgfif .gt_first_grand_summary_row {
+#lmkuvpodpu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -347,11 +347,11 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-top-color: #D3D3D3;
 }
 
-#qduyyzgfif .gt_striped {
+#lmkuvpodpu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qduyyzgfif .gt_table_body {
+#lmkuvpodpu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -360,7 +360,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-bottom-color: #D3D3D3;
 }
 
-#qduyyzgfif .gt_footnotes {
+#lmkuvpodpu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -374,7 +374,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-right-color: #D3D3D3;
 }
 
-#qduyyzgfif .gt_footnote {
+#lmkuvpodpu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -383,7 +383,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#qduyyzgfif .gt_sourcenotes {
+#lmkuvpodpu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -397,7 +397,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-right-color: #D3D3D3;
 }
 
-#qduyyzgfif .gt_sourcenote {
+#lmkuvpodpu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -405,64 +405,64 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#qduyyzgfif .gt_left {
+#lmkuvpodpu .gt_left {
   text-align: left;
 }
 
-#qduyyzgfif .gt_center {
+#lmkuvpodpu .gt_center {
   text-align: center;
 }
 
-#qduyyzgfif .gt_right {
+#lmkuvpodpu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qduyyzgfif .gt_font_normal {
+#lmkuvpodpu .gt_font_normal {
   font-weight: normal;
 }
 
-#qduyyzgfif .gt_font_bold {
+#lmkuvpodpu .gt_font_bold {
   font-weight: bold;
 }
 
-#qduyyzgfif .gt_font_italic {
+#lmkuvpodpu .gt_font_italic {
   font-style: italic;
 }
 
-#qduyyzgfif .gt_super {
+#lmkuvpodpu .gt_super {
   font-size: 65%;
 }
 
-#qduyyzgfif .gt_footnote_marks {
+#lmkuvpodpu .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#qduyyzgfif .gt_asterisk {
+#lmkuvpodpu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qduyyzgfif .gt_indent_1 {
+#lmkuvpodpu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qduyyzgfif .gt_indent_2 {
+#lmkuvpodpu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qduyyzgfif .gt_indent_3 {
+#lmkuvpodpu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qduyyzgfif .gt_indent_4 {
+#lmkuvpodpu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qduyyzgfif .gt_indent_5 {
+#lmkuvpodpu .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -506,12 +506,12 @@ gt::gt(head(tbls_lst$total_bids_by_country))
 ```
 
 ```{=html}
-<div id="gdfzrekxrc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="bucaqeizmg" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#gdfzrekxrc .gt_table {
+#bucaqeizmg .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -536,7 +536,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-left-color: #D3D3D3;
 }
 
-#gdfzrekxrc .gt_heading {
+#bucaqeizmg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -548,7 +548,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-right-color: #D3D3D3;
 }
 
-#gdfzrekxrc .gt_title {
+#bucaqeizmg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -560,7 +560,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-bottom-width: 0;
 }
 
-#gdfzrekxrc .gt_subtitle {
+#bucaqeizmg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -572,13 +572,13 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-top-width: 0;
 }
 
-#gdfzrekxrc .gt_bottom_border {
+#bucaqeizmg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gdfzrekxrc .gt_col_headings {
+#bucaqeizmg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -593,7 +593,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-right-color: #D3D3D3;
 }
 
-#gdfzrekxrc .gt_col_heading {
+#bucaqeizmg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -613,7 +613,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   overflow-x: hidden;
 }
 
-#gdfzrekxrc .gt_column_spanner_outer {
+#bucaqeizmg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -625,15 +625,15 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   padding-right: 4px;
 }
 
-#gdfzrekxrc .gt_column_spanner_outer:first-child {
+#bucaqeizmg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gdfzrekxrc .gt_column_spanner_outer:last-child {
+#bucaqeizmg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gdfzrekxrc .gt_column_spanner {
+#bucaqeizmg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -645,7 +645,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   width: 100%;
 }
 
-#gdfzrekxrc .gt_group_heading {
+#bucaqeizmg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -670,7 +670,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   vertical-align: middle;
 }
 
-#gdfzrekxrc .gt_empty_group_heading {
+#bucaqeizmg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -685,15 +685,15 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   vertical-align: middle;
 }
 
-#gdfzrekxrc .gt_from_md > :first-child {
+#bucaqeizmg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gdfzrekxrc .gt_from_md > :last-child {
+#bucaqeizmg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gdfzrekxrc .gt_row {
+#bucaqeizmg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -712,7 +712,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   overflow-x: hidden;
 }
 
-#gdfzrekxrc .gt_stub {
+#bucaqeizmg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -725,7 +725,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   padding-right: 5px;
 }
 
-#gdfzrekxrc .gt_stub_row_group {
+#bucaqeizmg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -739,11 +739,11 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   vertical-align: top;
 }
 
-#gdfzrekxrc .gt_row_group_first td {
+#bucaqeizmg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gdfzrekxrc .gt_summary_row {
+#bucaqeizmg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -753,16 +753,16 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   padding-right: 5px;
 }
 
-#gdfzrekxrc .gt_first_summary_row {
+#bucaqeizmg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gdfzrekxrc .gt_first_summary_row.thick {
+#bucaqeizmg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gdfzrekxrc .gt_last_summary_row {
+#bucaqeizmg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -772,7 +772,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-bottom-color: #D3D3D3;
 }
 
-#gdfzrekxrc .gt_grand_summary_row {
+#bucaqeizmg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -782,7 +782,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   padding-right: 5px;
 }
 
-#gdfzrekxrc .gt_first_grand_summary_row {
+#bucaqeizmg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -792,11 +792,11 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-top-color: #D3D3D3;
 }
 
-#gdfzrekxrc .gt_striped {
+#bucaqeizmg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gdfzrekxrc .gt_table_body {
+#bucaqeizmg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -805,7 +805,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-bottom-color: #D3D3D3;
 }
 
-#gdfzrekxrc .gt_footnotes {
+#bucaqeizmg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -819,7 +819,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-right-color: #D3D3D3;
 }
 
-#gdfzrekxrc .gt_footnote {
+#bucaqeizmg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -828,7 +828,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   padding-right: 5px;
 }
 
-#gdfzrekxrc .gt_sourcenotes {
+#bucaqeizmg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -842,7 +842,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-right-color: #D3D3D3;
 }
 
-#gdfzrekxrc .gt_sourcenote {
+#bucaqeizmg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -850,64 +850,64 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   padding-right: 5px;
 }
 
-#gdfzrekxrc .gt_left {
+#bucaqeizmg .gt_left {
   text-align: left;
 }
 
-#gdfzrekxrc .gt_center {
+#bucaqeizmg .gt_center {
   text-align: center;
 }
 
-#gdfzrekxrc .gt_right {
+#bucaqeizmg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gdfzrekxrc .gt_font_normal {
+#bucaqeizmg .gt_font_normal {
   font-weight: normal;
 }
 
-#gdfzrekxrc .gt_font_bold {
+#bucaqeizmg .gt_font_bold {
   font-weight: bold;
 }
 
-#gdfzrekxrc .gt_font_italic {
+#bucaqeizmg .gt_font_italic {
   font-style: italic;
 }
 
-#gdfzrekxrc .gt_super {
+#bucaqeizmg .gt_super {
   font-size: 65%;
 }
 
-#gdfzrekxrc .gt_footnote_marks {
+#bucaqeizmg .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#gdfzrekxrc .gt_asterisk {
+#bucaqeizmg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gdfzrekxrc .gt_indent_1 {
+#bucaqeizmg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gdfzrekxrc .gt_indent_2 {
+#bucaqeizmg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gdfzrekxrc .gt_indent_3 {
+#bucaqeizmg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gdfzrekxrc .gt_indent_4 {
+#bucaqeizmg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gdfzrekxrc .gt_indent_5 {
+#bucaqeizmg .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -958,12 +958,12 @@ gt::gt(head(tbls_lst$host_country_performances))
 ```
 
 ```{=html}
-<div id="zpbsxqwpry" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="lmylcyuvln" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#zpbsxqwpry .gt_table {
+#lmylcyuvln .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -988,7 +988,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-left-color: #D3D3D3;
 }
 
-#zpbsxqwpry .gt_heading {
+#lmylcyuvln .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1000,7 +1000,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-right-color: #D3D3D3;
 }
 
-#zpbsxqwpry .gt_title {
+#lmylcyuvln .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1012,7 +1012,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-bottom-width: 0;
 }
 
-#zpbsxqwpry .gt_subtitle {
+#lmylcyuvln .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1024,13 +1024,13 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-top-width: 0;
 }
 
-#zpbsxqwpry .gt_bottom_border {
+#lmylcyuvln .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zpbsxqwpry .gt_col_headings {
+#lmylcyuvln .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1045,7 +1045,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-right-color: #D3D3D3;
 }
 
-#zpbsxqwpry .gt_col_heading {
+#lmylcyuvln .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1065,7 +1065,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   overflow-x: hidden;
 }
 
-#zpbsxqwpry .gt_column_spanner_outer {
+#lmylcyuvln .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1077,15 +1077,15 @@ gt::gt(head(tbls_lst$host_country_performances))
   padding-right: 4px;
 }
 
-#zpbsxqwpry .gt_column_spanner_outer:first-child {
+#lmylcyuvln .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zpbsxqwpry .gt_column_spanner_outer:last-child {
+#lmylcyuvln .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zpbsxqwpry .gt_column_spanner {
+#lmylcyuvln .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1097,7 +1097,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   width: 100%;
 }
 
-#zpbsxqwpry .gt_group_heading {
+#lmylcyuvln .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1122,7 +1122,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   vertical-align: middle;
 }
 
-#zpbsxqwpry .gt_empty_group_heading {
+#lmylcyuvln .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1137,15 +1137,15 @@ gt::gt(head(tbls_lst$host_country_performances))
   vertical-align: middle;
 }
 
-#zpbsxqwpry .gt_from_md > :first-child {
+#lmylcyuvln .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zpbsxqwpry .gt_from_md > :last-child {
+#lmylcyuvln .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zpbsxqwpry .gt_row {
+#lmylcyuvln .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1164,7 +1164,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   overflow-x: hidden;
 }
 
-#zpbsxqwpry .gt_stub {
+#lmylcyuvln .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1177,7 +1177,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   padding-right: 5px;
 }
 
-#zpbsxqwpry .gt_stub_row_group {
+#lmylcyuvln .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1191,11 +1191,11 @@ gt::gt(head(tbls_lst$host_country_performances))
   vertical-align: top;
 }
 
-#zpbsxqwpry .gt_row_group_first td {
+#lmylcyuvln .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zpbsxqwpry .gt_summary_row {
+#lmylcyuvln .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1205,16 +1205,16 @@ gt::gt(head(tbls_lst$host_country_performances))
   padding-right: 5px;
 }
 
-#zpbsxqwpry .gt_first_summary_row {
+#lmylcyuvln .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zpbsxqwpry .gt_first_summary_row.thick {
+#lmylcyuvln .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zpbsxqwpry .gt_last_summary_row {
+#lmylcyuvln .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1224,7 +1224,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-bottom-color: #D3D3D3;
 }
 
-#zpbsxqwpry .gt_grand_summary_row {
+#lmylcyuvln .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1234,7 +1234,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   padding-right: 5px;
 }
 
-#zpbsxqwpry .gt_first_grand_summary_row {
+#lmylcyuvln .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1244,11 +1244,11 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-top-color: #D3D3D3;
 }
 
-#zpbsxqwpry .gt_striped {
+#lmylcyuvln .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zpbsxqwpry .gt_table_body {
+#lmylcyuvln .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1257,7 +1257,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-bottom-color: #D3D3D3;
 }
 
-#zpbsxqwpry .gt_footnotes {
+#lmylcyuvln .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1271,7 +1271,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-right-color: #D3D3D3;
 }
 
-#zpbsxqwpry .gt_footnote {
+#lmylcyuvln .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1280,7 +1280,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   padding-right: 5px;
 }
 
-#zpbsxqwpry .gt_sourcenotes {
+#lmylcyuvln .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1294,7 +1294,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-right-color: #D3D3D3;
 }
 
-#zpbsxqwpry .gt_sourcenote {
+#lmylcyuvln .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1302,64 +1302,64 @@ gt::gt(head(tbls_lst$host_country_performances))
   padding-right: 5px;
 }
 
-#zpbsxqwpry .gt_left {
+#lmylcyuvln .gt_left {
   text-align: left;
 }
 
-#zpbsxqwpry .gt_center {
+#lmylcyuvln .gt_center {
   text-align: center;
 }
 
-#zpbsxqwpry .gt_right {
+#lmylcyuvln .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zpbsxqwpry .gt_font_normal {
+#lmylcyuvln .gt_font_normal {
   font-weight: normal;
 }
 
-#zpbsxqwpry .gt_font_bold {
+#lmylcyuvln .gt_font_bold {
   font-weight: bold;
 }
 
-#zpbsxqwpry .gt_font_italic {
+#lmylcyuvln .gt_font_italic {
   font-style: italic;
 }
 
-#zpbsxqwpry .gt_super {
+#lmylcyuvln .gt_super {
   font-size: 65%;
 }
 
-#zpbsxqwpry .gt_footnote_marks {
+#lmylcyuvln .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#zpbsxqwpry .gt_asterisk {
+#lmylcyuvln .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zpbsxqwpry .gt_indent_1 {
+#lmylcyuvln .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zpbsxqwpry .gt_indent_2 {
+#lmylcyuvln .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zpbsxqwpry .gt_indent_3 {
+#lmylcyuvln .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zpbsxqwpry .gt_indent_4 {
+#lmylcyuvln .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zpbsxqwpry .gt_indent_5 {
+#lmylcyuvln .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1657,7 +1657,7 @@ df_tm <- df_tm[1:30,] %>%
   filter(!is.na(continent))
 ```
 
-Let's use chronologically ordered tiles (AKA waffle plot) to look at the timeline of hosting the world cup. 
+Let's use chronologically ordered tiles (AKA waffle plot) to look at the timeline of hosting the world cup.
 
 
 ```r
@@ -1710,9 +1710,11 @@ df_tm %>%
 ```
 
 <img src="01-hosting_history_files/figure-html/unnamed-chunk-15-1.png" width="100%" height="100%" />
+
 This is a condensed and clear representaion of our data, which are two desirable features of data visualization.
 
 Let's go from compactness to vastness by throwing this data on the world map and see how it would look like
+
 
 ```r
 #get map of the world
@@ -1731,6 +1733,7 @@ wcp_hosts$iso2 <- countrycode(wcp_hosts$ISO3_CODE, "iso3c", "iso2c")
 
 Plotting base map of the world using ggplot.
 
+
 ```r
 # Base map of the world
 plot <- ggplot(world) +
@@ -1741,12 +1744,14 @@ plot <- ggplot(world) +
 
 Additionally, let's make the map extra flashy by filling hosting countries with their maps.
 
+
 ```r
 # get flags form this repo
 flagrepo <- "https://raw.githubusercontent.com/hjnilsson/country-flags/master/png250px/"
 ```
 
 Finally, we'll download and add flags to the world map
+
 
 ```r
 # Loop and add
@@ -1769,7 +1774,7 @@ plot +
 
 <img src="01-hosting_history_files/figure-html/unnamed-chunk-19-1.png" width="100%" height="100%" />
 
-Have a look at this blog for more details on adding flags to maps https://www.youtube.com/watch?v=6I5I56uVvLw&ab_channel=AndrewHuberman This is where I got to know and learn this trick.
+Have a look at this [excellent blog](https://dieghernan.github.io/202201_maps-flags/) for more details on adding flags to maps This is where I got to know and learn this trick.
 
 ## What is the history of biding and
 
@@ -1795,9 +1800,8 @@ tbls_lst$total_bids_by_country %>%
 
 Morocco is lacking luck. Five bids with no success!
 
-What's lacking in the barplot above is the time where these bids took place.
-Wouldn't it be interesting to have a single plot showing the number and dates of world cup bids? I would say yes!
-Let's work toward building this exciting plot by preparing the input tables of bids history.
+What's lacking in the barplot above is the time where these bids took place. Wouldn't it be interesting to have a single plot showing the number and dates of world cup bids? I would say yes! Let's work toward building this exciting plot by preparing the input tables of bids history.
+
 
 ```r
 #separate concatenated years into separate rows
@@ -1814,6 +1818,7 @@ df_bids_2 <- tbls_lst$total_bids_by_country %>%
 
 Are both tables equal?
 
+
 ```r
 #confirm that tables are equal
 dplyr::all_equal(df_bids, df_bids_2)
@@ -1823,8 +1828,7 @@ dplyr::all_equal(df_bids, df_bids_2)
 ## [1] TRUE
 ```
 
-The answer is yes! Both approaches give the same result.
-Let's do something similar by separating the countries that cohost a world cup into separate rows, then merge it with the table of bids we prepared above. Finally, we'll order the table by the number of world cup bids.
+The answer is yes! Both approaches give the same result. Let's do something similar by separating the countries that cohost a world cup into separate rows, then merge it with the table of bids we prepared above. Finally, we'll order the table by the number of world cup bids.
 
 
 ```r
@@ -1842,6 +1846,7 @@ df_host_2 <- df_host %>%
 ```
 
 Let's have a look on the data in the form of a tile plot showing both the countries and date
+
 
 ```r
 df_host_2 %>% 
@@ -1881,7 +1886,8 @@ df_host_2 %>%
 
 <img src="01-hosting_history_files/figure-html/unnamed-chunk-24-1.png" width="100%" height="100%" />
 
-Add results of hosting country and show the respective flag. 
+Add results of hosting country and show the respective flag.
+
 
 ```r
 #get iso2 code of each country
@@ -1907,6 +1913,7 @@ names(res_cols) <- results_order[-length(results_order )]
 ```
 
 Let's put everything together one last time
+
 
 ```r
 df_host_2 %>% 

@@ -14,7 +14,11 @@ description: ""
 
 # FIFA world cup 2022 Challenge!
 
-**This book aims presenting and explaining datascience skills and principles using data related to FIFA world cup.**
+**This book aims at presenting and explaining data-science skills and principles using data related to FIFA world cup.**
+
+The following are the main topics that we will explore:
+
+1.  [History of hosting FIFA World Cup]
 
 ![](design-f6b879de-c009-4457-9c57-7f2087765e99.png)
 

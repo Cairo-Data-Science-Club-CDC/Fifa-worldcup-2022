@@ -243,7 +243,7 @@ df_tm <- df_tm[1:30,] %>%
 
 ```
 
-Let's use chronologically ordered tiles (AKA waffle plot) to look at the timeline of hosting the world cup. 
+Let's use chronologically ordered tiles (AKA waffle plot) to look at the timeline of hosting the world cup.
 
 ```{r}
 df_tm %>% 
@@ -285,9 +285,11 @@ df_tm %>%
         legend.position = "top",
         panel.border = element_rect(linewidth = 2,linetype = "solid", color = "black"))
 ```
+
 This is a condensed and clear representaion of our data, which are two desirable features of data visualization.
 
 Let's go from compactness to vastness by throwing this data on the world map and see how it would look like
+
 ```{r}
 #get map of the world
 world <- ne_countries(scale = "medium", returnclass = "sf")
@@ -304,6 +306,7 @@ wcp_hosts$iso2 <- countrycode(wcp_hosts$ISO3_CODE, "iso3c", "iso2c")
 ```
 
 Plotting base map of the world using ggplot.
+
 ```{r}
 # Base map of the world
 plot <- ggplot(world) +
@@ -313,12 +316,14 @@ plot <- ggplot(world) +
 ```
 
 Additionally, let's make the map extra flashy by filling hosting countries with their maps.
+
 ```{r}
 # get flags form this repo
 flagrepo <- "https://raw.githubusercontent.com/hjnilsson/country-flags/master/png250px/"
 ```
 
 Finally, we'll download and add flags to the world map
+
 ```{r}
 # Loop and add
 for (iso in wcp_hosts$iso2) {
@@ -338,7 +343,7 @@ plot +
   labs(title = "World map of FIFA world cup hosts")
 ```
 
-Have a look at this blog for more details on adding flags to maps https://www.youtube.com/watch?v=6I5I56uVvLw&ab_channel=AndrewHuberman This is where I got to know and learn this trick.
+Have a look at this [excellent blog](https://dieghernan.github.io/202201_maps-flags/) for more details on adding flags to maps This is where I got to know and learn this trick.
 
 ## What is the history of biding and
 
@@ -361,9 +366,8 @@ tbls_lst$total_bids_by_country %>%
 
 Morocco is lacking luck. Five bids with no success!
 
-What's lacking in the barplot above is the time where these bids took place.
-Wouldn't it be interesting to have a single plot showing the number and dates of world cup bids? I would say yes!
-Let's work toward building this exciting plot by preparing the input tables of bids history.
+What's lacking in the barplot above is the time where these bids took place. Wouldn't it be interesting to have a single plot showing the number and dates of world cup bids? I would say yes! Let's work toward building this exciting plot by preparing the input tables of bids history.
+
 ```{r}
 #separate concatenated years into separate rows
 df_bids <- tbls_lst$total_bids_by_country %>% 
@@ -378,13 +382,13 @@ df_bids_2 <- tbls_lst$total_bids_by_country %>%
 ```
 
 Are both tables equal?
+
 ```{r}
 #confirm that tables are equal
 dplyr::all_equal(df_bids, df_bids_2)
 ```
 
-The answer is yes! Both approaches give the same result.
-Let's do something similar by separating the countries that cohost a world cup into separate rows, then merge it with the table of bids we prepared above. Finally, we'll order the table by the number of world cup bids.
+The answer is yes! Both approaches give the same result. Let's do something similar by separating the countries that cohost a world cup into separate rows, then merge it with the table of bids we prepared above. Finally, we'll order the table by the number of world cup bids.
 
 ```{r}
 #separate cohosting countries into separate entries
@@ -401,6 +405,7 @@ df_host_2 <- df_host %>%
 ```
 
 Let's have a look on the data in the form of a tile plot showing both the countries and date
+
 ```{r}
 df_host_2 %>% 
   ggplot()+
@@ -437,7 +442,8 @@ df_host_2 %>%
         legend.position = "top")
 ```
 
-Add results of hosting country and show the respective flag. 
+Add results of hosting country and show the respective flag.
+
 ```{r}
 #get iso2 code of each country
 df_host_2$iso2 <- countrycode(df_host_2$country, "country.name", "iso2c")
@@ -456,6 +462,7 @@ names(res_cols) <- results_order[-length(results_order )]
 ```
 
 Let's put everything together one last time
+
 ```{r}
 df_host_2 %>% 
   ggplot()+
