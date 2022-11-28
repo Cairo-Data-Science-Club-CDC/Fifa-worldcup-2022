@@ -1,190 +1,66 @@
-<!DOCTYPE html>
-<html lang="" xml:lang="">
-<head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.1 Data collection | Fifa worldcup 2022</title>
-  <meta name="description" content="2.1 Data collection | Fifa worldcup 2022" />
-  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="2.1 Data collection | Fifa worldcup 2022" />
-  <meta property="og:type" content="book" />
-  
-  
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.1 Data collection | Fifa worldcup 2022" />
-  
-  
-  
-
-<meta name="author" content="Mohamed R.Shoeb" />
 
 
-<meta name="date" content="2022-11-28" />
+# History of hosting FIFA World Cup
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="history-of-hosting-fifa-world-cup.html"/>
-<link rel="next" href="how-many-world-cups-were-hosted-in-each-continent.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+Load libraries
 
 
+```r
+library("rnaturalearth")
+library("rnaturalearthdata")
+library(rvest)
+library(tidyverse)
+library(sf)
+library(ggflags)
+library(ggspatial)
+library(ggplot2)
+library(giscoR)
+library(dplyr)
+library(rasterpic)
+library(countrycode)
+library(ggimage)
+#set the default ggplot theme
+theme_set(cowplot::theme_cowplot())
+```
+
+## Data collection
+
+In this project we will use the data made available in this Wikipedia article about [FIFA World Cup hosts](https://en.wikipedia.org/wiki/FIFA_World_Cup_hosts)
+
+To do that, we are going to use the [rvest](https://rvest.tidyverse.org/) package to explore and scrape this tables directly into R.
 
 
+```r
+# URL of the article
+url <- "https://en.wikipedia.org/wiki/FIFA_World_Cup_hosts"
+# Read the webpage and obtain the pieces of the article containing tables
+tbls_lst <-  url %>%
+  read_html %>%
+  html_table()
+```
+
+The tables are in the house! However, this too much. Let's select only the tables of interest for this tutorial. This is limited to the subset of tables showing the list of countries that have submitted a bid or actually hosted the world cup. As an extra, we will also utilize the performance of host countries in our analysis.
 
 
+```r
+# Select tables of interest
+tbls_lst <- tbls_lst[c(1,9,10)]
+
+# Assign names to the tables
+tables_names <- c("List of hosts",
+                  "Total bids by country",
+                  "Host country performances")
+names(tbls_lst) <- tolower(tables_names) %>% str_replace_all(" ","_")
+```
+
+Let's have a quick look at the three selected tables
 
 
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+```r
+gt::gt(head(tbls_lst$list_of_hosts))
+```
 
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-<link rel="stylesheet" href="style.css" type="text/css" />
-</head>
-
-<body>
-
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">World-data-analysis</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> FIFA world cup 2022 Challenge!</a></li>
-<li class="chapter" data-level="2" data-path="history-of-hosting-fifa-world-cup.html"><a href="history-of-hosting-fifa-world-cup.html"><i class="fa fa-check"></i><b>2</b> History of hosting FIFA World Cup</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="data-collection.html"><a href="data-collection.html"><i class="fa fa-check"></i><b>2.1</b> Data collection</a></li>
-<li class="chapter" data-level="2.2" data-path="how-many-world-cups-were-hosted-in-each-continent.html"><a href="how-many-world-cups-were-hosted-in-each-continent.html"><i class="fa fa-check"></i><b>2.2</b> How many world cups were hosted in each continent?</a></li>
-<li class="chapter" data-level="2.3" data-path="what-is-the-timeline-of-world-cup-hosting.html"><a href="what-is-the-timeline-of-world-cup-hosting.html"><i class="fa fa-check"></i><b>2.3</b> What is the timeline of world cup hosting?</a></li>
-<li class="chapter" data-level="2.4" data-path="what-is-the-history-of-biding-and.html"><a href="what-is-the-history-of-biding-and.html"><i class="fa fa-check"></i><b>2.4</b> What is the history of biding and</a></li>
-</ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
-    </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fifa worldcup 2022</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="data-collection" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Data collection<a href="data-collection.html#data-collection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In this project we will use the data made available in this Wikipedia article about <a href="https://en.wikipedia.org/wiki/FIFA_World_Cup_hosts">FIFA World Cup hosts</a></p>
-<p>To do that, we are going to use the <a href="https://rvest.tidyverse.org/">rvest</a> package to explore and scrape this tables directly into R.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="data-collection.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># URL of the article</span></span>
-<span id="cb2-2"><a href="data-collection.html#cb2-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://en.wikipedia.org/wiki/FIFA_World_Cup_hosts&quot;</span></span>
-<span id="cb2-3"><a href="data-collection.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the webpage and obtain the pieces of the article containing tables</span></span>
-<span id="cb2-4"><a href="data-collection.html#cb2-4" aria-hidden="true" tabindex="-1"></a>tbls_lst <span class="ot">&lt;-</span>  url <span class="sc">%&gt;%</span></span>
-<span id="cb2-5"><a href="data-collection.html#cb2-5" aria-hidden="true" tabindex="-1"></a>  read_html <span class="sc">%&gt;%</span></span>
-<span id="cb2-6"><a href="data-collection.html#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>()</span></code></pre></div>
-<p>The tables are in the house! However, this too much. Let’s select only the tables of interest for this tutorial. This is limited to the subset of tables showing the list of countries that have submitted a bid or actually hosted the world cup. As an extra, we will also utilize the performance of host countries in our analysis.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="data-collection.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select tables of interest</span></span>
-<span id="cb3-2"><a href="data-collection.html#cb3-2" aria-hidden="true" tabindex="-1"></a>tbls_lst <span class="ot">&lt;-</span> tbls_lst[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">9</span>,<span class="dv">10</span>)]</span>
-<span id="cb3-3"><a href="data-collection.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="data-collection.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign names to the tables</span></span>
-<span id="cb3-5"><a href="data-collection.html#cb3-5" aria-hidden="true" tabindex="-1"></a>tables_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;List of hosts&quot;</span>,</span>
-<span id="cb3-6"><a href="data-collection.html#cb3-6" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Total bids by country&quot;</span>,</span>
-<span id="cb3-7"><a href="data-collection.html#cb3-7" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Host country performances&quot;</span>)</span>
-<span id="cb3-8"><a href="data-collection.html#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tbls_lst) <span class="ot">&lt;-</span> <span class="fu">tolower</span>(tables_names) <span class="sc">%&gt;%</span> <span class="fu">str_replace_all</span>(<span class="st">&quot; &quot;</span>,<span class="st">&quot;_&quot;</span>)</span></code></pre></div>
-<p>Let’s have a quick look at the three selected tables</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="data-collection.html#cb4-1" aria-hidden="true" tabindex="-1"></a>gt<span class="sc">::</span><span class="fu">gt</span>(<span class="fu">head</span>(tbls_lst<span class="sc">$</span>list_of_hosts))</span></code></pre></div>
+```{=html}
 <div id="qduyyzgfif" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
@@ -623,7 +499,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
 </table>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="data-collection.html#cb5-1" aria-hidden="true" tabindex="-1"></a>gt<span class="sc">::</span><span class="fu">gt</span>(<span class="fu">head</span>(tbls_lst<span class="sc">$</span>total_bids_by_country))</span></code></pre></div>
+```
+
+```r
+gt::gt(head(tbls_lst$total_bids_by_country))
+```
+
+```{=html}
 <div id="gdfzrekxrc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
@@ -1069,7 +951,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
 </table>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data-collection.html#cb6-1" aria-hidden="true" tabindex="-1"></a>gt<span class="sc">::</span><span class="fu">gt</span>(<span class="fu">head</span>(tbls_lst<span class="sc">$</span>host_country_performances))</span></code></pre></div>
+```
+
+```r
+gt::gt(head(tbls_lst$host_country_performances))
+```
+
+```{=html}
 <div id="zpbsxqwpry" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
@@ -1564,100 +1452,521 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
 </table>
 </div>
-<p>Looks good, but not perfect. As expected, the scrapped tables are not optimal for analysis. Let’s push the tables through a few rounds of quality control.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="data-collection.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean columns&#39; names</span></span>
-<span id="cb7-2"><a href="data-collection.html#cb7-2" aria-hidden="true" tabindex="-1"></a>tbls_lst <span class="ot">&lt;-</span> <span class="fu">lapply</span>(tbls_lst,  janitor<span class="sc">::</span>clean_names)</span>
-<span id="cb7-3"><a href="data-collection.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the amount of money</span></span>
-<span id="cb7-4"><a href="data-collection.html#cb7-4" aria-hidden="true" tabindex="-1"></a>tbls_lst<span class="sc">$</span>host_country_performances  <span class="ot">&lt;-</span> tbls_lst<span class="sc">$</span>host_country_performances <span class="sc">%&gt;%</span></span>
-<span id="cb7-5"><a href="data-collection.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">esult =</span> <span class="fu">str_replace</span>(result, <span class="st">&quot; </span><span class="sc">\\</span><span class="st">(top 12</span><span class="sc">\\</span><span class="st">)&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-6"><a href="data-collection.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">country =</span> <span class="st">&quot;team&quot;</span>,</span>
-<span id="cb7-7"><a href="data-collection.html#cb7-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">years =</span> <span class="st">&quot;year&quot;</span>)</span>
-<span id="cb7-8"><a href="data-collection.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#let&#39;s correct the entry of Colombia since it withdrew from hosting due to economic concerns</span></span>
-<span id="cb7-9"><a href="data-collection.html#cb7-9" aria-hidden="true" tabindex="-1"></a>tbls_lst<span class="sc">$</span>total_bids_by_country <span class="ot">&lt;-</span> tbls_lst<span class="sc">$</span>total_bids_by_country <span class="sc">%&gt;%</span> </span>
-<span id="cb7-10"><a href="data-collection.html#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">times_hosted =</span> <span class="fu">ifelse</span>(country <span class="sc">==</span> <span class="st">&quot;Colombia&quot;</span>, <span class="dv">0</span>, times_hosted))</span>
-<span id="cb7-11"><a href="data-collection.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Replace &quot;West Germany&quot; with &quot;Germany&quot;</span></span>
-<span id="cb7-12"><a href="data-collection.html#cb7-12" aria-hidden="true" tabindex="-1"></a>tbls_lst<span class="sc">$</span>host_country_performances  <span class="ot">&lt;-</span> tbls_lst<span class="sc">$</span>host_country_performances <span class="sc">%&gt;%</span></span>
-<span id="cb7-13"><a href="data-collection.html#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">team =</span> <span class="fu">str_replace</span>(country, <span class="st">&quot;West Germany&quot;</span>, <span class="st">&quot;Germany&quot;</span>))</span>
-<span id="cb7-14"><a href="data-collection.html#cb7-14" aria-hidden="true" tabindex="-1"></a>tbls_lst<span class="sc">$</span>list_of_hosts <span class="ot">&lt;-</span> tbls_lst<span class="sc">$</span>list_of_hosts <span class="sc">%&gt;%</span> </span>
-<span id="cb7-15"><a href="data-collection.html#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">host_nation_s =</span> <span class="fu">str_replace</span>(host_nation_s, <span class="st">&quot;West Germany&quot;</span>, <span class="st">&quot;Germany&quot;</span>))</span>
-<span id="cb7-16"><a href="data-collection.html#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Order the results and set them as levels</span></span>
-<span id="cb7-17"><a href="data-collection.html#cb7-17" aria-hidden="true" tabindex="-1"></a>results_order <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Champions&quot;</span>,</span>
-<span id="cb7-18"><a href="data-collection.html#cb7-18" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Runners-up&quot;</span>,</span>
-<span id="cb7-19"><a href="data-collection.html#cb7-19" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Third place&quot;</span>,</span>
-<span id="cb7-20"><a href="data-collection.html#cb7-20" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Fourth place&quot;</span>,</span>
-<span id="cb7-21"><a href="data-collection.html#cb7-21" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Quarter-finals&quot;</span>,</span>
-<span id="cb7-22"><a href="data-collection.html#cb7-22" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Round of 16&quot;</span>,</span>
-<span id="cb7-23"><a href="data-collection.html#cb7-23" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Second round&quot;</span>,</span>
-<span id="cb7-24"><a href="data-collection.html#cb7-24" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;First round&quot;</span>,</span>
-<span id="cb7-25"><a href="data-collection.html#cb7-25" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;TBD&quot;</span></span>
-<span id="cb7-26"><a href="data-collection.html#cb7-26" aria-hidden="true" tabindex="-1"></a>                   )</span>
-<span id="cb7-27"><a href="data-collection.html#cb7-27" aria-hidden="true" tabindex="-1"></a>tbls_lst<span class="sc">$</span>host_country_performances  <span class="ot">&lt;-</span> tbls_lst<span class="sc">$</span>host_country_performances <span class="sc">%&gt;%</span></span>
-<span id="cb7-28"><a href="data-collection.html#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">result =</span> <span class="fu">ifelse</span>(result <span class="sc">==</span> <span class="st">&quot;Second round (top 12)&quot;</span>, <span class="st">&quot;Second round&quot;</span>, result),</span>
-<span id="cb7-29"><a href="data-collection.html#cb7-29" aria-hidden="true" tabindex="-1"></a>                          </span>
-<span id="cb7-30"><a href="data-collection.html#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">result =</span> <span class="fu">factor</span>(result, <span class="at">levels =</span> results_order),</span>
-<span id="cb7-31"><a href="data-collection.html#cb7-31" aria-hidden="true" tabindex="-1"></a>         <span class="at">country =</span> <span class="fu">str_replace</span>(country, <span class="st">&quot;West Germany&quot;</span>, <span class="st">&quot;Germany&quot;</span>)) </span></code></pre></div>
-<p>Now that the data is analysis-ready, it is time to explore some interesting questions!</p>
-</div>
-            </section>
+```
 
-          </div>
-        </div>
-      </div>
-<a href="history-of-hosting-fifa-world-cup.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="how-many-world-cups-were-hosted-in-each-continent.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
-  </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": true,
-"facebook": false,
-"twitter": false,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/Cairo-Data-Science-Club-CDC/Fifa-worldcup-2022/edit/main/01-hosting_history.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
+Looks good, but not perfect. As expected, the scrapped tables are not optimal for analysis. Let's push the tables through a few rounds of quality control.
+
+
+```r
+# Clean columns' names
+tbls_lst <- lapply(tbls_lst,  janitor::clean_names)
+# Extract the amount of money
+tbls_lst$host_country_performances  <- tbls_lst$host_country_performances %>%
+  mutate(esult = str_replace(result, " \\(top 12\\)", "")) %>%
+  dplyr::rename(country = "team",
+                years = "year")
+#let's correct the entry of Colombia since it withdrew from hosting due to economic concerns
+tbls_lst$total_bids_by_country <- tbls_lst$total_bids_by_country %>% 
+  mutate(times_hosted = ifelse(country == "Colombia", 0, times_hosted))
+#Replace "West Germany" with "Germany"
+tbls_lst$host_country_performances  <- tbls_lst$host_country_performances %>%
+  mutate(team = str_replace(country, "West Germany", "Germany"))
+tbls_lst$list_of_hosts <- tbls_lst$list_of_hosts %>% 
+  mutate(host_nation_s = str_replace(host_nation_s, "West Germany", "Germany"))
+#Order the results and set them as levels
+results_order <- c("Champions",
+                   "Runners-up",
+                   "Third place",
+                   "Fourth place",
+                   "Quarter-finals",
+                   "Round of 16",
+                   "Second round",
+                   "First round",
+                   "TBD"
+                   )
+tbls_lst$host_country_performances  <- tbls_lst$host_country_performances %>%
+  mutate(result = ifelse(result == "Second round (top 12)", "Second round", result),
+                          
+    result = factor(result, levels = results_order),
+         country = str_replace(country, "West Germany", "Germany")) 
+```
+
+Now that the data is analysis-ready, it is time to explore some interesting questions!
+
+## How many world cups were hosted in each continent?
+
+Before embarking on our colorful journey of data visualization, let's define a caption that credits the source of the data and the analysis.
+
+
+```r
+caption_cdc <- glue::glue("Data source: {url}\n@Cairo Data Science Club")
+theme_update(plot.caption = element_text(face = "italic"))
+```
+
+We will exclude the dates in which the championship were cancelled because of Warld War II
+
+
+```r
+df_host <- tbls_lst$list_of_hosts %>% 
+  filter(!str_detect(continent, "Canceled"))
+```
+
+Let's look at a basic plot of the data
+
+
+```r
+df_host %>% 
+  ggplot(aes(continent))+
+  geom_bar()
+```
+
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-8-1.png" width="100%" height="100%" />
+
+This doesn't look pretty. Let's make it more attractive! First, let's add a some colors.
+
+
+```r
+#Assign colors to each continent
+conti_cols <- c(Europe = "#1f78b4",
+                Asia = "#6a3d9a",
+                `South America` = "#ffff99",
+                `North America` = "#33a02c",
+                Africa = "#ff7f00")
+#show colors in the plot
+df_host %>% 
+  ggplot(aes(continent, fill = continent))+
+  geom_bar()+
+  scale_color_manual(values = conti_cols)+
+  scale_fill_manual(values = conti_cols)
+```
+
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-9-1.png" width="100%" height="100%" />
+
+Second, let's add some text and remove the legend since it doesn't add to the plot.
+
+
+```r
+df_host %>% 
+  ggplot(aes(continent, fill = continent))+
+  geom_bar(show.legend = FALSE)+
+  scale_color_manual(values = conti_cols)+
+  scale_fill_manual(values = conti_cols)+
+    labs(title = "History of hosting world cup",
+       subtitle = "Number of hosted world cups and hosting countries per continents",
+       caption = caption_cdc)
+```
+
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-10-1.png" width="100%" height="100%" />
+
+Next, I think we can get rid off the axis and label each bar with important information.
+
+
+```r
+df_host %>% 
+  group_by(continent) %>% 
+  summarise(n = n())%>%
+  ungroup() %>% 
+  arrange(n) %>%
+  mutate(continent = factor(continent, levels = unique(continent))) %>% 
+  ggplot(aes(continent, n))+
+  geom_col(aes(color = continent), fill = "white",  show.legend = FALSE, linewidth = 1)+
+  geom_col(aes(fill = continent), alpha = 0.4, show.legend = FALSE)+
+  geom_text(data = . %>% 
+              mutate(cont_n = glue::glue("{continent}\n(n = {n})")),
+            aes(label = cont_n), size = 5,nudge_y = 1)+
+  labs(title = "History of hosting world cup",
+       subtitle = "Number of hosted world cups and hosting countries per continents")+
+  scale_color_manual(values = conti_cols)+
+  scale_fill_manual(values = conti_cols)+
+  theme(axis.line = element_blank(),
+        axis.ticks = element_blank(),
+        axis.text = element_blank(),
+        axis.title = element_blank())
+```
+
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-11-1.png" width="100%" height="100%" />
+
+Finally, we'll squeeze the names of the hosting countries inside the bars of the corresponding continent
+
+
+```r
+df_host %>% 
+  group_by(continent) %>% 
+  summarise(n = n())%>%
+  ungroup() %>% 
+  arrange(n) %>%
+  mutate(continent = factor(continent, levels = unique(continent))) %>% 
+  ggplot(aes(continent, n))+
+  geom_col(aes(color = continent), fill = "white",  show.legend = FALSE, linewidth = 1)+
+  geom_col(aes(fill = continent), alpha = 0.4, show.legend = FALSE)+
+  geom_text(data = . %>% 
+              mutate(cont_n = glue::glue("{continent}\n(n = {n})")),
+            aes(label = cont_n), size = 5,nudge_y = 1)+
+  geom_text(data = df_host %>%
+              group_by(continent, host_nation_s) %>% 
+              summarise(n_host = n()) %>% 
+              group_by(continent) %>% 
+              mutate(n_cont = n(),
+                     prop = sum(n_host)/(n_cont+1),
+                     cum_prop = cumsum(prop))%>%
+              ungroup() %>% 
+              mutate(host_nation_s = ifelse(n_host >1 , glue::glue("{host_nation_s} x {n_host}"), host_nation_s)),
+            aes(y = cum_prop, label = host_nation_s),
+            size = 4
+              )+
+  labs(title = "History of hosting world cup",
+       subtitle = "Number of hosted world cups and hosting countries per continents",
+       caption = caption_cdc)+
+  scale_color_manual(values = conti_cols)+
+  scale_fill_manual(values = conti_cols)+
+  theme(axis.line = element_blank(),
+        axis.ticks = element_blank(),
+        axis.text = element_blank(),
+        axis.title = element_blank())
+```
+
+```
+## `summarise()` has grouped output by 'continent'. You can override using the
+## `.groups` argument.
+```
+
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-12-1.png" width="100%" height="100%" />
+
+## What is the timeline of world cup hosting?
+
+What was missing from the previous representation of the data is the time component. In this section we'll explore a visualization method that would allow us to add this crucial aspect.
+
+Let's start by preparing the hosting data for visualization by filling in the gap years where the world cup stopped due to WWII
+
+
+```r
+#add missing years in which world cup was cancelled
+df_tm <- df_host %>% 
+  complete(year = full_seq(year, 4)) %>% 
+  mutate(continent = ifelse(is.na(continent), "Cancelled", continent),
+         host_nation_s = ifelse(is.na(host_nation_s), "Cancelled", host_nation_s))
+#make a 6x5 grid from the hosting data and add the coordinate of each cell in the grid
+df_tm <- df_tm[1:30,] %>% 
+  mutate(y = rep(6:1, each = 5),
+         x = rep(1:5, 6),
+         host_nation_s = case_when(
+           str_detect(host_nation_s, "Canada") ~ "Canada\nMexico\nUnited States", #add a new line between cohosts
+           str_detect(host_nation_s, "Japan") ~ "Japan\nSouth Korea", #add new line between cohosts
+           TRUE ~ host_nation_s),
+         continent = factor(continent, levels = unique(continent))) %>% 
+  filter(!is.na(continent))
+```
+
+Let's use chronologically ordered tiles (AKA waffle plot) to look at the timeline of hosting the world cup. 
+
+
+```r
+df_tm %>% 
+  ggplot(aes(x, y, fill = continent ))+
+  geom_tile(color = "black", size = 1)+
+  geom_text(aes(label = host_nation_s), size = 4.5)+
+  scale_color_manual(values = conti_cols)+
+  scale_fill_manual(values = conti_cols)
+```
+
+```
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+```
+
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-14-1.png" width="100%" height="100%" />
+
+That's a good start! Let's add the year information and further beautify the plot.
+
+
+```r
+df_tm %>% 
+  ggplot(aes(x, y, fill = continent ))+
+  geom_tile(color = "black", size = 1)+
+  geom_text(aes(label = host_nation_s), size = 3.1)+
+  #add the time interval of each row
+  geom_text(data = . %>% 
+              group_by(y) %>% 
+              mutate(range = glue::glue("({min(year)}-{max(year)})")) %>% 
+              ungroup(),
+            aes(label = range),
+            x = -0.5,
+            size = 3)+
+  scale_x_discrete(expand = expansion(add = 2))+
+  guides(fill = guide_legend(nrow = 1))+
+  labs(title = "History of hosting FIFA world cup",
+       subtitle = "Host countries of world cups chronologically orderd and colored by continent",
+       caption = caption_cdc)+
+  coord_fixed(0.7)+
+  scale_color_manual(values = conti_cols)+
+  scale_fill_manual(values = conti_cols)+
+  theme(title = element_text(size = 10),
+        axis.line = element_blank(),
+        axis.ticks = element_blank(),
+        axis.text = element_blank(),
+        axis.title = element_blank(),
+        legend.position = "top",
+        panel.border = element_rect(linewidth = 2,linetype = "solid", color = "black"))
+```
+
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-15-1.png" width="100%" height="100%" />
+This is a condensed and clear representaion of our data, which are two desirable features of data visualization.
+
+Let's go from compactness to vastness by throwing this data on the world map and see how it would look like
+
+```r
+#get map of the world
+world <- ne_countries(scale = "medium", returnclass = "sf")
+#and map of separate host countries
+hst_cntry <- df_host$host_nation_s %>%
+           unique() %>% 
+           str_split(" \\s") %>%
+           unlist()
+wcp_hosts <- gisco_get_countries(country = hst_cntry,
+                                 epsg = 3857# Pseudo-Mercator projection
+                                 )
+# Convert country name to iso2c code
+wcp_hosts$iso2 <- countrycode(wcp_hosts$ISO3_CODE, "iso3c", "iso2c")
+```
+
+Plotting base map of the world using ggplot.
+
+```r
+# Base map of the world
+plot <- ggplot(world) +
+  geom_sf(fill = "grey90") +
+  theme_minimal() +
+  theme(panel.background = element_rect(fill = "lightblue"))
+```
+
+Additionally, let's make the map extra flashy by filling hosting countries with their maps.
+
+```r
+# get flags form this repo
+flagrepo <- "https://raw.githubusercontent.com/hjnilsson/country-flags/master/png250px/"
+```
+
+Finally, we'll download and add flags to the world map
+
+```r
+# Loop and add
+for (iso in wcp_hosts$iso2) {
+  # Download pic and plot
+  imgurl <- paste0(flagrepo, tolower(iso), ".png")
+  tmpfile <- tempfile(fileext = ".png")
+  download.file(imgurl, tmpfile, quiet = TRUE, mode = "wb")
+  
+  # Raster
+  x <- wcp_hosts %>% filter(iso2 == iso)
+  x_rast <- rasterpic_img(x, tmpfile, crop = TRUE, mask = TRUE)
+  plot <- plot + layer_spatial(x_rast)
 }
-});
-});
-</script>
 
-</body>
+plot +
+  geom_sf(data = wcp_hosts, fill = NA)+
+  labs(title = "World map of FIFA world cup hosts")
+```
 
-</html>
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-19-1.png" width="100%" height="100%" />
+
+Have a look at this blog for more details on adding flags to maps https://www.youtube.com/watch?v=6I5I56uVvLw&ab_channel=AndrewHuberman This is where I got to know and learn this trick.
+
+## What is the history of biding and
+
+Now let us shift our focus to yet another interesting question. In this section we will explore the bidding history to host the world cup.
+
+Let's start by making a bar-plot that show the number of successful bids for each country of all submitted bids.
+
+
+```r
+tbls_lst$total_bids_by_country %>% 
+  arrange(bids,times_hosted) %>% 
+  mutate(country = factor(country, levels = (country))) %>% 
+  ggplot()+
+  geom_col(aes(country,bids), fill = "#35978f", alpha = 0.3)+
+  geom_col(aes(country,times_hosted), fill = "#35978f", alpha = 1)+
+  coord_flip()+
+  theme(title = element_text(size = 9),
+      axis.title.y = element_blank(),
+      axis.text.y = element_text(size = 7.6))
+```
+
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-20-1.png" width="100%" height="100%" />
+
+Morocco is lacking luck. Five bids with no success!
+
+What's lacking in the barplot above is the time where these bids took place.
+Wouldn't it be interesting to have a single plot showing the number and dates of world cup bids? I would say yes!
+Let's work toward building this exciting plot by preparing the input tables of bids history.
+
+```r
+#separate concatenated years into separate rows
+df_bids <- tbls_lst$total_bids_by_country %>% 
+  mutate(years = str_extract_all(years, "[0-9]+")) %>% 
+  unnest(years) %>% 
+  mutate(years = as.numeric(years))
+#another way to achieve the same results using seprata_rows() and enginered regular expression
+df_bids_2 <- tbls_lst$total_bids_by_country %>% 
+  separate_rows(years, sep = "[^[:digit:].]+") %>% 
+  filter(!nchar( years)== 0) %>% 
+  mutate(years = as.numeric(years)) 
+```
+
+Are both tables equal?
+
+```r
+#confirm that tables are equal
+dplyr::all_equal(df_bids, df_bids_2)
+```
+
+```
+## [1] TRUE
+```
+
+The answer is yes! Both approaches give the same result.
+Let's do something similar by separating the countries that cohost a world cup into separate rows, then merge it with the table of bids we prepared above. Finally, we'll order the table by the number of world cup bids.
+
+
+```r
+#separate cohosting countries into separate entries
+df_host_2 <- df_host %>% 
+  mutate(host_nation_s = str_split(host_nation_s, "\\s{2}")) %>%
+  unnest(host_nation_s) %>% 
+  dplyr::rename(country="host_nation_s",
+                host_year = "year") %>%
+  full_join(df_bids, by = "country") %>% 
+  mutate(host_year = ifelse(is.na(continent), years, host_year)) %>% 
+  arrange(bids) %>% 
+  mutate(country = factor(country, levels = unique(country)),
+         bids = factor(bids, levels = sort(unique(bids), decreasing = TRUE)))
+```
+
+Let's have a look on the data in the form of a tile plot showing both the countries and date
+
+```r
+df_host_2 %>% 
+  ggplot()+
+  geom_tile(aes(years, country),
+            fill = "#c7eae5", color = "white", size = 0.5) +
+  geom_tile(data = . %>% filter(times_hosted>0 & host_year == years),
+            aes(years, country),
+            fill="#35978f", color = "black", size = 0.5) +
+  geom_rect(data = tibble(xmin = 1942, xmax = 1946, ymin = -Inf, ymax = Inf),
+            mapping = aes(ymin = ymin, ymax = ymax, xmin = xmin, xmax = xmax), 
+            alpha = 0.05,
+            fill = "black",
+            color = "black",
+            size = 0.1,
+            inherit.aes = FALSE)+
+  scale_x_continuous(breaks = seq(1930, 2026,4))+
+  annotate("text",
+           angle = 90, x = 1944, y = 17.5,size = 2.5,color = "black",
+           label = "World Cups of 1942 and 1946 were both cancelled because of WW2")+
+  labs(title = "History of hosting FIFA world cup",
+       subtitle = "Timeline of bidding (faint boxes;no outline) and hosting (dark boxes;black outline) countries of FIFA world cup",
+       caption = caption_cdc)+
+  theme(title = element_text(size = 9),
+        axis.text.x = element_text(size = 8, angle = 45,hjust = 1),
+        axis.ticks.y = element_blank(),
+        axis.line.y = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text.y = element_text(size = 7.6),
+        panel.grid.major = element_line(colour = "grey80"),
+        panel.grid.major.x = element_blank(),
+        legend.title = element_blank(),
+        legend.text = element_text(size = 6.9),
+        legend.spacing.x = unit(0.1,"cm" ),
+        legend.position = "top")
+```
+
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-24-1.png" width="100%" height="100%" />
+
+Add results of hosting country and show the respective flag. 
+
+```r
+#get iso2 code of each country
+df_host_2$iso2 <- countrycode(df_host_2$country, "country.name", "iso2c")
+```
+
+```
+## Warning in countrycode_convert(sourcevar = sourcevar, origin = origin, destination = dest, : Some values were not matched unambiguously: Yugoslavia, England
+```
+
+```r
+#colors of the different results
+res_cols <- c("#FFD700",
+              "#d9d9d9",
+              "#CD7F32",
+              "#f6e8c3",
+              "#969696",
+              "#737373",
+              "#525252",
+              "#000000"
+              )
+names(res_cols) <- results_order[-length(results_order )]
+```
+
+Let's put everything together one last time
+
+```r
+df_host_2 %>% 
+  ggplot()+
+  #tiles for bidding
+  geom_tile(aes(years, country),
+            fill = "grey85", color = "white", size = 0.5) +
+  #over-plot tiles of the results
+  geom_tile(data = tbls_lst$host_country_performances %>%
+              filter(result != "TBD") ,
+            aes(years, country, fill = result),
+             color = "black", size = 0.5) +
+  #add country flag
+  ggimage::geom_flag(data = df_host_2 %>% distinct(country,iso2),
+            aes(y = country, image=iso2),
+            x = 1925,
+            size =0.03)+
+  #add results colors
+  scale_fill_manual(values = res_cols)+
+  #define the years intervals shown on the x axis and expand left side for the flags
+  scale_x_continuous(breaks = seq(1930, 2026,4),
+                     expand = expansion(add = c(4,NA)))+
+  #add rectangle to highlight cancelled years
+  geom_rect(data = tibble(xmin = 1942, xmax = 1946, ymin = -Inf, ymax = Inf),
+            mapping = aes(ymin = ymin, ymax = ymax, xmin = xmin, xmax = xmax), 
+            alpha = 0.05,
+            fill = "black",
+            color = "black",
+            size = 0.1,
+            inherit.aes = FALSE)+
+  #Annotate the rectangle
+  annotate("text",
+           angle = 90, x = 1944, y = 17.5,size = 2.5,color = "black",
+           label = "World Cups of 1942 and 1946 were both cancelled because of WW2")+
+  #define title and subtitle
+  labs(title = "History of hosting FIFA world cup",
+       subtitle = "Timeline of bidding (faint boxes;no outline) and hosting (dark boxes;black outline) countries of FIFA world cup",
+       caption = caption_cdc)+
+  #control the order and size of the legend keys
+  guides(fill = guide_legend(nrow = 1,
+                             keywidth = 0.85, 
+                             keyheight = 0.25))+
+  theme(title = element_text(size = 9),
+        axis.text.x = element_text(size = 8, angle = 45,hjust = 1),
+        axis.ticks.y = element_blank(),
+        axis.line.y = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text.y = element_text(size = 7.6),
+        panel.grid.major = element_line(colour = "grey80"),
+        panel.grid.major.x = element_blank(),
+        legend.title = element_blank(),
+        legend.text = element_text(size = 6.9),
+        legend.spacing.x = unit(0.1,"cm" ),
+        legend.position = "top")
+```
+
+```
+## Warning: Removed 2 rows containing missing values (`geom_image()`).
+```
+
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-26-1.png" width="100%" height="100%" />
+
+

@@ -1,5 +1,4 @@
-prerequisites
-intro
+fifa-world-cup-2022-challenge
 history-of-hosting-fifa-world-cup
 data-collection
 how-many-world-cups-were-hosted-in-each-continent
