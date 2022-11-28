@@ -1,0 +1,49 @@
+Package: Fifa-worldcup-2022
+Title: Analysis of fifa world cup data
+Version: 0.0.1
+Authors@R: c(
+  person(
+    "Mohamed R.Shoeb",
+    email = "mohamedrefaat.1.1992@gmail.com",
+    role = c("aut", "cre", "cph")
+  )
+  )
+URL: https://cairo_data_science_club.github.io/Fifa-worldcup-2022, https://cairo_data_science_club.github.io/Fifa-worldcup-2022
+Depends:
+    R (>= 3.1.0)
+Imports: 
+    rnaturalearth,
+    rnaturalearthdata,
+    rvest,
+    sf,
+    ggflags,
+    ggspatial,
+    giscoR,
+    rasterpic,
+    countrycode,
+    ggimage,
+    gganimate,
+    treemapify,
+    camcorder,
+    patchwork,
+    rnaturalearth,
+    ggrepel,
+    blockmodels,
+    bookdown,
+    ggraph,
+    gutenbergr,
+    igraph,
+    intergraph,
+    nberwp,
+    proxy,
+    RCA,
+    reshape2,
+    rmarkdown,
+    RSiena,
+    statnet,
+    textmineR,
+    tidygraph,
+    tidytext,
+    tidyverse
+Remotes:
+    ropensci/gutenbergr

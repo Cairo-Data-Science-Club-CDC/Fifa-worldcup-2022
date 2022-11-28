@@ -1,0 +1,471 @@
+```{r setup, include=FALSE}
+#set knitting options
+knitr::opts_chunk$set(out.width = "100%",
+                      out.height = "100%")
+```
+
+# History of hosting FIFA World Cup
+
+Load libraries
+
+```{r}
+library("rnaturalearth")
+library("rnaturalearthdata")
+library(rvest)
+library(tidyverse)
+library(sf)
+library(ggflags)
+library(ggspatial)
+library(ggplot2)
+library(giscoR)
+library(dplyr)
+library(rasterpic)
+library(countrycode)
+library(ggimage)
+theme_set(cowplot::theme_cowplot())
+```
+
+## Data collection
+
+In this project we will use the data made available in this Wikipedia article about [FIFA World Cup hosts](https://en.wikipedia.org/wiki/FIFA_World_Cup_hosts)
+
+To do that, we are going to use the [rvest](https://rvest.tidyverse.org/) package to explore and scrape this tables directly into R.
+
+```{r}
+# URL of the article
+url <- "https://en.wikipedia.org/wiki/FIFA_World_Cup_hosts"
+# Read the webpage and obtain the pieces of the article containing tables
+tbls_lst <-  url %>%
+  read_html %>%
+  html_table()
+```
+
+The tables are in the house! However, this too much. Let's select only the tables of interest for this tutorial. This is limited to the subset of tables showing the list of countries that have submitted a bid or actually hosted the world cup. As an extra, we will also utilize the performance of host countries in our analysis.
+
+```{r}
+# Select tables of interest
+tbls_lst <- tbls_lst[c(1,9,10)]
+
+# Assign names to the tables
+tables_names <- c("List of hosts",
+                  "Total bids by country",
+                  "Host country performances")
+names(tbls_lst) <- tolower(tables_names) %>% str_replace_all(" ","_")
+```
+
+Let's have a quick look at the three selected tables
+
+```{r}
+tbls_lst %>% 
+  map(function(table){
+    gt::gt(head(table))
+           }
+    )
+```
+
+Looks good, but not perfect. As expected, the scrapped tables are not optimal for analysis. Let's push the tables through a few rounds of quality control.
+
+```{r}
+# Clean columns' names
+tbls_lst <- lapply(tbls_lst,  janitor::clean_names)
+# Extract the amount of money
+tbls_lst$host_country_performances  <- tbls_lst$host_country_performances %>%
+  mutate(esult = str_replace(result, " \\(top 12\\)", "")) %>%
+  dplyr::rename(country = "team",
+                years = "year")
+#let's correct the entry of Colombia since it withdrew from hosting due to economic concerns
+tbls_lst$total_bids_by_country <- tbls_lst$total_bids_by_country %>% 
+  mutate(times_hosted = ifelse(country == "Colombia", 0, times_hosted))
+#Replace "West Germany" with "Germany"
+tbls_lst$host_country_performances  <- tbls_lst$host_country_performances %>%
+  mutate(team = str_replace(country, "West Germany", "Germany"))
+tbls_lst$list_of_hosts <- tbls_lst$list_of_hosts %>% 
+  mutate(host_nation_s = str_replace(host_nation_s, "West Germany", "Germany"))
+#Order the results and set them as levels
+results_order <- c("Champions",
+                   "Runners-up",
+                   "Third place",
+                   "Fourth place",
+                   "Quarter-finals",
+                   "Round of 16",
+                   "Second round",
+                   "First round",
+                   "TBD"
+                   )
+tbls_lst$host_country_performances  <- tbls_lst$host_country_performances %>%
+  mutate(result = factor(result, levels = results_order),
+         country = str_replace(country, "West Germany", "Germany")) 
+```
+
+Now that the data is analysis-ready, it is time to explore some interesting questions!
+
+## How many world cups were hosted in each continent?
+
+We will exclude the dates in which the championship were cancelled because of Warld War II
+
+```{r}
+df_host <- tbls_lst$list_of_hosts %>% 
+  filter(!str_detect(continent, "Canceled"))
+```
+
+Let's look at a basic plot of the data
+
+```{r}
+df_host %>% 
+  ggplot(aes(continent))+
+  geom_bar()
+```
+
+This doesn't look pretty. Let's make it more attractive! First, let's add a some colors.
+
+```{r}
+#Assign colors to each continent
+conti_cols <- c(Europe = "#1f78b4",
+                Asia = "#6a3d9a",
+                `South America` = "#ffff99",
+                `North America` = "#33a02c",
+                Africa = "#ff7f00")
+#show colors in the plot
+df_host %>% 
+  ggplot(aes(continent, fill = continent))+
+  geom_bar()+
+  scale_color_manual(values = conti_cols)+
+  scale_fill_manual(values = conti_cols)
+```
+
+Second, let's add some text and remove the legend since it doesn't add to the plot.
+
+```{r}
+df_host %>% 
+  ggplot(aes(continent, fill = continent))+
+  geom_bar(show.legend = FALSE)+
+  scale_color_manual(values = conti_cols)+
+  scale_fill_manual(values = conti_cols)+
+    labs(title = "History of hosting world cup",
+       subtitle = "Number of hosted world cups and hosting countries per continents")
+```
+
+Next, I think we can get rid off the axis and label each bar with important information.
+
+```{r}
+df_host %>% 
+  group_by(continent) %>% 
+  summarise(n = n())%>%
+  ungroup() %>% 
+  arrange(n) %>%
+  mutate(continent = factor(continent, levels = unique(continent))) %>% 
+  ggplot(aes(continent, n))+
+  geom_col(aes(color = continent), fill = "white",  show.legend = FALSE, linewidth = 1)+
+  geom_col(aes(fill = continent), alpha = 0.4, show.legend = FALSE)+
+  geom_text(data = . %>% 
+              mutate(cont_n = glue::glue("{continent}\n(n = {n})")),
+            aes(label = cont_n), size = 5,nudge_y = 1)+
+  labs(title = "History of hosting world cup",
+       subtitle = "Number of hosted world cups and hosting countries per continents")+
+  scale_color_manual(values = conti_cols)+
+  scale_fill_manual(values = conti_cols)+
+  theme(axis.line = element_blank(),
+        axis.ticks = element_blank(),
+        axis.text = element_blank(),
+        axis.title = element_blank())
+```
+
+Finally, squeeze the names of the hosting countries inside the bars of the corresponding continent
+
+```{r}
+df_host %>% 
+  group_by(continent) %>% 
+  summarise(n = n())%>%
+  ungroup() %>% 
+  arrange(n) %>%
+  mutate(continent = factor(continent, levels = unique(continent))) %>% 
+  ggplot(aes(continent, n))+
+  geom_col(aes(color = continent), fill = "white",  show.legend = FALSE, linewidth = 1)+
+  geom_col(aes(fill = continent), alpha = 0.4, show.legend = FALSE)+
+  geom_text(data = . %>% 
+              mutate(cont_n = glue::glue("{continent}\n(n = {n})")),
+            aes(label = cont_n), size = 5,nudge_y = 1)+
+  geom_text(data = df_host %>%
+              group_by(continent, host_nation_s) %>% 
+              summarise(n_host = n()) %>% 
+              group_by(continent) %>% 
+              mutate(n_cont = n(),
+                     prop = sum(n_host)/(n_cont+1),
+                     cum_prop = cumsum(prop))%>%
+              ungroup() %>% 
+              mutate(host_nation_s = ifelse(n_host >1 , glue::glue("{host_nation_s} x {n_host}"), host_nation_s)),
+            aes(y = cum_prop, label = host_nation_s),
+            size = 4
+              )+
+  labs(title = "History of hosting world cup",
+       subtitle = "Number of hosted world cups and hosting countries per continents")+
+  scale_color_manual(values = conti_cols)+
+  scale_fill_manual(values = conti_cols)+
+  theme(axis.line = element_blank(),
+        axis.ticks = element_blank(),
+        axis.text = element_blank(),
+        axis.title = element_blank())
+
+```
+
+## What is the timeline of world cup hosting?
+
+d
+
+```{r}
+df_tm <- df_host %>% 
+  complete(year = full_seq(year, 4)) %>% 
+  mutate(continent = ifelse(is.na(continent), "Cancelled", continent),
+         host_nation_s = ifelse(is.na(host_nation_s), "Cancelled", host_nation_s))
+
+df_tm <- df_tm[1:30,] %>% 
+  mutate(y = rep(6:1, each = 5),
+         x = rep(1:5, 6),
+         host_nation_s = case_when(
+           str_detect(host_nation_s, "Canada") ~ "Canada\nMexico\nUnited States",
+           str_detect(host_nation_s, "Japan") ~ "Japan\nSouth Korea",
+           TRUE ~ host_nation_s),
+         continent = factor(continent, levels = unique(continent))) %>% 
+  filter(!is.na(continent))
+
+```
+
+Let's look at the timeline of hosting the world cup in the form of chronologically ordered tiles (AKA waffle plot)
+
+```{r}
+df_tm %>% 
+  ggplot(aes(x, y, fill = continent ))+
+  geom_tile(color = "black", size = 1)+
+  geom_text(aes(label = host_nation_s), size = 4.5)+
+  scale_color_manual(values = conti_cols)+
+  scale_fill_manual(values = conti_cols)
+```
+
+Looks good! Let's add the year information and beautify the plot more
+
+```{r}
+df_tm %>% 
+  ggplot(aes(x, y, fill = continent ))+
+  geom_tile(color = "black", size = 1)+
+  geom_text(aes(label = host_nation_s), size = 3.1)+
+  geom_text(data = . %>% 
+              group_by(y) %>% 
+              mutate(range = glue::glue("({min(year)}-{max(year)})")) %>% 
+              ungroup(),
+            aes(label = range),
+            x = -0.5,
+            size = 5)+
+  scale_x_discrete(expand = expansion(add = 2))+
+  guides(fill = guide_legend(nrow = 1))+
+  labs(title = "History of hosting world cup",
+       subtitle = "Host countries of world cups chronologically orderd and colored by continent")+
+  coord_fixed(0.7)+
+  scale_color_manual(values = conti_cols)+
+  scale_fill_manual(values = conti_cols)+
+  theme(title = element_text(size = 10),
+        axis.line = element_blank(),
+        axis.ticks = element_blank(),
+        axis.text = element_blank(),
+        axis.title = element_blank(),
+        legend.position = "top",
+        panel.border = element_rect(linewidth = 2,linetype = "solid", color = "black"))
+```
+
+Map
+```{r}
+# For country names
+
+world <- ne_countries(scale = "medium", returnclass = "sf")
+wcp_hosts <- gisco_get_countries(country = unique(df_host$host_nation_s), epsg = 3857)
+
+
+# We paste the ISO2 code to each african country
+wcp_hosts$iso2 <- countrycode(wcp_hosts$ISO3_CODE, "iso3c", "iso2c")
+
+# Get flags from repo - low quality to speed up the code
+flagrepo <- "https://raw.githubusercontent.com/hjnilsson/country-flags/master/png250px/"
+
+
+
+# Base map of the world
+plot <- ggplot(world) +
+  geom_sf(fill = "grey90") +
+  theme_minimal() +
+  theme(panel.background = element_rect(fill = "lightblue"))
+
+# Loop and add
+for (iso in wcp_hosts$iso2) {
+  # Download pic and plot
+  imgurl <- paste0(flagrepo, tolower(iso), ".png")
+  tmpfile <- tempfile(fileext = ".png")
+  download.file(imgurl, tmpfile, quiet = TRUE, mode = "wb")
+  
+  # Raster
+  x <- wcp_hosts %>% filter(iso2 == iso)
+  x_rast <- rasterpic_img(x, tmpfile, crop = TRUE, mask = TRUE)
+  plot <- plot + layer_spatial(x_rast)
+}
+
+plot +
+  geom_sf(data = wcp_hosts, fill = NA)
+
+
+```
+
+## What is the history of biding and
+
+
+```{r}
+
+tbls_lst$total_bids_by_country %>% 
+  arrange(bids,times_hosted) %>% 
+  mutate(country = factor(country, levels = (country))) %>% 
+  ggplot()+
+  geom_col(aes(country,bids), fill = "red", alpha = 0.3)+
+  geom_col(aes(country,times_hosted), fill = "red", alpha = 1)+
+  coord_flip()
+
+```
+
+```{r}
+df_2 <- tbls_lst$total_bids_by_country %>% 
+  mutate(years = str_extract_all(years, "[0-9]+")) %>% 
+  unnest(years) %>% 
+  mutate(years = as.numeric(years))
+
+df_2b <- tbls_lst$total_bids_by_country %>% 
+  separate_rows(years, sep = "[^[:digit:].]+") %>% 
+  filter(!nchar( years)== 0) %>% 
+  mutate(years = as.numeric(years)) %>% 
+  arrange(bids) %>% 
+  mutate(country = factor(country, levels = unique(country))) 
+  
+df_3 <- df_host %>% 
+  mutate(host_nation_s = str_replace(host_nation_s, "West Germany", "Germany"),
+         host_nation_s = str_split(host_nation_s, "\\s{2}")) %>%
+  unnest(host_nation_s) %>% 
+  dplyr::rename(country="host_nation_s",
+                host_year = "year") %>%
+  full_join(df_2, by = "country") %>% 
+  mutate(host_year = ifelse(is.na(continent), years, host_year)) %>% 
+  arrange(bids,desc(host_year )) %>% 
+  mutate(country = factor(country, levels = unique(country)),
+         bids = factor(bids, levels = sort(unique(bids), decreasing = TRUE)))
+
+```
+
+```{r}
+df_3 %>% 
+  ggplot()+
+  geom_tile(aes(years, country),
+            fill = "#c7eae5", color = "white", size = 1) +
+  geom_tile(data = . %>% filter(times_hosted>0 & host_year == years),
+            aes(years, country),
+            fill="#35978f", color = "black", size = 1) +
+  geom_rect(data = tibble(xmin = 1942, xmax = 1946, ymin = -Inf, ymax = Inf),
+    mapping = aes(ymin = ymin, ymax = ymax, xmin = xmin, xmax = xmax), 
+    alpha = 0.1,
+    fill = "black",
+    color = "black",
+    inherit.aes = FALSE
+  )+
+  geom_vline(xintercept = c(1942, 1946), col = "black", lty = 2, alpha = 0.7)+
+  scale_x_discrete(limits = seq(min(df_3$years),max(df_3$years),4))+
+  annotate("text",
+           angle = 90, x = 1944, y = 17.5,size =7,
+           label = "World Cups of 1942 and 1946 were both cancelled because of WW2")+
+  #facet_grid(bids~.,scales = "free_y", space = "free_y")+
+  labs(title = "History of hosting world cup",
+       subtitle = "Bidding (faint color) and hosting (dark color) countries of all world cups")+
+  theme(axis.ticks.y = element_blank(),
+        axis.line.y = element_blank(),
+        panel.grid.major = element_line(colour = "grey80"),
+        panel.grid.major.x = element_blank())
+
+```
+
+```{r}
+#
+df_3$iso2 <- countrycode(df_3$country, "country.name", "iso2c")
+
+res_cols <- c("#FFD700",
+              "#c0c0c0",
+              "#CD7F32",
+              "#3e260f",
+              "#c6dbef",
+              "#6baed6",
+              "#2171b5",
+              "#08519c"
+              )
+names(res_cols) <- results_order[-length(results_order )]
+df_3 %>% 
+  ggplot()+
+  geom_tile(aes(years, country),
+            fill = "grey80", color = "white", size = 0.1) +
+  geom_tile(data = tbls_lst$host_country_performances %>% filter(result != "TBD") ,
+            aes(years, country, fill = result),
+             color = "black", size = 0.1) +
+  ggimage::geom_flag(data = df_3 %>% distinct(country,iso2),
+            aes(y = country, image=iso2),
+            x = 1925,
+            size =0.03)+
+  scale_fill_manual(values = res_cols)+
+  geom_rect(data = tibble(xmin = 1942, xmax = 1946, ymin = -Inf, ymax = Inf),
+            mapping = aes(ymin = ymin, ymax = ymax, xmin = xmin, xmax = xmax), 
+            alpha = 0.05,
+            fill = "red",
+            color = "black",
+            size = 0.1,
+            inherit.aes = FALSE
+  )+
+  scale_x_discrete(limits = seq(min(df_3$years),max(df_3$years),4),
+                   expand = expansion(add = c(4,NA)))+
+  annotate("text",
+           angle = 90, x = 1944, y = 17.5,size = 2.5,color = "red",
+           label = "World Cups of 1942 and 1946 were both cancelled because of WW2")+
+  #facet_grid(bids~.,scales = "free_y", space = "free_y")+
+  labs(title = "History of hosting world cup",
+       subtitle = "World cups' submitted bids (faint boxes;no outline) and results of hosting countries(dark boxes;black outline)")+
+  guides(fill = guide_legend(nrow = 1,override.aes = list(size =0.5)))+
+  theme(title = element_text(size = 9),
+        axis.text.x = element_text(size = 8, angle = 45,),
+        axis.ticks.y = element_blank(),
+        axis.line.y = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text.y = element_text(size = 7.8),
+        panel.grid.major = element_line(colour = "grey80"),
+        panel.grid.major.x = element_blank(),
+        legend.title = element_blank(),
+        legend.text = element_text(size = 6),
+        legend.spacing.x = unit(0.1,"cm" ),
+        legend.position = "top")
+
+```
+
+```{r include=FALSE, eval=FALSE}
+#
+url_2 <- "https://en.wikipedia.org/wiki/Economics_of_the_FIFA_World_Cup"
+
+tbls_lst_2 <-  url_2 %>%
+  read_html %>%
+  html_table()
+#
+df_4 <- tbls_lst_2[[2]] %>% 
+  janitor::clean_names() %>% 
+  mutate(country = str_extract(host, "[A-Z]+"),
+         year = str_extract(host, "[0-9]+"),
+         x = strex::str_first_currency(general_cost)[[4]],
+         y = ifelse(str_detect(general_cost, "million"),x/1000,x))
+df_4$iso2 <- countrycode(df_4$country, "ioc", "iso2c")
+
+df_4 %>% 
+  ggplot(aes(year, y))+
+  geom_col(fill = "grey90", color = "black", size = 1)+
+  geom_text(aes(label = y), size = 8, nudge_y = c(rep(0.1,7), -0.1, 0.1))+
+  ggimage::geom_flag(aes( image=iso2),
+                     y = c(0.065,rep(0.1,6), -0.085, 0.1),
+                     size = 0.095)+
+  scale_y_continuous(breaks = c(1,10,100,200), trans = "log10")
+                                                                          
+
+```
