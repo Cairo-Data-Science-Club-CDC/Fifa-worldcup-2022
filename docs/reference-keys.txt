@@ -1,16 +1,5 @@
 prerequisites
 intro
-literature
-methods
-math-example
-applications
-example-one
-example-two
-final-words
-history-of-hosting-fifa-worldcup
-how-many-worlcups-were-hosted-in-each-continent
-section
-history
 history-of-hosting-fifa-world-cup
 data-collection
 how-many-world-cups-were-hosted-in-each-continent
