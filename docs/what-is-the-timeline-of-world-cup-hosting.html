@@ -221,8 +221,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb19-25"><a href="what-is-the-timeline-of-world-cup-hosting.html#cb19-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb19-26"><a href="what-is-the-timeline-of-world-cup-hosting.html#cb19-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>,</span>
 <span id="cb19-27"><a href="what-is-the-timeline-of-world-cup-hosting.html#cb19-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">linewidth =</span> <span class="dv">2</span>,<span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>))</span></code></pre></div>
-<p><img src="01-hosting_history_files/figure-html/unnamed-chunk-15-1.png" width="100%" height="100%" />
-This is a condensed and clear representaion of our data, which are two desirable features of data visualization.</p>
+<p><img src="01-hosting_history_files/figure-html/unnamed-chunk-15-1.png" width="100%" height="100%" /></p>
+<p>This is a condensed and clear representaion of our data, which are two desirable features of data visualization.</p>
 <p>Let’s go from compactness to vastness by throwing this data on the world map and see how it would look like</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="what-is-the-timeline-of-world-cup-hosting.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#get map of the world</span></span>
 <span id="cb20-2"><a href="what-is-the-timeline-of-world-cup-hosting.html#cb20-2" aria-hidden="true" tabindex="-1"></a>world <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">scale =</span> <span class="st">&quot;medium&quot;</span>, <span class="at">returnclass =</span> <span class="st">&quot;sf&quot;</span>)</span>
@@ -263,7 +263,7 @@ This is a condensed and clear representaion of our data, which are two desirable
 <span id="cb23-15"><a href="what-is-the-timeline-of-world-cup-hosting.html#cb23-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> wcp_hosts, <span class="at">fill =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
 <span id="cb23-16"><a href="what-is-the-timeline-of-world-cup-hosting.html#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;World map of FIFA world cup hosts&quot;</span>)</span></code></pre></div>
 <p><img src="01-hosting_history_files/figure-html/unnamed-chunk-19-1.png" width="100%" height="100%" /></p>
-<p>Have a look at this blog for more details on adding flags to maps <a href="https://www.youtube.com/watch?v=6I5I56uVvLw&amp;ab_channel=AndrewHuberman" class="uri">https://www.youtube.com/watch?v=6I5I56uVvLw&amp;ab_channel=AndrewHuberman</a> This is where I got to know and learn this trick.</p>
+<p>Have a look at this <a href="https://dieghernan.github.io/202201_maps-flags/">excellent blog</a> for more details on adding flags to maps This is where I got to know and learn this trick.</p>
 </div>
             </section>
 

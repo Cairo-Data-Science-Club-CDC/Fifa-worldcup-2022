@@ -180,9 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb24-10"><a href="what-is-the-history-of-biding-and.html#cb24-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="fl">7.6</span>))</span></code></pre></div>
 <p><img src="01-hosting_history_files/figure-html/unnamed-chunk-20-1.png" width="100%" height="100%" /></p>
 <p>Morocco is lacking luck. Five bids with no success!</p>
-<p>What’s lacking in the barplot above is the time where these bids took place.
-Wouldn’t it be interesting to have a single plot showing the number and dates of world cup bids? I would say yes!
-Let’s work toward building this exciting plot by preparing the input tables of bids history.</p>
+<p>What’s lacking in the barplot above is the time where these bids took place. Wouldn’t it be interesting to have a single plot showing the number and dates of world cup bids? I would say yes! Let’s work toward building this exciting plot by preparing the input tables of bids history.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="what-is-the-history-of-biding-and.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#separate concatenated years into separate rows</span></span>
 <span id="cb25-2"><a href="what-is-the-history-of-biding-and.html#cb25-2" aria-hidden="true" tabindex="-1"></a>df_bids <span class="ot">&lt;-</span> tbls_lst<span class="sc">$</span>total_bids_by_country <span class="sc">%&gt;%</span> </span>
 <span id="cb25-3"><a href="what-is-the-history-of-biding-and.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">years =</span> <span class="fu">str_extract_all</span>(years, <span class="st">&quot;[0-9]+&quot;</span>)) <span class="sc">%&gt;%</span> </span>
@@ -197,8 +195,7 @@ Let’s work toward building this exciting plot by preparing the input tables of
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="what-is-the-history-of-biding-and.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#confirm that tables are equal</span></span>
 <span id="cb26-2"><a href="what-is-the-history-of-biding-and.html#cb26-2" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">all_equal</span>(df_bids, df_bids_2)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>The answer is yes! Both approaches give the same result.
-Let’s do something similar by separating the countries that cohost a world cup into separate rows, then merge it with the table of bids we prepared above. Finally, we’ll order the table by the number of world cup bids.</p>
+<p>The answer is yes! Both approaches give the same result. Let’s do something similar by separating the countries that cohost a world cup into separate rows, then merge it with the table of bids we prepared above. Finally, we’ll order the table by the number of world cup bids.</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="what-is-the-history-of-biding-and.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#separate cohosting countries into separate entries</span></span>
 <span id="cb28-2"><a href="what-is-the-history-of-biding-and.html#cb28-2" aria-hidden="true" tabindex="-1"></a>df_host_2 <span class="ot">&lt;-</span> df_host <span class="sc">%&gt;%</span> </span>
 <span id="cb28-3"><a href="what-is-the-history-of-biding-and.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">host_nation_s =</span> <span class="fu">str_split</span>(host_nation_s, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">s{2}&quot;</span>)) <span class="sc">%&gt;%</span></span>
