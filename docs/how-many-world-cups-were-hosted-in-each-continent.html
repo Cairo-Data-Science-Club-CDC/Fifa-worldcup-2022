@@ -23,15 +23,15 @@
 <meta name="author" content="Mohamed R.Shoeb" />
 
 
-<meta name="date" content="2022-11-28" />
+<meta name="date" content="2022-11-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data-collection.html"/>
-<link rel="next" href="what-is-the-timeline-of-world-cup-hosting.html"/>
+<link rel="prev" href="where-to-find-the-data.html"/>
+<link rel="next" href="what-is-the-timeline-of-hosting-the-world-cup.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -133,16 +133,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">World-data-analysis</a></li>
+<li><a href="./">Fifa worldcup 2022</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> FIFA world cup 2022 Challenge!</a></li>
 <li class="chapter" data-level="2" data-path="history-of-hosting-fifa-world-cup.html"><a href="history-of-hosting-fifa-world-cup.html"><i class="fa fa-check"></i><b>2</b> History of hosting FIFA World Cup</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="data-collection.html"><a href="data-collection.html"><i class="fa fa-check"></i><b>2.1</b> Data collection</a></li>
+<li class="chapter" data-level="2.1" data-path="where-to-find-the-data.html"><a href="where-to-find-the-data.html"><i class="fa fa-check"></i><b>2.1</b> Where to find the data?</a></li>
 <li class="chapter" data-level="2.2" data-path="how-many-world-cups-were-hosted-in-each-continent.html"><a href="how-many-world-cups-were-hosted-in-each-continent.html"><i class="fa fa-check"></i><b>2.2</b> How many world cups were hosted in each continent?</a></li>
-<li class="chapter" data-level="2.3" data-path="what-is-the-timeline-of-world-cup-hosting.html"><a href="what-is-the-timeline-of-world-cup-hosting.html"><i class="fa fa-check"></i><b>2.3</b> What is the timeline of world cup hosting?</a></li>
-<li class="chapter" data-level="2.4" data-path="what-is-the-history-of-biding-and.html"><a href="what-is-the-history-of-biding-and.html"><i class="fa fa-check"></i><b>2.4</b> What is the history of biding and</a></li>
+<li class="chapter" data-level="2.3" data-path="what-is-the-timeline-of-hosting-the-world-cup.html"><a href="what-is-the-timeline-of-hosting-the-world-cup.html"><i class="fa fa-check"></i><b>2.3</b> What is the timeline of hosting the world cup?</a></li>
+<li class="chapter" data-level="2.4" data-path="what-is-the-history-of-bidding-for-world-cup.html"><a href="what-is-the-history-of-bidding-for-world-cup.html"><i class="fa fa-check"></i><b>2.4</b> What is the history of bidding for world cup?</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -260,14 +260,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## `summarise()` has grouped output by &#39;continent&#39;. You can override using the
 ## `.groups` argument.</code></pre>
 <p><img src="01-hosting_history_files/figure-html/unnamed-chunk-12-1.png" width="100%" height="100%" /></p>
+<p>Beautiful! Let’s add some geographical-context to these results by throwing the data on the world map and see how it would look like.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#get map of the world</span></span>
+<span id="cb16-2"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb16-2" aria-hidden="true" tabindex="-1"></a>world <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">scale =</span> <span class="st">&quot;medium&quot;</span>, <span class="at">returnclass =</span> <span class="st">&quot;sf&quot;</span>)</span>
+<span id="cb16-3"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#and map of separate host countries</span></span>
+<span id="cb16-4"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb16-4" aria-hidden="true" tabindex="-1"></a>hst_cntry <span class="ot">&lt;-</span> df_host<span class="sc">$</span>host_nation_s <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb16-5" aria-hidden="true" tabindex="-1"></a>           <span class="fu">unique</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb16-6"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb16-6" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_split</span>(<span class="st">&quot; </span><span class="sc">\\</span><span class="st">s&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-7"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb16-7" aria-hidden="true" tabindex="-1"></a>           <span class="fu">unlist</span>()</span>
+<span id="cb16-8"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb16-8" aria-hidden="true" tabindex="-1"></a>wcp_hosts <span class="ot">&lt;-</span> <span class="fu">gisco_get_countries</span>(<span class="at">country =</span> hst_cntry,</span>
+<span id="cb16-9"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb16-9" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">epsg =</span> <span class="dv">3857</span><span class="co"># Pseudo-Mercator projection</span></span>
+<span id="cb16-10"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb16-10" aria-hidden="true" tabindex="-1"></a>                                 )</span>
+<span id="cb16-11"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert country name to iso2c code</span></span>
+<span id="cb16-12"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb16-12" aria-hidden="true" tabindex="-1"></a>wcp_hosts<span class="sc">$</span>iso2 <span class="ot">&lt;-</span> <span class="fu">countrycode</span>(wcp_hosts<span class="sc">$</span>ISO3_CODE, <span class="st">&quot;iso3c&quot;</span>, <span class="st">&quot;iso2c&quot;</span>)</span></code></pre></div>
+<p>Plotting base map of the world using ggplot.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base map of the world</span></span>
+<span id="cb17-2"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb17-2" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(world) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">&quot;grey90&quot;</span>) <span class="sc">+</span></span>
+<span id="cb17-4"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb17-5"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>))</span></code></pre></div>
+<p>Additionally, let’s make the map extra flashy by filling hosting countries with their maps.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get flags form this repo</span></span>
+<span id="cb18-2"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb18-2" aria-hidden="true" tabindex="-1"></a>flagrepo <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/hjnilsson/country-flags/master/png250px/&quot;</span></span></code></pre></div>
+<p>Finally, we’ll download and add flags to the world map</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop and add</span></span>
+<span id="cb19-2"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (iso <span class="cf">in</span> wcp_hosts<span class="sc">$</span>iso2) {</span>
+<span id="cb19-3"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Download pic and plot</span></span>
+<span id="cb19-4"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb19-4" aria-hidden="true" tabindex="-1"></a>  imgurl <span class="ot">&lt;-</span> <span class="fu">paste0</span>(flagrepo, <span class="fu">tolower</span>(iso), <span class="st">&quot;.png&quot;</span>)</span>
+<span id="cb19-5"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb19-5" aria-hidden="true" tabindex="-1"></a>  tmpfile <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">&quot;.png&quot;</span>)</span>
+<span id="cb19-6"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(imgurl, tmpfile, <span class="at">quiet =</span> <span class="cn">TRUE</span>, <span class="at">mode =</span> <span class="st">&quot;wb&quot;</span>)</span>
+<span id="cb19-7"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb19-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-8"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Raster</span></span>
+<span id="cb19-9"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb19-9" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> wcp_hosts <span class="sc">%&gt;%</span> <span class="fu">filter</span>(iso2 <span class="sc">==</span> iso)</span>
+<span id="cb19-10"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb19-10" aria-hidden="true" tabindex="-1"></a>  x_rast <span class="ot">&lt;-</span> <span class="fu">rasterpic_img</span>(x, tmpfile, <span class="at">crop =</span> <span class="cn">TRUE</span>, <span class="at">mask =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-11"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb19-11" aria-hidden="true" tabindex="-1"></a>  plot <span class="ot">&lt;-</span> plot <span class="sc">+</span> <span class="fu">layer_spatial</span>(x_rast)</span>
+<span id="cb19-12"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb19-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-13"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb19-14" aria-hidden="true" tabindex="-1"></a>plot <span class="sc">+</span></span>
+<span id="cb19-15"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> wcp_hosts, <span class="at">fill =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb19-16"><a href="how-many-world-cups-were-hosted-in-each-continent.html#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;World map of FIFA world cup hosts&quot;</span>)</span></code></pre></div>
+<p><img src="01-hosting_history_files/figure-html/unnamed-chunk-16-1.png" width="100%" height="100%" /></p>
+<p>Have a look at this <a href="https://dieghernan.github.io/202201_maps-flags/">excellent blog</a> for more details on adding flags to maps This is where I got to know and learn this trick.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="data-collection.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="what-is-the-timeline-of-world-cup-hosting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="where-to-find-the-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="what-is-the-timeline-of-hosting-the-world-cup.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

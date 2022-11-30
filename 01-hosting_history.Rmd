@@ -6,27 +6,39 @@ knitr::opts_chunk$set(out.width = "100%",
 
 # History of hosting FIFA World Cup
 
-Load libraries
+We'll explore this topic by addressing the following questions:
+
+1.  [Where to find the data?]
+2.  [How many world cups were hosted in each continent?]
+3.  [What is the timeline of hosting the world cup?]
+4.  [What is the history of bidding for world cup?]
+
+
+Let's start by loading the libraries that we'll utilize in our analysis
 
 ```{r message=FALSE, warning=FALSE}
-library("rnaturalearth")
-library("rnaturalearthdata")
+#web scrapping
 library(rvest)
+#everything tidy?
 library(tidyverse)
+#handling spatial-data 
+library(rnaturalearth)
+library(rnaturalearthdata)
 library(sf)
 library(ggflags)
 library(ggspatial)
-library(ggplot2)
 library(giscoR)
-library(dplyr)
 library(rasterpic)
 library(countrycode)
+#adding flags in ggplot
 library(ggimage)
 #set the default ggplot theme
 theme_set(cowplot::theme_cowplot())
 ```
 
-## Data collection
+## Where to find the data?
+
+Generally we would like to know **who** (country, continent) *hosted* **when**. Since *hosting* is a lengthy process that starts by *bidding* and followed by FIFA evaluation. it would be interesting to incorporate *bidding* data into the analysis.
 
 In this project we will use the data made available in this Wikipedia article about [FIFA World Cup hosts](https://en.wikipedia.org/wiki/FIFA_World_Cup_hosts)
 
@@ -218,7 +230,64 @@ df_host %>%
 
 ```
 
-## What is the timeline of world cup hosting?
+Beautiful! Let's add some geographical-context to these results by throwing the data on the world map and see how it would look like.
+
+```{r}
+#get map of the world
+world <- ne_countries(scale = "medium", returnclass = "sf")
+#and map of separate host countries
+hst_cntry <- df_host$host_nation_s %>%
+           unique() %>% 
+           str_split(" \\s") %>%
+           unlist()
+wcp_hosts <- gisco_get_countries(country = hst_cntry,
+                                 epsg = 3857# Pseudo-Mercator projection
+                                 )
+# Convert country name to iso2c code
+wcp_hosts$iso2 <- countrycode(wcp_hosts$ISO3_CODE, "iso3c", "iso2c")
+```
+
+Plotting base map of the world using ggplot.
+
+```{r}
+# Base map of the world
+plot <- ggplot(world) +
+  geom_sf(fill = "grey90") +
+  theme_minimal() +
+  theme(panel.background = element_rect(fill = "lightblue"))
+```
+
+Additionally, let's make the map extra flashy by filling hosting countries with their maps.
+
+```{r}
+# get flags form this repo
+flagrepo <- "https://raw.githubusercontent.com/hjnilsson/country-flags/master/png250px/"
+```
+
+Finally, we'll download and add flags to the world map
+
+```{r}
+# Loop and add
+for (iso in wcp_hosts$iso2) {
+  # Download pic and plot
+  imgurl <- paste0(flagrepo, tolower(iso), ".png")
+  tmpfile <- tempfile(fileext = ".png")
+  download.file(imgurl, tmpfile, quiet = TRUE, mode = "wb")
+  
+  # Raster
+  x <- wcp_hosts %>% filter(iso2 == iso)
+  x_rast <- rasterpic_img(x, tmpfile, crop = TRUE, mask = TRUE)
+  plot <- plot + layer_spatial(x_rast)
+}
+
+plot +
+  geom_sf(data = wcp_hosts, fill = NA)+
+  labs(title = "World map of FIFA world cup hosts")
+```
+
+Have a look at this [excellent blog](https://dieghernan.github.io/202201_maps-flags/) for more details on adding flags to maps This is where I got to know and learn this trick.
+
+## What is the timeline of hosting the world cup?
 
 What was missing from the previous representation of the data is the time component. In this section we'll explore a visualization method that would allow us to add this crucial aspect.
 
@@ -286,70 +355,14 @@ df_tm %>%
         panel.border = element_rect(linewidth = 2,linetype = "solid", color = "black"))
 ```
 
-This is a condensed and clear representaion of our data, which are two desirable features of data visualization.
+This is a condensed and clear representation of our data, which are two desirable features of data visualization.
 
-Let's go from compactness to vastness by throwing this data on the world map and see how it would look like
-
-```{r}
-#get map of the world
-world <- ne_countries(scale = "medium", returnclass = "sf")
-#and map of separate host countries
-hst_cntry <- df_host$host_nation_s %>%
-           unique() %>% 
-           str_split(" \\s") %>%
-           unlist()
-wcp_hosts <- gisco_get_countries(country = hst_cntry,
-                                 epsg = 3857# Pseudo-Mercator projection
-                                 )
-# Convert country name to iso2c code
-wcp_hosts$iso2 <- countrycode(wcp_hosts$ISO3_CODE, "iso3c", "iso2c")
-```
-
-Plotting base map of the world using ggplot.
-
-```{r}
-# Base map of the world
-plot <- ggplot(world) +
-  geom_sf(fill = "grey90") +
-  theme_minimal() +
-  theme(panel.background = element_rect(fill = "lightblue"))
-```
-
-Additionally, let's make the map extra flashy by filling hosting countries with their maps.
-
-```{r}
-# get flags form this repo
-flagrepo <- "https://raw.githubusercontent.com/hjnilsson/country-flags/master/png250px/"
-```
-
-Finally, we'll download and add flags to the world map
-
-```{r}
-# Loop and add
-for (iso in wcp_hosts$iso2) {
-  # Download pic and plot
-  imgurl <- paste0(flagrepo, tolower(iso), ".png")
-  tmpfile <- tempfile(fileext = ".png")
-  download.file(imgurl, tmpfile, quiet = TRUE, mode = "wb")
-  
-  # Raster
-  x <- wcp_hosts %>% filter(iso2 == iso)
-  x_rast <- rasterpic_img(x, tmpfile, crop = TRUE, mask = TRUE)
-  plot <- plot + layer_spatial(x_rast)
-}
-
-plot +
-  geom_sf(data = wcp_hosts, fill = NA)+
-  labs(title = "World map of FIFA world cup hosts")
-```
-
-Have a look at this [excellent blog](https://dieghernan.github.io/202201_maps-flags/) for more details on adding flags to maps This is where I got to know and learn this trick.
-
-## What is the history of biding and
+## What is the history of bidding for world cup?
 
 Now let us shift our focus to yet another interesting question. In this section we will explore the bidding history to host the world cup.
 
 Let's start by making a bar-plot that show the number of successful bids for each country of all submitted bids.
+
 
 ```{r}
 tbls_lst$total_bids_by_country %>% 
@@ -361,7 +374,37 @@ tbls_lst$total_bids_by_country %>%
   coord_flip()+
   theme(title = element_text(size = 9),
       axis.title.y = element_blank(),
-      axis.text.y = element_text(size = 7.6))
+      axis.text.y = element_text(size = 7.6))+
+  labs(title = "History of hosting FIFA world cup",
+       subtitle = "Number of world cup bids compared to times hosted",
+       caption = caption_cdc,
+       y = "Numer of bids")
+```
+
+```{r}
+tbls_lst$total_bids_by_country %>% 
+  arrange(bids,times_hosted) %>% 
+  mutate(country = factor(country, levels = (country))) %>% 
+  dplyr::distinct(bids, times_hosted, country) %>% 
+  ggplot(aes(bids, times_hosted))+
+  geom_point(color = "red")+
+  ggrepel::geom_text_repel(aes(label = country),
+                           size = 4,
+                           min.segment.length = 0,
+                           max.overlaps = Inf,
+                           segment.color="grey60",
+                           box.padding = 0.4
+                            )+
+  scale_x_continuous(breaks = 1:8,
+                     expand = expansion(add = c(1,0.5)))+
+  scale_y_continuous(breaks = 0:3,
+                     expand = expansion(add = c(1,0.5)))+
+  theme(panel.grid.major = element_line(colour = "grey90"))+
+  labs(title = "History of hosting FIFA world cup",
+       subtitle = "Number of world cup bids compared to times hosted",
+       caption = caption_cdc,
+       x = "Numer of bids",
+       y = "Number of times hosted")
 ```
 
 Morocco is lacking luck. Five bids with no success!

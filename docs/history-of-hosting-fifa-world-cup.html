@@ -23,7 +23,7 @@
 <meta name="author" content="Mohamed R.Shoeb" />
 
 
-<meta name="date" content="2022-11-28" />
+<meta name="date" content="2022-11-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="data-collection.html"/>
+<link rel="next" href="where-to-find-the-data.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -133,16 +133,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">World-data-analysis</a></li>
+<li><a href="./">Fifa worldcup 2022</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> FIFA world cup 2022 Challenge!</a></li>
 <li class="chapter" data-level="2" data-path="history-of-hosting-fifa-world-cup.html"><a href="history-of-hosting-fifa-world-cup.html"><i class="fa fa-check"></i><b>2</b> History of hosting FIFA World Cup</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="data-collection.html"><a href="data-collection.html"><i class="fa fa-check"></i><b>2.1</b> Data collection</a></li>
+<li class="chapter" data-level="2.1" data-path="where-to-find-the-data.html"><a href="where-to-find-the-data.html"><i class="fa fa-check"></i><b>2.1</b> Where to find the data?</a></li>
 <li class="chapter" data-level="2.2" data-path="how-many-world-cups-were-hosted-in-each-continent.html"><a href="how-many-world-cups-were-hosted-in-each-continent.html"><i class="fa fa-check"></i><b>2.2</b> How many world cups were hosted in each continent?</a></li>
-<li class="chapter" data-level="2.3" data-path="what-is-the-timeline-of-world-cup-hosting.html"><a href="what-is-the-timeline-of-world-cup-hosting.html"><i class="fa fa-check"></i><b>2.3</b> What is the timeline of world cup hosting?</a></li>
-<li class="chapter" data-level="2.4" data-path="what-is-the-history-of-biding-and.html"><a href="what-is-the-history-of-biding-and.html"><i class="fa fa-check"></i><b>2.4</b> What is the history of biding and</a></li>
+<li class="chapter" data-level="2.3" data-path="what-is-the-timeline-of-hosting-the-world-cup.html"><a href="what-is-the-timeline-of-hosting-the-world-cup.html"><i class="fa fa-check"></i><b>2.3</b> What is the timeline of hosting the world cup?</a></li>
+<li class="chapter" data-level="2.4" data-path="what-is-the-history-of-bidding-for-world-cup.html"><a href="what-is-the-history-of-bidding-for-world-cup.html"><i class="fa fa-check"></i><b>2.4</b> What is the history of bidding for world cup?</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -166,22 +166,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="history-of-hosting-fifa-world-cup" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">2</span> History of hosting FIFA World Cup<a href="history-of-hosting-fifa-world-cup.html#history-of-hosting-fifa-world-cup" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ol style="list-style-type: decimal">
+<li><a href="where-to-find-the-data.html#where-to-find-the-data">Where to find the data?</a></li>
+<li><a href="how-many-world-cups-were-hosted-in-each-continent.html#how-many-world-cups-were-hosted-in-each-continent">How many world cups were hosted in each continent?</a></li>
+<li><a href="what-is-the-timeline-of-hosting-the-world-cup.html#what-is-the-timeline-of-hosting-the-world-cup">What is the timeline of hosting the world cup?</a></li>
+<li><a href="what-is-the-history-of-bidding-for-world-cup.html#what-is-the-history-of-bidding-for-world-cup">What is the history of bidding for world cup?</a></li>
+</ol>
 <p>Load libraries</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="history-of-hosting-fifa-world-cup.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;rnaturalearth&quot;</span>)</span>
-<span id="cb1-2"><a href="history-of-hosting-fifa-world-cup.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;rnaturalearthdata&quot;</span>)</span>
-<span id="cb1-3"><a href="history-of-hosting-fifa-world-cup.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="history-of-hosting-fifa-world-cup.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#web scrapping</span></span>
+<span id="cb1-2"><a href="history-of-hosting-fifa-world-cup.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb1-3"><a href="history-of-hosting-fifa-world-cup.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#everything tidy?</span></span>
 <span id="cb1-4"><a href="history-of-hosting-fifa-world-cup.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-5"><a href="history-of-hosting-fifa-world-cup.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb1-6"><a href="history-of-hosting-fifa-world-cup.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggflags)</span>
-<span id="cb1-7"><a href="history-of-hosting-fifa-world-cup.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggspatial)</span>
-<span id="cb1-8"><a href="history-of-hosting-fifa-world-cup.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-9"><a href="history-of-hosting-fifa-world-cup.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(giscoR)</span>
-<span id="cb1-10"><a href="history-of-hosting-fifa-world-cup.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-11"><a href="history-of-hosting-fifa-world-cup.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rasterpic)</span>
-<span id="cb1-12"><a href="history-of-hosting-fifa-world-cup.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(countrycode)</span>
-<span id="cb1-13"><a href="history-of-hosting-fifa-world-cup.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggimage)</span>
-<span id="cb1-14"><a href="history-of-hosting-fifa-world-cup.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#set the default ggplot theme</span></span>
-<span id="cb1-15"><a href="history-of-hosting-fifa-world-cup.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(cowplot<span class="sc">::</span><span class="fu">theme_cowplot</span>())</span></code></pre></div>
+<span id="cb1-5"><a href="history-of-hosting-fifa-world-cup.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#handling spatial-data </span></span>
+<span id="cb1-6"><a href="history-of-hosting-fifa-world-cup.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb1-7"><a href="history-of-hosting-fifa-world-cup.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rnaturalearthdata)</span>
+<span id="cb1-8"><a href="history-of-hosting-fifa-world-cup.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-9"><a href="history-of-hosting-fifa-world-cup.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggflags)</span>
+<span id="cb1-10"><a href="history-of-hosting-fifa-world-cup.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggspatial)</span>
+<span id="cb1-11"><a href="history-of-hosting-fifa-world-cup.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(giscoR)</span>
+<span id="cb1-12"><a href="history-of-hosting-fifa-world-cup.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rasterpic)</span>
+<span id="cb1-13"><a href="history-of-hosting-fifa-world-cup.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(countrycode)</span>
+<span id="cb1-14"><a href="history-of-hosting-fifa-world-cup.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#adding flags in ggplot</span></span>
+<span id="cb1-15"><a href="history-of-hosting-fifa-world-cup.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggimage)</span>
+<span id="cb1-16"><a href="history-of-hosting-fifa-world-cup.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#set the default ggplot theme</span></span>
+<span id="cb1-17"><a href="history-of-hosting-fifa-world-cup.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(cowplot<span class="sc">::</span><span class="fu">theme_cowplot</span>())</span></code></pre></div>
 </div>
             </section>
 
@@ -189,7 +197,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-collection.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="where-to-find-the-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
