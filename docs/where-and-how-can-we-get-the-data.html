@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.1 Where to find the data? | Fifa worldcup 2022</title>
-  <meta name="description" content="2.1 Where to find the data? | Fifa worldcup 2022" />
+  <title>2.1 Where and how can we get the data? | Fifa worldcup 2022</title>
+  <meta name="description" content="2.1 Where and how can we get the data? | Fifa worldcup 2022" />
   <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.1 Where to find the data? | Fifa worldcup 2022" />
+  <meta property="og:title" content="2.1 Where and how can we get the data? | Fifa worldcup 2022" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.1 Where to find the data? | Fifa worldcup 2022" />
+  <meta name="twitter:title" content="2.1 Where and how can we get the data? | Fifa worldcup 2022" />
   
   
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Mohamed R.Shoeb" />
 
 
-<meta name="date" content="2022-11-29" />
+<meta name="date" content="2022-12-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -139,7 +139,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> FIFA world cup 2022 Challenge!</a></li>
 <li class="chapter" data-level="2" data-path="history-of-hosting-fifa-world-cup.html"><a href="history-of-hosting-fifa-world-cup.html"><i class="fa fa-check"></i><b>2</b> History of hosting FIFA World Cup</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="where-to-find-the-data.html"><a href="where-to-find-the-data.html"><i class="fa fa-check"></i><b>2.1</b> Where to find the data?</a></li>
+<li class="chapter" data-level="2.1" data-path="where-and-how-can-we-get-the-data.html"><a href="where-and-how-can-we-get-the-data.html"><i class="fa fa-check"></i><b>2.1</b> Where and how can we get the data?</a></li>
 <li class="chapter" data-level="2.2" data-path="how-many-world-cups-were-hosted-in-each-continent.html"><a href="how-many-world-cups-were-hosted-in-each-continent.html"><i class="fa fa-check"></i><b>2.2</b> How many world cups were hosted in each continent?</a></li>
 <li class="chapter" data-level="2.3" data-path="what-is-the-timeline-of-hosting-the-world-cup.html"><a href="what-is-the-timeline-of-hosting-the-world-cup.html"><i class="fa fa-check"></i><b>2.3</b> What is the timeline of hosting the world cup?</a></li>
 <li class="chapter" data-level="2.4" data-path="what-is-the-history-of-bidding-for-world-cup.html"><a href="what-is-the-history-of-bidding-for-world-cup.html"><i class="fa fa-check"></i><b>2.4</b> What is the history of bidding for world cup?</a></li>
@@ -164,34 +164,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="where-to-find-the-data" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Where to find the data?<a href="where-to-find-the-data.html#where-to-find-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="where-and-how-can-we-get-the-data" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Where and how can we get the data?<a href="where-and-how-can-we-get-the-data.html#where-and-how-can-we-get-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Generally we would like to know <strong>who</strong> (country, continent) <em>hosted</em> <strong>when</strong>. Since <em>hosting</em> is a lengthy process that starts by <em>bidding</em> and followed by FIFA evaluation. it would be interesting to incorporate <em>bidding</em> data into the analysis.</p>
 <p>In this project we will use the data made available in this Wikipedia article about <a href="https://en.wikipedia.org/wiki/FIFA_World_Cup_hosts">FIFA World Cup hosts</a></p>
 <p>To do that, we are going to use the <a href="https://rvest.tidyverse.org/">rvest</a> package to explore and scrape this tables directly into R.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="where-to-find-the-data.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># URL of the article</span></span>
-<span id="cb2-2"><a href="where-to-find-the-data.html#cb2-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://en.wikipedia.org/wiki/FIFA_World_Cup_hosts&quot;</span></span>
-<span id="cb2-3"><a href="where-to-find-the-data.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the webpage and obtain the pieces of the article containing tables</span></span>
-<span id="cb2-4"><a href="where-to-find-the-data.html#cb2-4" aria-hidden="true" tabindex="-1"></a>tbls_lst <span class="ot">&lt;-</span>  url <span class="sc">%&gt;%</span></span>
-<span id="cb2-5"><a href="where-to-find-the-data.html#cb2-5" aria-hidden="true" tabindex="-1"></a>  read_html <span class="sc">%&gt;%</span></span>
-<span id="cb2-6"><a href="where-to-find-the-data.html#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="where-and-how-can-we-get-the-data.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># URL of the article</span></span>
+<span id="cb2-2"><a href="where-and-how-can-we-get-the-data.html#cb2-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://en.wikipedia.org/wiki/FIFA_World_Cup_hosts&quot;</span></span>
+<span id="cb2-3"><a href="where-and-how-can-we-get-the-data.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the webpage and obtain the pieces of the article containing tables</span></span>
+<span id="cb2-4"><a href="where-and-how-can-we-get-the-data.html#cb2-4" aria-hidden="true" tabindex="-1"></a>tbls_lst <span class="ot">&lt;-</span>  url <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="where-and-how-can-we-get-the-data.html#cb2-5" aria-hidden="true" tabindex="-1"></a>  read_html <span class="sc">%&gt;%</span></span>
+<span id="cb2-6"><a href="where-and-how-can-we-get-the-data.html#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>()</span></code></pre></div>
 <p>The tables are in the house! However, this too much. Let’s select only the tables of interest for this tutorial. This is limited to the subset of tables showing the list of countries that have submitted a bid or actually hosted the world cup. As an extra, we will also utilize the performance of host countries in our analysis.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="where-to-find-the-data.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select tables of interest</span></span>
-<span id="cb3-2"><a href="where-to-find-the-data.html#cb3-2" aria-hidden="true" tabindex="-1"></a>tbls_lst <span class="ot">&lt;-</span> tbls_lst[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">9</span>,<span class="dv">10</span>)]</span>
-<span id="cb3-3"><a href="where-to-find-the-data.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="where-to-find-the-data.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign names to the tables</span></span>
-<span id="cb3-5"><a href="where-to-find-the-data.html#cb3-5" aria-hidden="true" tabindex="-1"></a>tables_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;List of hosts&quot;</span>,</span>
-<span id="cb3-6"><a href="where-to-find-the-data.html#cb3-6" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Total bids by country&quot;</span>,</span>
-<span id="cb3-7"><a href="where-to-find-the-data.html#cb3-7" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Host country performances&quot;</span>)</span>
-<span id="cb3-8"><a href="where-to-find-the-data.html#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tbls_lst) <span class="ot">&lt;-</span> <span class="fu">tolower</span>(tables_names) <span class="sc">%&gt;%</span> <span class="fu">str_replace_all</span>(<span class="st">&quot; &quot;</span>,<span class="st">&quot;_&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="where-and-how-can-we-get-the-data.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select tables of interest</span></span>
+<span id="cb3-2"><a href="where-and-how-can-we-get-the-data.html#cb3-2" aria-hidden="true" tabindex="-1"></a>tbls_lst <span class="ot">&lt;-</span> tbls_lst[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">9</span>,<span class="dv">10</span>)]</span>
+<span id="cb3-3"><a href="where-and-how-can-we-get-the-data.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="where-and-how-can-we-get-the-data.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign names to the tables</span></span>
+<span id="cb3-5"><a href="where-and-how-can-we-get-the-data.html#cb3-5" aria-hidden="true" tabindex="-1"></a>tables_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;List of hosts&quot;</span>,</span>
+<span id="cb3-6"><a href="where-and-how-can-we-get-the-data.html#cb3-6" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Total bids by country&quot;</span>,</span>
+<span id="cb3-7"><a href="where-and-how-can-we-get-the-data.html#cb3-7" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Host country performances&quot;</span>)</span>
+<span id="cb3-8"><a href="where-and-how-can-we-get-the-data.html#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tbls_lst) <span class="ot">&lt;-</span> <span class="fu">tolower</span>(tables_names) <span class="sc">%&gt;%</span> <span class="fu">str_replace_all</span>(<span class="st">&quot; &quot;</span>,<span class="st">&quot;_&quot;</span>)</span></code></pre></div>
 <p>Let’s have a quick look at the three selected tables</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="where-to-find-the-data.html#cb4-1" aria-hidden="true" tabindex="-1"></a>gt<span class="sc">::</span><span class="fu">gt</span>(<span class="fu">head</span>(tbls_lst<span class="sc">$</span>list_of_hosts))</span></code></pre></div>
-<div id="dkcrhwpjxx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="where-and-how-can-we-get-the-data.html#cb4-1" aria-hidden="true" tabindex="-1"></a>gt<span class="sc">::</span><span class="fu">gt</span>(<span class="fu">head</span>(tbls_lst<span class="sc">$</span>list_of_hosts))</span></code></pre></div>
+<div id="crpctzxnyq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#dkcrhwpjxx .gt_table {
+#crpctzxnyq .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -216,7 +216,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#dkcrhwpjxx .gt_heading {
+#crpctzxnyq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -228,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#dkcrhwpjxx .gt_title {
+#crpctzxnyq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -240,7 +240,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#dkcrhwpjxx .gt_subtitle {
+#crpctzxnyq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -252,13 +252,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#dkcrhwpjxx .gt_bottom_border {
+#crpctzxnyq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dkcrhwpjxx .gt_col_headings {
+#crpctzxnyq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -273,7 +273,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#dkcrhwpjxx .gt_col_heading {
+#crpctzxnyq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -293,7 +293,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#dkcrhwpjxx .gt_column_spanner_outer {
+#crpctzxnyq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -305,15 +305,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#dkcrhwpjxx .gt_column_spanner_outer:first-child {
+#crpctzxnyq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dkcrhwpjxx .gt_column_spanner_outer:last-child {
+#crpctzxnyq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dkcrhwpjxx .gt_column_spanner {
+#crpctzxnyq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -325,7 +325,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#dkcrhwpjxx .gt_group_heading {
+#crpctzxnyq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -350,7 +350,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#dkcrhwpjxx .gt_empty_group_heading {
+#crpctzxnyq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -365,15 +365,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#dkcrhwpjxx .gt_from_md > :first-child {
+#crpctzxnyq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dkcrhwpjxx .gt_from_md > :last-child {
+#crpctzxnyq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dkcrhwpjxx .gt_row {
+#crpctzxnyq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -392,7 +392,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#dkcrhwpjxx .gt_stub {
+#crpctzxnyq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -405,7 +405,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#dkcrhwpjxx .gt_stub_row_group {
+#crpctzxnyq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -419,11 +419,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#dkcrhwpjxx .gt_row_group_first td {
+#crpctzxnyq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dkcrhwpjxx .gt_summary_row {
+#crpctzxnyq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -433,16 +433,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#dkcrhwpjxx .gt_first_summary_row {
+#crpctzxnyq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dkcrhwpjxx .gt_first_summary_row.thick {
+#crpctzxnyq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dkcrhwpjxx .gt_last_summary_row {
+#crpctzxnyq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -452,7 +452,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#dkcrhwpjxx .gt_grand_summary_row {
+#crpctzxnyq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -462,7 +462,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#dkcrhwpjxx .gt_first_grand_summary_row {
+#crpctzxnyq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -472,11 +472,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#dkcrhwpjxx .gt_striped {
+#crpctzxnyq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dkcrhwpjxx .gt_table_body {
+#crpctzxnyq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -485,7 +485,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#dkcrhwpjxx .gt_footnotes {
+#crpctzxnyq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -499,7 +499,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#dkcrhwpjxx .gt_footnote {
+#crpctzxnyq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -508,7 +508,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#dkcrhwpjxx .gt_sourcenotes {
+#crpctzxnyq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -522,7 +522,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#dkcrhwpjxx .gt_sourcenote {
+#crpctzxnyq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -530,64 +530,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#dkcrhwpjxx .gt_left {
+#crpctzxnyq .gt_left {
   text-align: left;
 }
 
-#dkcrhwpjxx .gt_center {
+#crpctzxnyq .gt_center {
   text-align: center;
 }
 
-#dkcrhwpjxx .gt_right {
+#crpctzxnyq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dkcrhwpjxx .gt_font_normal {
+#crpctzxnyq .gt_font_normal {
   font-weight: normal;
 }
 
-#dkcrhwpjxx .gt_font_bold {
+#crpctzxnyq .gt_font_bold {
   font-weight: bold;
 }
 
-#dkcrhwpjxx .gt_font_italic {
+#crpctzxnyq .gt_font_italic {
   font-style: italic;
 }
 
-#dkcrhwpjxx .gt_super {
+#crpctzxnyq .gt_super {
   font-size: 65%;
 }
 
-#dkcrhwpjxx .gt_footnote_marks {
+#crpctzxnyq .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#dkcrhwpjxx .gt_asterisk {
+#crpctzxnyq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dkcrhwpjxx .gt_indent_1 {
+#crpctzxnyq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dkcrhwpjxx .gt_indent_2 {
+#crpctzxnyq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dkcrhwpjxx .gt_indent_3 {
+#crpctzxnyq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dkcrhwpjxx .gt_indent_4 {
+#crpctzxnyq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dkcrhwpjxx .gt_indent_5 {
+#crpctzxnyq .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -624,13 +624,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
 </table>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="where-to-find-the-data.html#cb5-1" aria-hidden="true" tabindex="-1"></a>gt<span class="sc">::</span><span class="fu">gt</span>(<span class="fu">head</span>(tbls_lst<span class="sc">$</span>total_bids_by_country))</span></code></pre></div>
-<div id="imxifahveh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="where-and-how-can-we-get-the-data.html#cb5-1" aria-hidden="true" tabindex="-1"></a>gt<span class="sc">::</span><span class="fu">gt</span>(<span class="fu">head</span>(tbls_lst<span class="sc">$</span>total_bids_by_country))</span></code></pre></div>
+<div id="lepdmahcvc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#imxifahveh .gt_table {
+#lepdmahcvc .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -655,7 +655,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#imxifahveh .gt_heading {
+#lepdmahcvc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -667,7 +667,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#imxifahveh .gt_title {
+#lepdmahcvc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -679,7 +679,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#imxifahveh .gt_subtitle {
+#lepdmahcvc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -691,13 +691,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#imxifahveh .gt_bottom_border {
+#lepdmahcvc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#imxifahveh .gt_col_headings {
+#lepdmahcvc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -712,7 +712,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#imxifahveh .gt_col_heading {
+#lepdmahcvc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -732,7 +732,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#imxifahveh .gt_column_spanner_outer {
+#lepdmahcvc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -744,15 +744,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#imxifahveh .gt_column_spanner_outer:first-child {
+#lepdmahcvc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#imxifahveh .gt_column_spanner_outer:last-child {
+#lepdmahcvc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#imxifahveh .gt_column_spanner {
+#lepdmahcvc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -764,7 +764,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#imxifahveh .gt_group_heading {
+#lepdmahcvc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -789,7 +789,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#imxifahveh .gt_empty_group_heading {
+#lepdmahcvc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -804,15 +804,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#imxifahveh .gt_from_md > :first-child {
+#lepdmahcvc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#imxifahveh .gt_from_md > :last-child {
+#lepdmahcvc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#imxifahveh .gt_row {
+#lepdmahcvc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -831,7 +831,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#imxifahveh .gt_stub {
+#lepdmahcvc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -844,7 +844,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#imxifahveh .gt_stub_row_group {
+#lepdmahcvc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -858,11 +858,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#imxifahveh .gt_row_group_first td {
+#lepdmahcvc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#imxifahveh .gt_summary_row {
+#lepdmahcvc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -872,16 +872,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#imxifahveh .gt_first_summary_row {
+#lepdmahcvc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#imxifahveh .gt_first_summary_row.thick {
+#lepdmahcvc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#imxifahveh .gt_last_summary_row {
+#lepdmahcvc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -891,7 +891,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#imxifahveh .gt_grand_summary_row {
+#lepdmahcvc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -901,7 +901,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#imxifahveh .gt_first_grand_summary_row {
+#lepdmahcvc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -911,11 +911,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#imxifahveh .gt_striped {
+#lepdmahcvc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#imxifahveh .gt_table_body {
+#lepdmahcvc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -924,7 +924,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#imxifahveh .gt_footnotes {
+#lepdmahcvc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -938,7 +938,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#imxifahveh .gt_footnote {
+#lepdmahcvc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -947,7 +947,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#imxifahveh .gt_sourcenotes {
+#lepdmahcvc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -961,7 +961,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#imxifahveh .gt_sourcenote {
+#lepdmahcvc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -969,64 +969,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#imxifahveh .gt_left {
+#lepdmahcvc .gt_left {
   text-align: left;
 }
 
-#imxifahveh .gt_center {
+#lepdmahcvc .gt_center {
   text-align: center;
 }
 
-#imxifahveh .gt_right {
+#lepdmahcvc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#imxifahveh .gt_font_normal {
+#lepdmahcvc .gt_font_normal {
   font-weight: normal;
 }
 
-#imxifahveh .gt_font_bold {
+#lepdmahcvc .gt_font_bold {
   font-weight: bold;
 }
 
-#imxifahveh .gt_font_italic {
+#lepdmahcvc .gt_font_italic {
   font-style: italic;
 }
 
-#imxifahveh .gt_super {
+#lepdmahcvc .gt_super {
   font-size: 65%;
 }
 
-#imxifahveh .gt_footnote_marks {
+#lepdmahcvc .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#imxifahveh .gt_asterisk {
+#lepdmahcvc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#imxifahveh .gt_indent_1 {
+#lepdmahcvc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#imxifahveh .gt_indent_2 {
+#lepdmahcvc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#imxifahveh .gt_indent_3 {
+#lepdmahcvc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#imxifahveh .gt_indent_4 {
+#lepdmahcvc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#imxifahveh .gt_indent_5 {
+#lepdmahcvc .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1070,13 +1070,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
 </table>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="where-to-find-the-data.html#cb6-1" aria-hidden="true" tabindex="-1"></a>gt<span class="sc">::</span><span class="fu">gt</span>(<span class="fu">head</span>(tbls_lst<span class="sc">$</span>host_country_performances))</span></code></pre></div>
-<div id="rulejdbpaa" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="where-and-how-can-we-get-the-data.html#cb6-1" aria-hidden="true" tabindex="-1"></a>gt<span class="sc">::</span><span class="fu">gt</span>(<span class="fu">head</span>(tbls_lst<span class="sc">$</span>host_country_performances))</span></code></pre></div>
+<div id="yhknlyzwnm" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#rulejdbpaa .gt_table {
+#yhknlyzwnm .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1101,7 +1101,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#rulejdbpaa .gt_heading {
+#yhknlyzwnm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1113,7 +1113,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#rulejdbpaa .gt_title {
+#yhknlyzwnm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1125,7 +1125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#rulejdbpaa .gt_subtitle {
+#yhknlyzwnm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1137,13 +1137,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#rulejdbpaa .gt_bottom_border {
+#yhknlyzwnm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rulejdbpaa .gt_col_headings {
+#yhknlyzwnm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1158,7 +1158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#rulejdbpaa .gt_col_heading {
+#yhknlyzwnm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1178,7 +1178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#rulejdbpaa .gt_column_spanner_outer {
+#yhknlyzwnm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1190,15 +1190,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#rulejdbpaa .gt_column_spanner_outer:first-child {
+#yhknlyzwnm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rulejdbpaa .gt_column_spanner_outer:last-child {
+#yhknlyzwnm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rulejdbpaa .gt_column_spanner {
+#yhknlyzwnm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1210,7 +1210,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#rulejdbpaa .gt_group_heading {
+#yhknlyzwnm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1235,7 +1235,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#rulejdbpaa .gt_empty_group_heading {
+#yhknlyzwnm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1250,15 +1250,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#rulejdbpaa .gt_from_md > :first-child {
+#yhknlyzwnm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rulejdbpaa .gt_from_md > :last-child {
+#yhknlyzwnm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rulejdbpaa .gt_row {
+#yhknlyzwnm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1277,7 +1277,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#rulejdbpaa .gt_stub {
+#yhknlyzwnm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1290,7 +1290,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#rulejdbpaa .gt_stub_row_group {
+#yhknlyzwnm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1304,11 +1304,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#rulejdbpaa .gt_row_group_first td {
+#yhknlyzwnm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rulejdbpaa .gt_summary_row {
+#yhknlyzwnm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1318,16 +1318,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#rulejdbpaa .gt_first_summary_row {
+#yhknlyzwnm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rulejdbpaa .gt_first_summary_row.thick {
+#yhknlyzwnm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rulejdbpaa .gt_last_summary_row {
+#yhknlyzwnm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1337,7 +1337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#rulejdbpaa .gt_grand_summary_row {
+#yhknlyzwnm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1347,7 +1347,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#rulejdbpaa .gt_first_grand_summary_row {
+#yhknlyzwnm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1357,11 +1357,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#rulejdbpaa .gt_striped {
+#yhknlyzwnm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rulejdbpaa .gt_table_body {
+#yhknlyzwnm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1370,7 +1370,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#rulejdbpaa .gt_footnotes {
+#yhknlyzwnm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1384,7 +1384,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#rulejdbpaa .gt_footnote {
+#yhknlyzwnm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1393,7 +1393,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#rulejdbpaa .gt_sourcenotes {
+#yhknlyzwnm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1407,7 +1407,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#rulejdbpaa .gt_sourcenote {
+#yhknlyzwnm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1415,64 +1415,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#rulejdbpaa .gt_left {
+#yhknlyzwnm .gt_left {
   text-align: left;
 }
 
-#rulejdbpaa .gt_center {
+#yhknlyzwnm .gt_center {
   text-align: center;
 }
 
-#rulejdbpaa .gt_right {
+#yhknlyzwnm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rulejdbpaa .gt_font_normal {
+#yhknlyzwnm .gt_font_normal {
   font-weight: normal;
 }
 
-#rulejdbpaa .gt_font_bold {
+#yhknlyzwnm .gt_font_bold {
   font-weight: bold;
 }
 
-#rulejdbpaa .gt_font_italic {
+#yhknlyzwnm .gt_font_italic {
   font-style: italic;
 }
 
-#rulejdbpaa .gt_super {
+#yhknlyzwnm .gt_super {
   font-size: 65%;
 }
 
-#rulejdbpaa .gt_footnote_marks {
+#yhknlyzwnm .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#rulejdbpaa .gt_asterisk {
+#yhknlyzwnm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rulejdbpaa .gt_indent_1 {
+#yhknlyzwnm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rulejdbpaa .gt_indent_2 {
+#yhknlyzwnm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rulejdbpaa .gt_indent_3 {
+#yhknlyzwnm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rulejdbpaa .gt_indent_4 {
+#yhknlyzwnm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rulejdbpaa .gt_indent_5 {
+#yhknlyzwnm .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1566,38 +1566,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </div>
 <p>Looks good, but not perfect. As expected, the scrapped tables are not optimal for analysis. Let’s push the tables through a few rounds of quality control.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="where-to-find-the-data.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean columns&#39; names</span></span>
-<span id="cb7-2"><a href="where-to-find-the-data.html#cb7-2" aria-hidden="true" tabindex="-1"></a>tbls_lst <span class="ot">&lt;-</span> <span class="fu">lapply</span>(tbls_lst,  janitor<span class="sc">::</span>clean_names)</span>
-<span id="cb7-3"><a href="where-to-find-the-data.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the amount of money</span></span>
-<span id="cb7-4"><a href="where-to-find-the-data.html#cb7-4" aria-hidden="true" tabindex="-1"></a>tbls_lst<span class="sc">$</span>host_country_performances  <span class="ot">&lt;-</span> tbls_lst<span class="sc">$</span>host_country_performances <span class="sc">%&gt;%</span></span>
-<span id="cb7-5"><a href="where-to-find-the-data.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">esult =</span> <span class="fu">str_replace</span>(result, <span class="st">&quot; </span><span class="sc">\\</span><span class="st">(top 12</span><span class="sc">\\</span><span class="st">)&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-6"><a href="where-to-find-the-data.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">country =</span> <span class="st">&quot;team&quot;</span>,</span>
-<span id="cb7-7"><a href="where-to-find-the-data.html#cb7-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">years =</span> <span class="st">&quot;year&quot;</span>)</span>
-<span id="cb7-8"><a href="where-to-find-the-data.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#let&#39;s correct the entry of Colombia since it withdrew from hosting due to economic concerns</span></span>
-<span id="cb7-9"><a href="where-to-find-the-data.html#cb7-9" aria-hidden="true" tabindex="-1"></a>tbls_lst<span class="sc">$</span>total_bids_by_country <span class="ot">&lt;-</span> tbls_lst<span class="sc">$</span>total_bids_by_country <span class="sc">%&gt;%</span> </span>
-<span id="cb7-10"><a href="where-to-find-the-data.html#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">times_hosted =</span> <span class="fu">ifelse</span>(country <span class="sc">==</span> <span class="st">&quot;Colombia&quot;</span>, <span class="dv">0</span>, times_hosted))</span>
-<span id="cb7-11"><a href="where-to-find-the-data.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Replace &quot;West Germany&quot; with &quot;Germany&quot;</span></span>
-<span id="cb7-12"><a href="where-to-find-the-data.html#cb7-12" aria-hidden="true" tabindex="-1"></a>tbls_lst<span class="sc">$</span>host_country_performances  <span class="ot">&lt;-</span> tbls_lst<span class="sc">$</span>host_country_performances <span class="sc">%&gt;%</span></span>
-<span id="cb7-13"><a href="where-to-find-the-data.html#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">team =</span> <span class="fu">str_replace</span>(country, <span class="st">&quot;West Germany&quot;</span>, <span class="st">&quot;Germany&quot;</span>))</span>
-<span id="cb7-14"><a href="where-to-find-the-data.html#cb7-14" aria-hidden="true" tabindex="-1"></a>tbls_lst<span class="sc">$</span>list_of_hosts <span class="ot">&lt;-</span> tbls_lst<span class="sc">$</span>list_of_hosts <span class="sc">%&gt;%</span> </span>
-<span id="cb7-15"><a href="where-to-find-the-data.html#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">host_nation_s =</span> <span class="fu">str_replace</span>(host_nation_s, <span class="st">&quot;West Germany&quot;</span>, <span class="st">&quot;Germany&quot;</span>))</span>
-<span id="cb7-16"><a href="where-to-find-the-data.html#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Order the results and set them as levels</span></span>
-<span id="cb7-17"><a href="where-to-find-the-data.html#cb7-17" aria-hidden="true" tabindex="-1"></a>results_order <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Champions&quot;</span>,</span>
-<span id="cb7-18"><a href="where-to-find-the-data.html#cb7-18" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Runners-up&quot;</span>,</span>
-<span id="cb7-19"><a href="where-to-find-the-data.html#cb7-19" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Third place&quot;</span>,</span>
-<span id="cb7-20"><a href="where-to-find-the-data.html#cb7-20" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Fourth place&quot;</span>,</span>
-<span id="cb7-21"><a href="where-to-find-the-data.html#cb7-21" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Quarter-finals&quot;</span>,</span>
-<span id="cb7-22"><a href="where-to-find-the-data.html#cb7-22" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Round of 16&quot;</span>,</span>
-<span id="cb7-23"><a href="where-to-find-the-data.html#cb7-23" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Second round&quot;</span>,</span>
-<span id="cb7-24"><a href="where-to-find-the-data.html#cb7-24" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;First round&quot;</span>,</span>
-<span id="cb7-25"><a href="where-to-find-the-data.html#cb7-25" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;TBD&quot;</span></span>
-<span id="cb7-26"><a href="where-to-find-the-data.html#cb7-26" aria-hidden="true" tabindex="-1"></a>                   )</span>
-<span id="cb7-27"><a href="where-to-find-the-data.html#cb7-27" aria-hidden="true" tabindex="-1"></a>tbls_lst<span class="sc">$</span>host_country_performances  <span class="ot">&lt;-</span> tbls_lst<span class="sc">$</span>host_country_performances <span class="sc">%&gt;%</span></span>
-<span id="cb7-28"><a href="where-to-find-the-data.html#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">result =</span> <span class="fu">ifelse</span>(result <span class="sc">==</span> <span class="st">&quot;Second round (top 12)&quot;</span>, <span class="st">&quot;Second round&quot;</span>, result),</span>
-<span id="cb7-29"><a href="where-to-find-the-data.html#cb7-29" aria-hidden="true" tabindex="-1"></a>                          </span>
-<span id="cb7-30"><a href="where-to-find-the-data.html#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">result =</span> <span class="fu">factor</span>(result, <span class="at">levels =</span> results_order),</span>
-<span id="cb7-31"><a href="where-to-find-the-data.html#cb7-31" aria-hidden="true" tabindex="-1"></a>         <span class="at">country =</span> <span class="fu">str_replace</span>(country, <span class="st">&quot;West Germany&quot;</span>, <span class="st">&quot;Germany&quot;</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="where-and-how-can-we-get-the-data.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean columns&#39; names</span></span>
+<span id="cb7-2"><a href="where-and-how-can-we-get-the-data.html#cb7-2" aria-hidden="true" tabindex="-1"></a>tbls_lst <span class="ot">&lt;-</span> <span class="fu">lapply</span>(tbls_lst,  janitor<span class="sc">::</span>clean_names)</span>
+<span id="cb7-3"><a href="where-and-how-can-we-get-the-data.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the amount of money</span></span>
+<span id="cb7-4"><a href="where-and-how-can-we-get-the-data.html#cb7-4" aria-hidden="true" tabindex="-1"></a>tbls_lst<span class="sc">$</span>host_country_performances  <span class="ot">&lt;-</span> tbls_lst<span class="sc">$</span>host_country_performances <span class="sc">%&gt;%</span></span>
+<span id="cb7-5"><a href="where-and-how-can-we-get-the-data.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">esult =</span> <span class="fu">str_replace</span>(result, <span class="st">&quot; </span><span class="sc">\\</span><span class="st">(top 12</span><span class="sc">\\</span><span class="st">)&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-6"><a href="where-and-how-can-we-get-the-data.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">country =</span> <span class="st">&quot;team&quot;</span>,</span>
+<span id="cb7-7"><a href="where-and-how-can-we-get-the-data.html#cb7-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">years =</span> <span class="st">&quot;year&quot;</span>)</span>
+<span id="cb7-8"><a href="where-and-how-can-we-get-the-data.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#let&#39;s correct the entry of Colombia since it withdrew from hosting due to economic concerns</span></span>
+<span id="cb7-9"><a href="where-and-how-can-we-get-the-data.html#cb7-9" aria-hidden="true" tabindex="-1"></a>tbls_lst<span class="sc">$</span>total_bids_by_country <span class="ot">&lt;-</span> tbls_lst<span class="sc">$</span>total_bids_by_country <span class="sc">%&gt;%</span> </span>
+<span id="cb7-10"><a href="where-and-how-can-we-get-the-data.html#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">times_hosted =</span> <span class="fu">ifelse</span>(country <span class="sc">==</span> <span class="st">&quot;Colombia&quot;</span>, <span class="dv">0</span>, times_hosted))</span>
+<span id="cb7-11"><a href="where-and-how-can-we-get-the-data.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Replace &quot;West Germany&quot; with &quot;Germany&quot;</span></span>
+<span id="cb7-12"><a href="where-and-how-can-we-get-the-data.html#cb7-12" aria-hidden="true" tabindex="-1"></a>tbls_lst<span class="sc">$</span>host_country_performances  <span class="ot">&lt;-</span> tbls_lst<span class="sc">$</span>host_country_performances <span class="sc">%&gt;%</span></span>
+<span id="cb7-13"><a href="where-and-how-can-we-get-the-data.html#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">team =</span> <span class="fu">str_replace</span>(country, <span class="st">&quot;West Germany&quot;</span>, <span class="st">&quot;Germany&quot;</span>))</span>
+<span id="cb7-14"><a href="where-and-how-can-we-get-the-data.html#cb7-14" aria-hidden="true" tabindex="-1"></a>tbls_lst<span class="sc">$</span>list_of_hosts <span class="ot">&lt;-</span> tbls_lst<span class="sc">$</span>list_of_hosts <span class="sc">%&gt;%</span> </span>
+<span id="cb7-15"><a href="where-and-how-can-we-get-the-data.html#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">host_nation_s =</span> <span class="fu">str_replace</span>(host_nation_s, <span class="st">&quot;West Germany&quot;</span>, <span class="st">&quot;Germany&quot;</span>))</span>
+<span id="cb7-16"><a href="where-and-how-can-we-get-the-data.html#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Order the results and set them as levels</span></span>
+<span id="cb7-17"><a href="where-and-how-can-we-get-the-data.html#cb7-17" aria-hidden="true" tabindex="-1"></a>results_order <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Champions&quot;</span>,</span>
+<span id="cb7-18"><a href="where-and-how-can-we-get-the-data.html#cb7-18" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Runners-up&quot;</span>,</span>
+<span id="cb7-19"><a href="where-and-how-can-we-get-the-data.html#cb7-19" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Third place&quot;</span>,</span>
+<span id="cb7-20"><a href="where-and-how-can-we-get-the-data.html#cb7-20" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Fourth place&quot;</span>,</span>
+<span id="cb7-21"><a href="where-and-how-can-we-get-the-data.html#cb7-21" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Quarter-finals&quot;</span>,</span>
+<span id="cb7-22"><a href="where-and-how-can-we-get-the-data.html#cb7-22" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Round of 16&quot;</span>,</span>
+<span id="cb7-23"><a href="where-and-how-can-we-get-the-data.html#cb7-23" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Second round&quot;</span>,</span>
+<span id="cb7-24"><a href="where-and-how-can-we-get-the-data.html#cb7-24" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;First round&quot;</span>,</span>
+<span id="cb7-25"><a href="where-and-how-can-we-get-the-data.html#cb7-25" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;TBD&quot;</span></span>
+<span id="cb7-26"><a href="where-and-how-can-we-get-the-data.html#cb7-26" aria-hidden="true" tabindex="-1"></a>                   )</span>
+<span id="cb7-27"><a href="where-and-how-can-we-get-the-data.html#cb7-27" aria-hidden="true" tabindex="-1"></a>tbls_lst<span class="sc">$</span>host_country_performances  <span class="ot">&lt;-</span> tbls_lst<span class="sc">$</span>host_country_performances <span class="sc">%&gt;%</span></span>
+<span id="cb7-28"><a href="where-and-how-can-we-get-the-data.html#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">result =</span> <span class="fu">ifelse</span>(result <span class="sc">==</span> <span class="st">&quot;Second round (top 12)&quot;</span>, <span class="st">&quot;Second round&quot;</span>, result),</span>
+<span id="cb7-29"><a href="where-and-how-can-we-get-the-data.html#cb7-29" aria-hidden="true" tabindex="-1"></a>                          </span>
+<span id="cb7-30"><a href="where-and-how-can-we-get-the-data.html#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">result =</span> <span class="fu">factor</span>(result, <span class="at">levels =</span> results_order),</span>
+<span id="cb7-31"><a href="where-and-how-can-we-get-the-data.html#cb7-31" aria-hidden="true" tabindex="-1"></a>         <span class="at">country =</span> <span class="fu">str_replace</span>(country, <span class="st">&quot;West Germany&quot;</span>, <span class="st">&quot;Germany&quot;</span>)) </span></code></pre></div>
 <p>Now that the data is analysis-ready, it is time to explore some interesting questions!</p>
+<p><img src="https://media.giphy.com/media/WmzhEJZsON3Bk7ulRY/giphy.gif" /></p>
 </div>
             </section>
 

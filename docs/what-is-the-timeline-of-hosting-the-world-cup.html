@@ -23,7 +23,7 @@
 <meta name="author" content="Mohamed R.Shoeb" />
 
 
-<meta name="date" content="2022-11-29" />
+<meta name="date" content="2022-12-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -139,7 +139,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> FIFA world cup 2022 Challenge!</a></li>
 <li class="chapter" data-level="2" data-path="history-of-hosting-fifa-world-cup.html"><a href="history-of-hosting-fifa-world-cup.html"><i class="fa fa-check"></i><b>2</b> History of hosting FIFA World Cup</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="where-to-find-the-data.html"><a href="where-to-find-the-data.html"><i class="fa fa-check"></i><b>2.1</b> Where to find the data?</a></li>
+<li class="chapter" data-level="2.1" data-path="where-and-how-can-we-get-the-data.html"><a href="where-and-how-can-we-get-the-data.html"><i class="fa fa-check"></i><b>2.1</b> Where and how can we get the data?</a></li>
 <li class="chapter" data-level="2.2" data-path="how-many-world-cups-were-hosted-in-each-continent.html"><a href="how-many-world-cups-were-hosted-in-each-continent.html"><i class="fa fa-check"></i><b>2.2</b> How many world cups were hosted in each continent?</a></li>
 <li class="chapter" data-level="2.3" data-path="what-is-the-timeline-of-hosting-the-world-cup.html"><a href="what-is-the-timeline-of-hosting-the-world-cup.html"><i class="fa fa-check"></i><b>2.3</b> What is the timeline of hosting the world cup?</a></li>
 <li class="chapter" data-level="2.4" data-path="what-is-the-history-of-bidding-for-world-cup.html"><a href="what-is-the-history-of-bidding-for-world-cup.html"><i class="fa fa-check"></i><b>2.4</b> What is the history of bidding for world cup?</a></li>
@@ -169,7 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>What was missing from the previous representation of the data is the time component. In this section we’ll explore a visualization method that would allow us to add this crucial aspect.</p>
 <p>Let’s start by preparing the hosting data for visualization by filling in the gap years where the world cup stopped due to WWII</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#add missing years in which world cup was cancelled</span></span>
-<span id="cb20-2"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb20-2" aria-hidden="true" tabindex="-1"></a>df_tm <span class="ot">&lt;-</span> df_host <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb20-2" aria-hidden="true" tabindex="-1"></a>df_tm <span class="ot">&lt;-</span> df_host1 <span class="sc">%&gt;%</span> </span>
 <span id="cb20-3"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(<span class="at">year =</span> <span class="fu">full_seq</span>(year, <span class="dv">4</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb20-4"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">continent =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(continent), <span class="st">&quot;Cancelled&quot;</span>, continent),</span>
 <span id="cb20-5"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb20-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">host_nation_s =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(host_nation_s), <span class="st">&quot;Cancelled&quot;</span>, host_nation_s))</span>
@@ -223,6 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb23-27"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb23-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">linewidth =</span> <span class="dv">2</span>,<span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>))</span></code></pre></div>
 <p><img src="01-hosting_history_files/figure-html/unnamed-chunk-19-1.png" width="100%" height="100%" /></p>
 <p>This is a condensed and clear representation of our data, which are two desirable features of data visualization.</p>
+<p><img src="https://media.giphy.com/media/TgL7lPFfyAFITuszOA/giphy.gif" /></p>
 </div>
             </section>
 

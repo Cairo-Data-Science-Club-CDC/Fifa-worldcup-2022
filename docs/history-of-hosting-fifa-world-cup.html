@@ -23,7 +23,7 @@
 <meta name="author" content="Mohamed R.Shoeb" />
 
 
-<meta name="date" content="2022-11-29" />
+<meta name="date" content="2022-12-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="where-to-find-the-data.html"/>
+<link rel="next" href="where-and-how-can-we-get-the-data.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -139,7 +139,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> FIFA world cup 2022 Challenge!</a></li>
 <li class="chapter" data-level="2" data-path="history-of-hosting-fifa-world-cup.html"><a href="history-of-hosting-fifa-world-cup.html"><i class="fa fa-check"></i><b>2</b> History of hosting FIFA World Cup</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="where-to-find-the-data.html"><a href="where-to-find-the-data.html"><i class="fa fa-check"></i><b>2.1</b> Where to find the data?</a></li>
+<li class="chapter" data-level="2.1" data-path="where-and-how-can-we-get-the-data.html"><a href="where-and-how-can-we-get-the-data.html"><i class="fa fa-check"></i><b>2.1</b> Where and how can we get the data?</a></li>
 <li class="chapter" data-level="2.2" data-path="how-many-world-cups-were-hosted-in-each-continent.html"><a href="how-many-world-cups-were-hosted-in-each-continent.html"><i class="fa fa-check"></i><b>2.2</b> How many world cups were hosted in each continent?</a></li>
 <li class="chapter" data-level="2.3" data-path="what-is-the-timeline-of-hosting-the-world-cup.html"><a href="what-is-the-timeline-of-hosting-the-world-cup.html"><i class="fa fa-check"></i><b>2.3</b> What is the timeline of hosting the world cup?</a></li>
 <li class="chapter" data-level="2.4" data-path="what-is-the-history-of-bidding-for-world-cup.html"><a href="what-is-the-history-of-bidding-for-world-cup.html"><i class="fa fa-check"></i><b>2.4</b> What is the history of bidding for world cup?</a></li>
@@ -166,13 +166,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="history-of-hosting-fifa-world-cup" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">2</span> History of hosting FIFA World Cup<a href="history-of-hosting-fifa-world-cup.html#history-of-hosting-fifa-world-cup" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>Overview</strong></p>
+<p>An exploratory data analysis project on the history of hosting FIFA world cup.</p>
+<p><strong>Outline</strong></p>
 <ol style="list-style-type: decimal">
-<li><a href="where-to-find-the-data.html#where-to-find-the-data">Where to find the data?</a></li>
-<li><a href="how-many-world-cups-were-hosted-in-each-continent.html#how-many-world-cups-were-hosted-in-each-continent">How many world cups were hosted in each continent?</a></li>
-<li><a href="what-is-the-timeline-of-hosting-the-world-cup.html#what-is-the-timeline-of-hosting-the-world-cup">What is the timeline of hosting the world cup?</a></li>
-<li><a href="what-is-the-history-of-bidding-for-world-cup.html#what-is-the-history-of-bidding-for-world-cup">What is the history of bidding for world cup?</a></li>
+<li><p><a href="where-and-how-can-we-get-the-data.html#where-and-how-can-we-get-the-data">Where and how can we get the data?</a></p>
+<p>To start with, we will learn how to scrape Wikipedia directly into R, parse the data tables, and apply quality control to make them ready for the analysis.</p>
+<p><img src="images/aMjwwYeTrEkCyr6af-th-2721308714.jpg" width="265" /></p></li>
+<li><p><a href="how-many-world-cups-were-hosted-in-each-continent.html#how-many-world-cups-were-hosted-in-each-continent">How many world cups were hosted in each continent?</a></p>
+<p>Will then move on to explore the number of hosted cups at the level of continents and the geographical distribution of hosting countries.</p>
+<p><img src="images/unnamed-chunk-12-1.png" width="490" /><img src="images/unnamed-chunk-16-1.png" width="490" /></p></li>
+<li><p><a href="what-is-the-timeline-of-hosting-the-world-cup.html#what-is-the-timeline-of-hosting-the-world-cup">What is the timeline of hosting the world cup?</a></p>
+<p>Next, will add the time component by generating a condensed timeline of the history of hosting world cups on the level countries and continents.</p>
+<p><img src="images/unnamed-chunk-19-1.png" width="494" /></p></li>
+<li><p><a href="what-is-the-history-of-bidding-for-world-cup.html#what-is-the-history-of-bidding-for-world-cup">What is the history of bidding for world cup?</a></p>
+<p>Finally, we will go beyond the mere hosting the championship to explore the bidding process and the performance of the hosting team over the years.</p>
+<p><img src="images/unnamed-chunk-20-1.png" width="497" /></p>
+<p><img src="images/unnamed-chunk-21-1.png" width="498" /></p>
+<p><img src="images/unnamed-chunk-27-1.png" width="499" /></p></li>
 </ol>
-<p>Load libraries</p>
+<p>Let’s start by loading the libraries that we’ll utilize in our analysis</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="history-of-hosting-fifa-world-cup.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#web scrapping</span></span>
 <span id="cb1-2"><a href="history-of-hosting-fifa-world-cup.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
 <span id="cb1-3"><a href="history-of-hosting-fifa-world-cup.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#everything tidy?</span></span>
@@ -190,6 +203,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-15"><a href="history-of-hosting-fifa-world-cup.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggimage)</span>
 <span id="cb1-16"><a href="history-of-hosting-fifa-world-cup.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#set the default ggplot theme</span></span>
 <span id="cb1-17"><a href="history-of-hosting-fifa-world-cup.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(cowplot<span class="sc">::</span><span class="fu">theme_cowplot</span>())</span></code></pre></div>
+<p>and with that, we’re ready to ride!</p>
+<p><img src="https://media.giphy.com/media/kgsqn9gCVAQ3YM3C2f/giphy.gif" /></p>
 </div>
             </section>
 
@@ -197,7 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="where-to-find-the-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="where-and-how-can-we-get-the-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

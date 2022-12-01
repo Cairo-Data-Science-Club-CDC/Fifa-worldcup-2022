@@ -1,10 +1,6 @@
 fifa-world-cup-2022-challenge
 history-of-hosting-fifa-world-cup
-data-collection
+where-and-how-can-we-get-the-data
 how-many-world-cups-were-hosted-in-each-continent
-what-is-the-timeline-of-world-cup-hosting
-what-is-the-history-of-biding-and
-what-is-the-history-of-world-cup-bidding
-where-to-find-the-data
 what-is-the-timeline-of-hosting-the-world-cup
 what-is-the-history-of-bidding-for-world-cup
