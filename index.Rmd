@@ -12,7 +12,11 @@ github-repo: rstudio/bookdown-demo
 description: ""
 ---
 
-# Introduction {.unnumbered}
+# {-}
+
+![](images/ep3%20cover.png){width="670"}
+
+# Preface {-}
 
 **This book takes a project-oriented approach to present and explain data-science skills/principles using data related to FIFA world cup.**
 

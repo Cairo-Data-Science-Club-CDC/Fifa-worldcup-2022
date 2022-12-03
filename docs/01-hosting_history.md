@@ -109,12 +109,12 @@ gt::gt(head(tbls_lst$list_of_hosts))
 ```
 
 ```{=html}
-<div id="qkeypcpizj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="qidppoqldu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#qkeypcpizj .gt_table {
+#qidppoqldu .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -139,7 +139,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-left-color: #D3D3D3;
 }
 
-#qkeypcpizj .gt_heading {
+#qidppoqldu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -151,7 +151,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-right-color: #D3D3D3;
 }
 
-#qkeypcpizj .gt_title {
+#qidppoqldu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -163,7 +163,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-bottom-width: 0;
 }
 
-#qkeypcpizj .gt_subtitle {
+#qidppoqldu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -175,13 +175,13 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-top-width: 0;
 }
 
-#qkeypcpizj .gt_bottom_border {
+#qidppoqldu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qkeypcpizj .gt_col_headings {
+#qidppoqldu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -196,7 +196,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-right-color: #D3D3D3;
 }
 
-#qkeypcpizj .gt_col_heading {
+#qidppoqldu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -216,7 +216,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   overflow-x: hidden;
 }
 
-#qkeypcpizj .gt_column_spanner_outer {
+#qidppoqldu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -228,15 +228,15 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 4px;
 }
 
-#qkeypcpizj .gt_column_spanner_outer:first-child {
+#qidppoqldu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qkeypcpizj .gt_column_spanner_outer:last-child {
+#qidppoqldu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qkeypcpizj .gt_column_spanner {
+#qidppoqldu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -248,7 +248,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   width: 100%;
 }
 
-#qkeypcpizj .gt_group_heading {
+#qidppoqldu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -273,7 +273,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   vertical-align: middle;
 }
 
-#qkeypcpizj .gt_empty_group_heading {
+#qidppoqldu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -288,15 +288,15 @@ gt::gt(head(tbls_lst$list_of_hosts))
   vertical-align: middle;
 }
 
-#qkeypcpizj .gt_from_md > :first-child {
+#qidppoqldu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qkeypcpizj .gt_from_md > :last-child {
+#qidppoqldu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qkeypcpizj .gt_row {
+#qidppoqldu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -315,7 +315,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   overflow-x: hidden;
 }
 
-#qkeypcpizj .gt_stub {
+#qidppoqldu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -328,7 +328,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#qkeypcpizj .gt_stub_row_group {
+#qidppoqldu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -342,11 +342,11 @@ gt::gt(head(tbls_lst$list_of_hosts))
   vertical-align: top;
 }
 
-#qkeypcpizj .gt_row_group_first td {
+#qidppoqldu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qkeypcpizj .gt_summary_row {
+#qidppoqldu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -356,16 +356,16 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#qkeypcpizj .gt_first_summary_row {
+#qidppoqldu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qkeypcpizj .gt_first_summary_row.thick {
+#qidppoqldu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qkeypcpizj .gt_last_summary_row {
+#qidppoqldu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -375,7 +375,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-bottom-color: #D3D3D3;
 }
 
-#qkeypcpizj .gt_grand_summary_row {
+#qidppoqldu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -385,7 +385,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#qkeypcpizj .gt_first_grand_summary_row {
+#qidppoqldu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -395,11 +395,11 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-top-color: #D3D3D3;
 }
 
-#qkeypcpizj .gt_striped {
+#qidppoqldu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qkeypcpizj .gt_table_body {
+#qidppoqldu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -408,7 +408,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-bottom-color: #D3D3D3;
 }
 
-#qkeypcpizj .gt_footnotes {
+#qidppoqldu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -422,7 +422,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-right-color: #D3D3D3;
 }
 
-#qkeypcpizj .gt_footnote {
+#qidppoqldu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -431,7 +431,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#qkeypcpizj .gt_sourcenotes {
+#qidppoqldu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -445,7 +445,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-right-color: #D3D3D3;
 }
 
-#qkeypcpizj .gt_sourcenote {
+#qidppoqldu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -453,64 +453,64 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#qkeypcpizj .gt_left {
+#qidppoqldu .gt_left {
   text-align: left;
 }
 
-#qkeypcpizj .gt_center {
+#qidppoqldu .gt_center {
   text-align: center;
 }
 
-#qkeypcpizj .gt_right {
+#qidppoqldu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qkeypcpizj .gt_font_normal {
+#qidppoqldu .gt_font_normal {
   font-weight: normal;
 }
 
-#qkeypcpizj .gt_font_bold {
+#qidppoqldu .gt_font_bold {
   font-weight: bold;
 }
 
-#qkeypcpizj .gt_font_italic {
+#qidppoqldu .gt_font_italic {
   font-style: italic;
 }
 
-#qkeypcpizj .gt_super {
+#qidppoqldu .gt_super {
   font-size: 65%;
 }
 
-#qkeypcpizj .gt_footnote_marks {
+#qidppoqldu .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#qkeypcpizj .gt_asterisk {
+#qidppoqldu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qkeypcpizj .gt_indent_1 {
+#qidppoqldu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qkeypcpizj .gt_indent_2 {
+#qidppoqldu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qkeypcpizj .gt_indent_3 {
+#qidppoqldu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qkeypcpizj .gt_indent_4 {
+#qidppoqldu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qkeypcpizj .gt_indent_5 {
+#qidppoqldu .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -554,12 +554,12 @@ gt::gt(head(tbls_lst$total_bids_by_country))
 ```
 
 ```{=html}
-<div id="cjlqqrddsb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="sdabwdxbsv" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#cjlqqrddsb .gt_table {
+#sdabwdxbsv .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -584,7 +584,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-left-color: #D3D3D3;
 }
 
-#cjlqqrddsb .gt_heading {
+#sdabwdxbsv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -596,7 +596,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-right-color: #D3D3D3;
 }
 
-#cjlqqrddsb .gt_title {
+#sdabwdxbsv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -608,7 +608,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-bottom-width: 0;
 }
 
-#cjlqqrddsb .gt_subtitle {
+#sdabwdxbsv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -620,13 +620,13 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-top-width: 0;
 }
 
-#cjlqqrddsb .gt_bottom_border {
+#sdabwdxbsv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cjlqqrddsb .gt_col_headings {
+#sdabwdxbsv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -641,7 +641,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-right-color: #D3D3D3;
 }
 
-#cjlqqrddsb .gt_col_heading {
+#sdabwdxbsv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -661,7 +661,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   overflow-x: hidden;
 }
 
-#cjlqqrddsb .gt_column_spanner_outer {
+#sdabwdxbsv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -673,15 +673,15 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   padding-right: 4px;
 }
 
-#cjlqqrddsb .gt_column_spanner_outer:first-child {
+#sdabwdxbsv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cjlqqrddsb .gt_column_spanner_outer:last-child {
+#sdabwdxbsv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cjlqqrddsb .gt_column_spanner {
+#sdabwdxbsv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -693,7 +693,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   width: 100%;
 }
 
-#cjlqqrddsb .gt_group_heading {
+#sdabwdxbsv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -718,7 +718,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   vertical-align: middle;
 }
 
-#cjlqqrddsb .gt_empty_group_heading {
+#sdabwdxbsv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -733,15 +733,15 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   vertical-align: middle;
 }
 
-#cjlqqrddsb .gt_from_md > :first-child {
+#sdabwdxbsv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cjlqqrddsb .gt_from_md > :last-child {
+#sdabwdxbsv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cjlqqrddsb .gt_row {
+#sdabwdxbsv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -760,7 +760,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   overflow-x: hidden;
 }
 
-#cjlqqrddsb .gt_stub {
+#sdabwdxbsv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -773,7 +773,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   padding-right: 5px;
 }
 
-#cjlqqrddsb .gt_stub_row_group {
+#sdabwdxbsv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -787,11 +787,11 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   vertical-align: top;
 }
 
-#cjlqqrddsb .gt_row_group_first td {
+#sdabwdxbsv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cjlqqrddsb .gt_summary_row {
+#sdabwdxbsv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -801,16 +801,16 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   padding-right: 5px;
 }
 
-#cjlqqrddsb .gt_first_summary_row {
+#sdabwdxbsv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cjlqqrddsb .gt_first_summary_row.thick {
+#sdabwdxbsv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cjlqqrddsb .gt_last_summary_row {
+#sdabwdxbsv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -820,7 +820,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-bottom-color: #D3D3D3;
 }
 
-#cjlqqrddsb .gt_grand_summary_row {
+#sdabwdxbsv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -830,7 +830,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   padding-right: 5px;
 }
 
-#cjlqqrddsb .gt_first_grand_summary_row {
+#sdabwdxbsv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -840,11 +840,11 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-top-color: #D3D3D3;
 }
 
-#cjlqqrddsb .gt_striped {
+#sdabwdxbsv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cjlqqrddsb .gt_table_body {
+#sdabwdxbsv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -853,7 +853,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-bottom-color: #D3D3D3;
 }
 
-#cjlqqrddsb .gt_footnotes {
+#sdabwdxbsv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -867,7 +867,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-right-color: #D3D3D3;
 }
 
-#cjlqqrddsb .gt_footnote {
+#sdabwdxbsv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -876,7 +876,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   padding-right: 5px;
 }
 
-#cjlqqrddsb .gt_sourcenotes {
+#sdabwdxbsv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -890,7 +890,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-right-color: #D3D3D3;
 }
 
-#cjlqqrddsb .gt_sourcenote {
+#sdabwdxbsv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -898,64 +898,64 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   padding-right: 5px;
 }
 
-#cjlqqrddsb .gt_left {
+#sdabwdxbsv .gt_left {
   text-align: left;
 }
 
-#cjlqqrddsb .gt_center {
+#sdabwdxbsv .gt_center {
   text-align: center;
 }
 
-#cjlqqrddsb .gt_right {
+#sdabwdxbsv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cjlqqrddsb .gt_font_normal {
+#sdabwdxbsv .gt_font_normal {
   font-weight: normal;
 }
 
-#cjlqqrddsb .gt_font_bold {
+#sdabwdxbsv .gt_font_bold {
   font-weight: bold;
 }
 
-#cjlqqrddsb .gt_font_italic {
+#sdabwdxbsv .gt_font_italic {
   font-style: italic;
 }
 
-#cjlqqrddsb .gt_super {
+#sdabwdxbsv .gt_super {
   font-size: 65%;
 }
 
-#cjlqqrddsb .gt_footnote_marks {
+#sdabwdxbsv .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#cjlqqrddsb .gt_asterisk {
+#sdabwdxbsv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cjlqqrddsb .gt_indent_1 {
+#sdabwdxbsv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cjlqqrddsb .gt_indent_2 {
+#sdabwdxbsv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cjlqqrddsb .gt_indent_3 {
+#sdabwdxbsv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cjlqqrddsb .gt_indent_4 {
+#sdabwdxbsv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cjlqqrddsb .gt_indent_5 {
+#sdabwdxbsv .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1006,12 +1006,12 @@ gt::gt(head(tbls_lst$host_country_performances))
 ```
 
 ```{=html}
-<div id="hunlxfqgai" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="wfvolrwxbg" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#hunlxfqgai .gt_table {
+#wfvolrwxbg .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1036,7 +1036,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-left-color: #D3D3D3;
 }
 
-#hunlxfqgai .gt_heading {
+#wfvolrwxbg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1048,7 +1048,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-right-color: #D3D3D3;
 }
 
-#hunlxfqgai .gt_title {
+#wfvolrwxbg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1060,7 +1060,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-bottom-width: 0;
 }
 
-#hunlxfqgai .gt_subtitle {
+#wfvolrwxbg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1072,13 +1072,13 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-top-width: 0;
 }
 
-#hunlxfqgai .gt_bottom_border {
+#wfvolrwxbg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hunlxfqgai .gt_col_headings {
+#wfvolrwxbg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1093,7 +1093,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-right-color: #D3D3D3;
 }
 
-#hunlxfqgai .gt_col_heading {
+#wfvolrwxbg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1113,7 +1113,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   overflow-x: hidden;
 }
 
-#hunlxfqgai .gt_column_spanner_outer {
+#wfvolrwxbg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1125,15 +1125,15 @@ gt::gt(head(tbls_lst$host_country_performances))
   padding-right: 4px;
 }
 
-#hunlxfqgai .gt_column_spanner_outer:first-child {
+#wfvolrwxbg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hunlxfqgai .gt_column_spanner_outer:last-child {
+#wfvolrwxbg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hunlxfqgai .gt_column_spanner {
+#wfvolrwxbg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1145,7 +1145,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   width: 100%;
 }
 
-#hunlxfqgai .gt_group_heading {
+#wfvolrwxbg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1170,7 +1170,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   vertical-align: middle;
 }
 
-#hunlxfqgai .gt_empty_group_heading {
+#wfvolrwxbg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1185,15 +1185,15 @@ gt::gt(head(tbls_lst$host_country_performances))
   vertical-align: middle;
 }
 
-#hunlxfqgai .gt_from_md > :first-child {
+#wfvolrwxbg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hunlxfqgai .gt_from_md > :last-child {
+#wfvolrwxbg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hunlxfqgai .gt_row {
+#wfvolrwxbg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1212,7 +1212,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   overflow-x: hidden;
 }
 
-#hunlxfqgai .gt_stub {
+#wfvolrwxbg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1225,7 +1225,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   padding-right: 5px;
 }
 
-#hunlxfqgai .gt_stub_row_group {
+#wfvolrwxbg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1239,11 +1239,11 @@ gt::gt(head(tbls_lst$host_country_performances))
   vertical-align: top;
 }
 
-#hunlxfqgai .gt_row_group_first td {
+#wfvolrwxbg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hunlxfqgai .gt_summary_row {
+#wfvolrwxbg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1253,16 +1253,16 @@ gt::gt(head(tbls_lst$host_country_performances))
   padding-right: 5px;
 }
 
-#hunlxfqgai .gt_first_summary_row {
+#wfvolrwxbg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hunlxfqgai .gt_first_summary_row.thick {
+#wfvolrwxbg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hunlxfqgai .gt_last_summary_row {
+#wfvolrwxbg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1272,7 +1272,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-bottom-color: #D3D3D3;
 }
 
-#hunlxfqgai .gt_grand_summary_row {
+#wfvolrwxbg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1282,7 +1282,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   padding-right: 5px;
 }
 
-#hunlxfqgai .gt_first_grand_summary_row {
+#wfvolrwxbg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1292,11 +1292,11 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-top-color: #D3D3D3;
 }
 
-#hunlxfqgai .gt_striped {
+#wfvolrwxbg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hunlxfqgai .gt_table_body {
+#wfvolrwxbg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1305,7 +1305,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-bottom-color: #D3D3D3;
 }
 
-#hunlxfqgai .gt_footnotes {
+#wfvolrwxbg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1319,7 +1319,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-right-color: #D3D3D3;
 }
 
-#hunlxfqgai .gt_footnote {
+#wfvolrwxbg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1328,7 +1328,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   padding-right: 5px;
 }
 
-#hunlxfqgai .gt_sourcenotes {
+#wfvolrwxbg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1342,7 +1342,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-right-color: #D3D3D3;
 }
 
-#hunlxfqgai .gt_sourcenote {
+#wfvolrwxbg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1350,64 +1350,64 @@ gt::gt(head(tbls_lst$host_country_performances))
   padding-right: 5px;
 }
 
-#hunlxfqgai .gt_left {
+#wfvolrwxbg .gt_left {
   text-align: left;
 }
 
-#hunlxfqgai .gt_center {
+#wfvolrwxbg .gt_center {
   text-align: center;
 }
 
-#hunlxfqgai .gt_right {
+#wfvolrwxbg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hunlxfqgai .gt_font_normal {
+#wfvolrwxbg .gt_font_normal {
   font-weight: normal;
 }
 
-#hunlxfqgai .gt_font_bold {
+#wfvolrwxbg .gt_font_bold {
   font-weight: bold;
 }
 
-#hunlxfqgai .gt_font_italic {
+#wfvolrwxbg .gt_font_italic {
   font-style: italic;
 }
 
-#hunlxfqgai .gt_super {
+#wfvolrwxbg .gt_super {
   font-size: 65%;
 }
 
-#hunlxfqgai .gt_footnote_marks {
+#wfvolrwxbg .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#hunlxfqgai .gt_asterisk {
+#wfvolrwxbg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hunlxfqgai .gt_indent_1 {
+#wfvolrwxbg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hunlxfqgai .gt_indent_2 {
+#wfvolrwxbg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hunlxfqgai .gt_indent_3 {
+#wfvolrwxbg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hunlxfqgai .gt_indent_4 {
+#wfvolrwxbg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hunlxfqgai .gt_indent_5 {
+#wfvolrwxbg .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1589,12 +1589,12 @@ gt::gt(tbls_lst[[3]])
 ```
 
 ```{=html}
-<div id="ippyzmvgog" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="daajtassfe" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ippyzmvgog .gt_table {
+#daajtassfe .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1619,7 +1619,7 @@ gt::gt(tbls_lst[[3]])
   border-left-color: #D3D3D3;
 }
 
-#ippyzmvgog .gt_heading {
+#daajtassfe .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1631,7 +1631,7 @@ gt::gt(tbls_lst[[3]])
   border-right-color: #D3D3D3;
 }
 
-#ippyzmvgog .gt_title {
+#daajtassfe .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1643,7 +1643,7 @@ gt::gt(tbls_lst[[3]])
   border-bottom-width: 0;
 }
 
-#ippyzmvgog .gt_subtitle {
+#daajtassfe .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1655,13 +1655,13 @@ gt::gt(tbls_lst[[3]])
   border-top-width: 0;
 }
 
-#ippyzmvgog .gt_bottom_border {
+#daajtassfe .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ippyzmvgog .gt_col_headings {
+#daajtassfe .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1676,7 +1676,7 @@ gt::gt(tbls_lst[[3]])
   border-right-color: #D3D3D3;
 }
 
-#ippyzmvgog .gt_col_heading {
+#daajtassfe .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1696,7 +1696,7 @@ gt::gt(tbls_lst[[3]])
   overflow-x: hidden;
 }
 
-#ippyzmvgog .gt_column_spanner_outer {
+#daajtassfe .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1708,15 +1708,15 @@ gt::gt(tbls_lst[[3]])
   padding-right: 4px;
 }
 
-#ippyzmvgog .gt_column_spanner_outer:first-child {
+#daajtassfe .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ippyzmvgog .gt_column_spanner_outer:last-child {
+#daajtassfe .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ippyzmvgog .gt_column_spanner {
+#daajtassfe .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1728,7 +1728,7 @@ gt::gt(tbls_lst[[3]])
   width: 100%;
 }
 
-#ippyzmvgog .gt_group_heading {
+#daajtassfe .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1753,7 +1753,7 @@ gt::gt(tbls_lst[[3]])
   vertical-align: middle;
 }
 
-#ippyzmvgog .gt_empty_group_heading {
+#daajtassfe .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1768,15 +1768,15 @@ gt::gt(tbls_lst[[3]])
   vertical-align: middle;
 }
 
-#ippyzmvgog .gt_from_md > :first-child {
+#daajtassfe .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ippyzmvgog .gt_from_md > :last-child {
+#daajtassfe .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ippyzmvgog .gt_row {
+#daajtassfe .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1795,7 +1795,7 @@ gt::gt(tbls_lst[[3]])
   overflow-x: hidden;
 }
 
-#ippyzmvgog .gt_stub {
+#daajtassfe .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1808,7 +1808,7 @@ gt::gt(tbls_lst[[3]])
   padding-right: 5px;
 }
 
-#ippyzmvgog .gt_stub_row_group {
+#daajtassfe .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1822,11 +1822,11 @@ gt::gt(tbls_lst[[3]])
   vertical-align: top;
 }
 
-#ippyzmvgog .gt_row_group_first td {
+#daajtassfe .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ippyzmvgog .gt_summary_row {
+#daajtassfe .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1836,16 +1836,16 @@ gt::gt(tbls_lst[[3]])
   padding-right: 5px;
 }
 
-#ippyzmvgog .gt_first_summary_row {
+#daajtassfe .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ippyzmvgog .gt_first_summary_row.thick {
+#daajtassfe .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ippyzmvgog .gt_last_summary_row {
+#daajtassfe .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1855,7 +1855,7 @@ gt::gt(tbls_lst[[3]])
   border-bottom-color: #D3D3D3;
 }
 
-#ippyzmvgog .gt_grand_summary_row {
+#daajtassfe .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1865,7 +1865,7 @@ gt::gt(tbls_lst[[3]])
   padding-right: 5px;
 }
 
-#ippyzmvgog .gt_first_grand_summary_row {
+#daajtassfe .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1875,11 +1875,11 @@ gt::gt(tbls_lst[[3]])
   border-top-color: #D3D3D3;
 }
 
-#ippyzmvgog .gt_striped {
+#daajtassfe .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ippyzmvgog .gt_table_body {
+#daajtassfe .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1888,7 +1888,7 @@ gt::gt(tbls_lst[[3]])
   border-bottom-color: #D3D3D3;
 }
 
-#ippyzmvgog .gt_footnotes {
+#daajtassfe .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1902,7 +1902,7 @@ gt::gt(tbls_lst[[3]])
   border-right-color: #D3D3D3;
 }
 
-#ippyzmvgog .gt_footnote {
+#daajtassfe .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1911,7 +1911,7 @@ gt::gt(tbls_lst[[3]])
   padding-right: 5px;
 }
 
-#ippyzmvgog .gt_sourcenotes {
+#daajtassfe .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1925,7 +1925,7 @@ gt::gt(tbls_lst[[3]])
   border-right-color: #D3D3D3;
 }
 
-#ippyzmvgog .gt_sourcenote {
+#daajtassfe .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1933,64 +1933,64 @@ gt::gt(tbls_lst[[3]])
   padding-right: 5px;
 }
 
-#ippyzmvgog .gt_left {
+#daajtassfe .gt_left {
   text-align: left;
 }
 
-#ippyzmvgog .gt_center {
+#daajtassfe .gt_center {
   text-align: center;
 }
 
-#ippyzmvgog .gt_right {
+#daajtassfe .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ippyzmvgog .gt_font_normal {
+#daajtassfe .gt_font_normal {
   font-weight: normal;
 }
 
-#ippyzmvgog .gt_font_bold {
+#daajtassfe .gt_font_bold {
   font-weight: bold;
 }
 
-#ippyzmvgog .gt_font_italic {
+#daajtassfe .gt_font_italic {
   font-style: italic;
 }
 
-#ippyzmvgog .gt_super {
+#daajtassfe .gt_super {
   font-size: 65%;
 }
 
-#ippyzmvgog .gt_footnote_marks {
+#daajtassfe .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ippyzmvgog .gt_asterisk {
+#daajtassfe .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ippyzmvgog .gt_indent_1 {
+#daajtassfe .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ippyzmvgog .gt_indent_2 {
+#daajtassfe .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ippyzmvgog .gt_indent_3 {
+#daajtassfe .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ippyzmvgog .gt_indent_4 {
+#daajtassfe .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ippyzmvgog .gt_indent_5 {
+#daajtassfe .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
