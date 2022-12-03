@@ -5,3 +5,4 @@ delete_merged_file: true
 rmd_subdir: true
 new_session: yes
 output_dir: "docs"
+rmd_files: ["index.Rmd", "01-hosting_history.Rmd"]
