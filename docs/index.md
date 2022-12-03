@@ -1,7 +1,7 @@
 ---
 title: "Fifa worldcup 2022"
 author: "Mohamed R.Shoeb"
-date: "2022-12-01"
+date: "2022-12-02"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -12,13 +12,23 @@ github-repo: rstudio/bookdown-demo
 description: ""
 ---
 
-# FIFA world cup 2022 Challenge!
+# Introduction {.unnumbered}
 
 **This book aims at presenting and explaining data-science skills and principles using data related to FIFA world cup.**
 
 The following are the main topics that we will explore:
 
 1.  [History of hosting FIFA World Cup]
+
+How to read this book?
+
+-   This book was written with beginner R users in mind. Long wrangling pipes and ggplot constructions are avoided and instead broken into sequential, small, and intuitive steps. This doesn't mean that the analysis is limited to basic methods and simple workflow. Rather the goal is go a long distance to explain the relevant details in a clear and easy-to-follow.
+
+------------------------------------------------------------------------
+
+\
+
+This book is part of **Cairo Data Science Club**, an ambitious community driven initiative aimed at spreading data-science skills and promoting data culture! To learn more about our activities, follow the links below.
 
 ![](design-f6b879de-c009-4457-9c57-7f2087765e99.png)
 
