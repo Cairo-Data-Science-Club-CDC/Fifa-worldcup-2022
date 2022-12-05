@@ -1,7 +1,7 @@
 ---
 title: "Fifa worldcup 2022"
 author: "Mohamed R.Shoeb"
-date: "2022-12-03"
+date: "2022-12-06"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -29,6 +29,9 @@ Each chapter is a standalone take on an interesting aspect of the history of FIF
 Table of content:
 
 1.  [History of hosting FIFA World Cup]
+2.  [Cost of hosting world cup]
+3.  [Teams' performance]
+4.  [Players' performance]
 
 ### How to read this book? {.unnumbered}
 

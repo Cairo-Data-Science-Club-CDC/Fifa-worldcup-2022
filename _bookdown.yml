@@ -5,4 +5,4 @@ delete_merged_file: true
 rmd_subdir: true
 new_session: yes
 output_dir: "docs"
-rmd_files: ["index.Rmd", "01-hosting_history.Rmd"]
+rmd_files: ["index.Rmd", "01-hosting_history.Rmd", "02-cost_host.Rmd", "03-teams_performance.Rmd", "04-players_performance.Rmd"]

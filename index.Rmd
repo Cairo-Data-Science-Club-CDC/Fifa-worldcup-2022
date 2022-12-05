@@ -29,6 +29,9 @@ Each chapter is a standalone take on an interesting aspect of the history of FIF
 Table of content:
 
 1.  [History of hosting FIFA World Cup]
+2.  [Cost of hosting world cup]
+3.  [Teams' performance]
+4.  [Players' performance]
 
 ### How to read this book? {.unnumbered}
 
