@@ -22,7 +22,7 @@ An exploratory data analysis project on the history of hosting FIFA world cup.
 
     Will then move on to explore the number of hosted cups at the level of continents and the geographical distribution of hosting countries.
 
-    ![](images/unnamed-chunk-25-1.png){width="490"}![](docs/images/unnamed-chunk-30-1.png){width="491"}
+    ![](images/unnamed-chunk-25-1.png){width="490"}![](images/unnamed-chunk-30-1.png){width="491"}
 
 3.  [What is the timeline of hosting the world cup?]
 
