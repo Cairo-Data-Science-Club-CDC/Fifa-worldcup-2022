@@ -54,8 +54,10 @@ library(rasterpic)
 library(countrycode)
 #adding flags in ggplot
 library(ggimage)
-#
+#Visually explore data tables 
 library(visdat)
+#fit text within a defined area
+library(ggfittext)
 #set the default ggplot theme
 theme_set(cowplot::theme_cowplot())
 ```
@@ -327,16 +329,16 @@ df_host2 <- df_host1 %>%
   summarise(n = n())%>%
   ungroup() %>% 
   arrange(n) %>%
-  mutate(continent = factor(continent, levels = unique(continent)))
+  mutate(continent = factor(continent, levels = unique(continent))) #set continents order based on number of hosts
 
 df_host_3 <- df_host2 %>% 
-              mutate(cont_n = glue::glue("{continent}\n(n = {n})"))
+              mutate(cont_n = glue::glue("{continent} (n = {n})"))
 (bar_host_plt <- df_host2 %>% 
   ggplot(aes(continent, n))+
   geom_col(aes(color = continent), fill = "white",  show.legend = FALSE, linewidth = 1)+
   geom_col(aes(fill = continent), alpha = 0.4, show.legend = FALSE)+
   geom_text(data = df_host_3,
-            aes(label = cont_n), size = 5,nudge_y = 0.6)+
+            aes(label = cont_n), size = 4.5,nudge_y = 0.6)+
   labs(title = "History of hosting world cup",
        subtitle = "Number of hosted world cups and hosting countries per continents",
        caption = caption_cdc)+
@@ -364,16 +366,70 @@ df_txt_bar <- df_host1 %>%
                      )%>%
               ungroup() %>% 
               mutate(country_name = ifelse(n_host >1 , glue::glue("{country_name} x {n_host}"), country_name) # indicate the number of times a country hosted the world cup
-                     )
+                     ) 
 ```
 
 Let's fill these empty bars with the names of the hosting countries
 
 ```{r}
-bar_host_plt <- bar_host_plt +
-    geom_text(data = df_txt_bar,
-            aes(y = cum_prop, label = country_name),
-            size = 4)
+(bar_host_plt <- bar_host_plt +
+   geom_text(data = df_txt_bar,
+                            aes(y = cum_prop, label = country_name),
+                            size = 4
+                            ))
+```
+
+This looks really beautiful, but with some deficits. One can notice some names of co-hosting countries and continents that are "overflowing" outside their bar.
+
+Let's fix this by setting the boundaries of the each bar. First, let's calculate the boundaries
+
+```{r}
+#set the boundaries as 0.45 on each from the center of the bar
+df_txt_bar2 <- df_txt_bar %>%
+  mutate(continent = factor(continent, levels = levels(df_host2$continent)),
+         x = as.integer(as.factor(continent)), #get the center of the bar
+         xmin = x-0.45, #lower bound
+         xmax = x+0.45) #upper bound
+```
+
+... then apply them to the plot using `geom_fit_text` from ggfittext package
+
+```{r}
+bar_host_plt <- df_host2 %>% 
+  ggplot(aes(continent, n))+
+  geom_col(aes(color = continent), fill = "white",  show.legend = FALSE, linewidth = 1)+
+  geom_col(aes(fill = continent), alpha = 0.4, show.legend = FALSE)+
+  #continent name
+  ggfittext::geom_fit_text(data = df_host_3 %>%
+                           mutate(x = as.integer(as.factor(continent)),
+                                  xmin = x-0.45,
+                                  xmax = x+0.45),
+                      aes(y = n+0.5, xmin = xmin, xmax = xmax, label = cont_n),
+                      size =14
+                      )+
+  #Short countries' names 
+   geom_text(data = df_txt_bar[-c(2,12),],
+                            aes(y = cum_prop, label = country_name),
+                            size = 4
+                            )+
+  #Add "Japan South Korea" 
+  ggfittext::geom_fit_text(data =df_txt_bar2[2,],
+                        aes(y = cum_prop,xmin = xmin, xmax = xmax, label = country_name),
+                        size = 14
+                        )+
+  #Add "Canada, Mexico, United States"
+  ggfittext::geom_fit_text(data =df_txt_bar2[12,],
+                        aes(y = cum_prop,xmin = xmin, xmax = xmax, label = country_name),
+                        size = 14
+                        )+
+  labs(title = "History of hosting world cup",
+       subtitle = "Number of hosted world cups and hosting countries per continents",
+       caption = caption_cdc)+
+  scale_color_manual(values = conti_cols)+
+  scale_fill_manual(values = conti_cols)+
+  theme(axis.line = element_blank(),
+        axis.ticks = element_blank(),
+        axis.text = element_blank())
 ```
 
 This worked nicely! I will finalize this plot by adding an image of world cup in the background! Yes, you can do this in R. I need to mention that I got the code for the function `trasparent` below from an answer [here](#https://stackoverflow.com/questions/60820565/is-there-a-way-to-add-an-alpha-value-within-geom-image-in-ggplot).
@@ -491,7 +547,7 @@ Let's use chronologically ordered tiles (AKA waffle plot) to look at the timelin
 df_tm %>% 
   ggplot(aes(x, y, fill = continent ))+
   geom_tile(color = "black", size = 1)+
-  geom_text(aes(label = country_name), size = 4.5)+
+  ggfittext::geom_fit_text(aes(label = country_name), size = 13,show.legend = FALSE)+
   scale_color_manual(values = conti_cols)+
   scale_fill_manual(values = conti_cols)
 ```
@@ -502,7 +558,7 @@ That's a good start! Let's add the year information and further beautify the plo
 df_tm %>% 
   ggplot(aes(x, y, fill = continent ))+
   geom_tile(color = "black", size = 1)+
-  geom_text(aes(label = country_name), size = 3.1)+
+  ggfittext::geom_fit_text(aes(label = country_name), size = 13,show.legend = FALSE)+
   #add the time interval of each row
   geom_text(data = . %>% 
               group_by(y) %>% 
