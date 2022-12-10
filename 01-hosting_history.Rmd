@@ -896,37 +896,3 @@ WOW! We've managed to summarize the history of world cup in a single plot!
 Mission accomplished!
 
 ![](https://media.giphy.com/media/WZTgoOuIs63QEV8IFn/giphy.gif)
-
-```{r include=FALSE, eval=FALSE}
-#
-# Extract the amount of money
-tbls_lst$host_country_performances  <- tbls_lst$host_country_performances %>%
-  mutate(esult = str_replace(result, " \\(top 12\\)", "")) %>%
-  dplyr::rename(country = "team",
-                years = "year")
-#
-url_2 <- "https://en.wikipedia.org/wiki/Economics_of_the_FIFA_World_Cup"
-
-tbls_lst_2 <-  url_2 %>%
-  read_html %>%
-  html_table()
-#
-df_4 <- tbls_lst_2[[2]] %>% 
-  janitor::clean_names() %>% 
-  mutate(country = str_extract(host, "[A-Z]+"),
-         year = str_extract(host, "[0-9]+"),
-         x = strex::str_first_currency(general_cost)[[4]],
-         y = ifelse(str_detect(general_cost, "million"),x/1000,x))
-df_4$iso2 <- countrycode(df_4$country, "ioc", "iso2c")
-
-df_4 %>% 
-  ggplot(aes(year, y))+
-  geom_col(fill = "grey90", color = "black", size = 1)+
-  geom_text(aes(label = y), size = 8, nudge_y = c(rep(0.1,7), -0.1, 0.1))+
-  ggimage::geom_flag(aes( image=iso2),
-                     y = c(0.065,rep(0.1,6), -0.085, 0.1),
-                     size = 0.095)+
-  scale_y_continuous(breaks = c(1,10,100,200), trans = "log10")
-                                                                          
-
-```
