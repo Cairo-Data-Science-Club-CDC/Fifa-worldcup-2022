@@ -274,21 +274,29 @@ caption_cdc <- glue::glue("Data source: {url}\n@Cairo Data Science Club")
 theme_update(plot.caption = element_text(face = "italic"))
 ```
 
-We will exclude the dates in which the championship was cancelled because of Warld War II
+We'll start by having a quick look at the data.
+
+```{r}
+gt::gt(head(tbls_lst$list_of_hosts))
+```
+
+The table shows individual hosting countries of all world cups. But more than one country can cohost the same championship. What we need is a table of cohosts per world cup. To data that, we'll start by excluding the dates in which the championship was cancelled because of Warld War II and combine cohosts of the same year.
 
 ```{r}
 df_host1 <- tbls_lst$list_of_hosts %>% 
-  filter(!str_detect(continent, "Cancelled")) %>%
-  group_by(host_year) %>%
+  filter(!str_detect(continent, "Cancelled")) %>% #exclude cancelled events
+  group_by(host_year) %>% 
   summarise(across(everything(),
-                   ~ paste(unique(.x),collapse = ", ")
+                   ~ paste(unique(.x),collapse = ", ") #combine cohosts
                    )
             ) %>%
   ungroup() %>% 
   as.data.frame()
+
+gt::gt(df_host1)
 ```
 
-Let's look at a basic plot of the data
+Let's look at a basic bar plot of the data
 
 ```{r}
 (bar_host_plt <- df_host1 %>% 
@@ -305,6 +313,11 @@ conti_cols <- c(Europe = "#1f78b4",
                 `South America` = "#ffff99",
                 `North America` = "#33a02c",
                 Africa = "#ff7f00")
+```
+
+... and have another look on the plot.
+
+```{r}
 #show colors in the plot
 (bar_host_plt <- bar_host_plt +
     geom_bar(aes(fill = continent))+
@@ -312,7 +325,7 @@ conti_cols <- c(Europe = "#1f78b4",
   scale_fill_manual(values = conti_cols))
 ```
 
-Second, let's add some text and remove the legend since it doesn't add to the plot.
+Now let's add some text to give context to the visualized data.
 
 ```{r}
 (bar_host_plt <- bar_host_plt +
@@ -321,29 +334,51 @@ Second, let's add some text and remove the legend since it doesn't add to the pl
        caption = caption_cdc))
 ```
 
-Next, I think we can get rid off the axis and label each bar with important information.
+Next, let's order continents by number of hosted games
 
 ```{r}
 df_host2 <- df_host1 %>% 
   group_by(continent) %>% 
-  summarise(n = n())%>%
+  summarise(n = n())%>% #number of world cups per continent
   ungroup() %>% 
   arrange(n) %>%
   mutate(continent = factor(continent, levels = unique(continent))) #set continents order based on number of hosts
+```
 
+and add a vector of characters showing both the name of continent and number of hosted cups to label each bar.
+
+```{r}
 df_host_3 <- df_host2 %>% 
               mutate(cont_n = glue::glue("{continent} (n = {n})"))
+```
+
+Let's put things together and have a look on the updated plot. Also, I think we can safely remove the axis and rather add the labels from the previous step on top of each bar.
+
+```{r}
+
 (bar_host_plt <- df_host2 %>% 
   ggplot(aes(continent, n))+
-  geom_col(aes(color = continent), fill = "white",  show.legend = FALSE, linewidth = 1)+
-  geom_col(aes(fill = continent), alpha = 0.4, show.legend = FALSE)+
+  #add a layer of bars with white fill and colored borders
+  geom_col(aes(color = continent),
+           fill = "white",
+           show.legend = FALSE,
+           linewidth = 1)+
+  #then add another layer of bars with transparent fill
+  geom_col(aes(fill = continent),
+           alpha = 0.4,
+           show.legend = FALSE)+
+  #add the text labels on top of the bars
   geom_text(data = df_host_3,
-            aes(label = cont_n), size = 4.5,nudge_y = 0.6)+
+            aes(label = cont_n),
+            size = 4.5,
+            nudge_y = 0.6)+
   labs(title = "History of hosting world cup",
        subtitle = "Number of hosted world cups and hosting countries per continents",
        caption = caption_cdc)+
+  #define fill and colors of the bars
   scale_color_manual(values = conti_cols)+
   scale_fill_manual(values = conti_cols)+
+  #define the theme
   theme(axis.line = element_blank(),
         axis.ticks = element_blank(),
         axis.text = element_blank(),
@@ -395,7 +430,7 @@ df_txt_bar2 <- df_txt_bar %>%
 ... then apply them to the plot using `geom_fit_text` from ggfittext package
 
 ```{r}
-bar_host_plt <- df_host2 %>% 
+(bar_host_plt <- df_host2 %>% 
   ggplot(aes(continent, n))+
   geom_col(aes(color = continent), fill = "white",  show.legend = FALSE, linewidth = 1)+
   geom_col(aes(fill = continent), alpha = 0.4, show.legend = FALSE)+
@@ -427,12 +462,10 @@ bar_host_plt <- df_host2 %>%
        caption = caption_cdc)+
   scale_color_manual(values = conti_cols)+
   scale_fill_manual(values = conti_cols)+
-  theme(axis.line = element_blank(),
-        axis.ticks = element_blank(),
-        axis.text = element_blank())
+  theme_nothing())
 ```
 
-This worked nicely! I will finalize this plot by adding an image of world cup in the background! Yes, you can do this in R. I need to mention that I got the code for the function `trasparent` below from an answer [here](#https://stackoverflow.com/questions/60820565/is-there-a-way-to-add-an-alpha-value-within-geom-image-in-ggplot).
+This worked nicely! I will finalize this plot by adding an image of world cup in the background! Yes, you can do this in R. I got the code for the function `trasparent` used below from an answer [here](#https://stackoverflow.com/questions/60820565/is-there-a-way-to-add-an-alpha-value-within-geom-image-in-ggplot).
 
 ```{r}
 #get image
@@ -460,7 +493,12 @@ Let's add some geographical-context to these results by throwing the data on the
 ```{r}
 #get map of the world
 world <- ne_countries(scale = "medium", returnclass = "sf")
-#and map of separate host countries
+head(world)
+```
+
+Additionally we'll retreive the country code as we'll need it later.
+
+```{r}
 host_iso2 <- na.omit(unique(tbls_lst$list_of_hosts$country_code))
 wcp_hosts <- gisco_get_countries(country = host_iso2,
                                  epsg = 3857# Pseudo-Mercator projection
@@ -468,17 +506,17 @@ wcp_hosts <- gisco_get_countries(country = host_iso2,
 wcp_hosts$iso2 <- host_iso2
 ```
 
-Plotting base map of the world using ggplot.
+Let's plot a basic map of the world using ggplot.
 
 ```{r}
 # Base map of the world
 (plot <- ggplot(world) +
   geom_sf(fill = "grey90") +
-  theme_minimal() +
+  theme_nothing() +
   theme(panel.background = element_rect(fill = "lightblue")))
 ```
 
-Additionally, let's make the map extra flashy by filling hosting countries with their maps.
+Cool! Finally, let's make the map extra flashy by filling hosting countries with their maps.
 
 ```{r}
 # get flags form this repo
@@ -507,7 +545,9 @@ and add them to world map
 ```{r}
 plot +
   geom_sf(data = wcp_hosts, fill = NA)+
-  labs(title = "World map of FIFA world cup hosts")
+  labs(title = "World map of FIFA world cup hosts",
+       subtitle = "Number of hosted world cups and hosting countries per continents",
+       caption = caption_cdc)
 ```
 
 I'm very happy with the end result!
