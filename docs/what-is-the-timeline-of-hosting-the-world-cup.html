@@ -23,7 +23,7 @@
 <meta name="author" content="Mohamed R.Shoeb" />
 
 
-<meta name="date" content="2022-12-10" />
+<meta name="date" content="2022-12-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -180,62 +180,1179 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="what-is-the-timeline-of-hosting-the-world-cup" class="section level2 hasAnchor" number="1.3">
 <h2><span class="header-section-number">1.3</span> What is the timeline of hosting the world cup?<a href="what-is-the-timeline-of-hosting-the-world-cup.html#what-is-the-timeline-of-hosting-the-world-cup" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>What was missing from the previous representation of the data is the time component. In this section we’ll explore a visualization method that would allow us to add this crucial aspect.</p>
-<p>Let’s start by preparing the hosting data for visualization by filling in the gap years where the world cup stopped due to WWII</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">#add missing years in which world cup was cancelled</span></span>
-<span id="cb62-2"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb62-2" aria-hidden="true" tabindex="-1"></a>df_tm <span class="ot">&lt;-</span> df_host1 <span class="sc">%&gt;%</span> </span>
-<span id="cb62-3"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(<span class="at">host_year =</span> <span class="fu">full_seq</span>(host_year, <span class="dv">4</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb62-4"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">continent =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(continent), <span class="st">&quot;Cancelled&quot;</span>, continent),</span>
-<span id="cb62-5"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb62-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">country_name =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(country_name), <span class="st">&quot;Cancelled&quot;</span>, country_name))</span>
-<span id="cb62-6"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="co">#make a 6x5 grid from the hosting data and add the coordinate of each cell in the grid</span></span>
-<span id="cb62-7"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb62-7" aria-hidden="true" tabindex="-1"></a>df_tm <span class="ot">&lt;-</span> df_tm[<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>,] <span class="sc">%&gt;%</span> </span>
-<span id="cb62-8"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb62-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y =</span> <span class="fu">rep</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">each =</span> <span class="dv">5</span>),</span>
-<span id="cb62-9"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb62-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">6</span>),</span>
-<span id="cb62-10"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb62-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">country_name =</span> <span class="fu">case_when</span>(</span>
-<span id="cb62-11"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb62-11" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_detect</span>(country_name, <span class="st">&quot;Canada&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Canada</span><span class="sc">\n</span><span class="st">Mexico</span><span class="sc">\n</span><span class="st">United States&quot;</span>, <span class="co">#add a new line between cohosts</span></span>
-<span id="cb62-12"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb62-12" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_detect</span>(country_name, <span class="st">&quot;Japan&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Japan</span><span class="sc">\n</span><span class="st">South Korea&quot;</span>, <span class="co">#add new line between cohosts</span></span>
-<span id="cb62-13"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb62-13" aria-hidden="true" tabindex="-1"></a>           <span class="cn">TRUE</span> <span class="sc">~</span> country_name),</span>
-<span id="cb62-14"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb62-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">continent =</span> <span class="fu">factor</span>(continent, <span class="at">levels =</span> <span class="fu">unique</span>(continent))) <span class="sc">%&gt;%</span> </span>
-<span id="cb62-15"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb62-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(continent))</span></code></pre></div>
-<p>Let’s use chronologically ordered tiles (AKA waffle plot) to look at the timeline of hosting the world cup.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb63-1" aria-hidden="true" tabindex="-1"></a>df_tm <span class="sc">%&gt;%</span> </span>
-<span id="cb63-2"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y, <span class="at">fill =</span> continent ))<span class="sc">+</span></span>
-<span id="cb63-3"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb63-4"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb63-4" aria-hidden="true" tabindex="-1"></a>  ggfittext<span class="sc">::</span><span class="fu">geom_fit_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> country_name), <span class="at">size =</span> <span class="dv">13</span>,<span class="at">show.legend =</span> <span class="cn">FALSE</span>)<span class="sc">+</span></span>
-<span id="cb63-5"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> conti_cols)<span class="sc">+</span></span>
-<span id="cb63-6"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb63-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> conti_cols)</span></code></pre></div>
-<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-## ℹ Please use `linewidth` instead.</code></pre>
-<p><img src="01-hosting_history_files/figure-html/unnamed-chunk-39-1.png" width="100%" height="100%" /></p>
-<p>That’s a good start! Let’s add the year information and further beautify the plot.</p>
+<p>Let’s have a look on the data.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb62-1" aria-hidden="true" tabindex="-1"></a>gt<span class="sc">::</span><span class="fu">gt</span>(df_host1)</span></code></pre></div>
+<div id="pxuadajrpu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#pxuadajrpu .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pxuadajrpu .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pxuadajrpu .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pxuadajrpu .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pxuadajrpu .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pxuadajrpu .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pxuadajrpu .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pxuadajrpu .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pxuadajrpu .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pxuadajrpu .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#pxuadajrpu .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#pxuadajrpu .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pxuadajrpu .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pxuadajrpu .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#pxuadajrpu .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#pxuadajrpu .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pxuadajrpu .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#pxuadajrpu .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pxuadajrpu .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pxuadajrpu .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pxuadajrpu .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pxuadajrpu .gt_left {
+  text-align: left;
+}
+
+#pxuadajrpu .gt_center {
+  text-align: center;
+}
+
+#pxuadajrpu .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pxuadajrpu .gt_font_normal {
+  font-weight: normal;
+}
+
+#pxuadajrpu .gt_font_bold {
+  font-weight: bold;
+}
+
+#pxuadajrpu .gt_font_italic {
+  font-style: italic;
+}
+
+#pxuadajrpu .gt_super {
+  font-size: 65%;
+}
+
+#pxuadajrpu .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#pxuadajrpu .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#pxuadajrpu .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#pxuadajrpu .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#pxuadajrpu .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#pxuadajrpu .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#pxuadajrpu .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">host_year</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">country_name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">continent</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">country_code</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right">1930</td>
+<td class="gt_row gt_left">Uruguay</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">UY</td></tr>
+    <tr><td class="gt_row gt_right">1934</td>
+<td class="gt_row gt_left">Italy</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">IT</td></tr>
+    <tr><td class="gt_row gt_right">1938</td>
+<td class="gt_row gt_left">France</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">FR</td></tr>
+    <tr><td class="gt_row gt_right">1950</td>
+<td class="gt_row gt_left">Brazil</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">BR</td></tr>
+    <tr><td class="gt_row gt_right">1954</td>
+<td class="gt_row gt_left">Switzerland</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">CH</td></tr>
+    <tr><td class="gt_row gt_right">1958</td>
+<td class="gt_row gt_left">Sweden</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">SE</td></tr>
+    <tr><td class="gt_row gt_right">1962</td>
+<td class="gt_row gt_left">Chile</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">CL</td></tr>
+    <tr><td class="gt_row gt_right">1966</td>
+<td class="gt_row gt_left">England</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">NA</td></tr>
+    <tr><td class="gt_row gt_right">1970</td>
+<td class="gt_row gt_left">Mexico</td>
+<td class="gt_row gt_left">North America</td>
+<td class="gt_row gt_left">MX</td></tr>
+    <tr><td class="gt_row gt_right">1974</td>
+<td class="gt_row gt_left">Germany</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">DE</td></tr>
+    <tr><td class="gt_row gt_right">1978</td>
+<td class="gt_row gt_left">Argentina</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">AR</td></tr>
+    <tr><td class="gt_row gt_right">1982</td>
+<td class="gt_row gt_left">Spain</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">ES</td></tr>
+    <tr><td class="gt_row gt_right">1986</td>
+<td class="gt_row gt_left">Mexico</td>
+<td class="gt_row gt_left">North America</td>
+<td class="gt_row gt_left">MX</td></tr>
+    <tr><td class="gt_row gt_right">1990</td>
+<td class="gt_row gt_left">Italy</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">IT</td></tr>
+    <tr><td class="gt_row gt_right">1994</td>
+<td class="gt_row gt_left">United States</td>
+<td class="gt_row gt_left">North America</td>
+<td class="gt_row gt_left">US</td></tr>
+    <tr><td class="gt_row gt_right">1998</td>
+<td class="gt_row gt_left">France</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">FR</td></tr>
+    <tr><td class="gt_row gt_right">2002</td>
+<td class="gt_row gt_left">Japan, South Korea</td>
+<td class="gt_row gt_left">Asia</td>
+<td class="gt_row gt_left">JP, KR</td></tr>
+    <tr><td class="gt_row gt_right">2006</td>
+<td class="gt_row gt_left">Germany</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">DE</td></tr>
+    <tr><td class="gt_row gt_right">2010</td>
+<td class="gt_row gt_left">South Africa</td>
+<td class="gt_row gt_left">Africa</td>
+<td class="gt_row gt_left">ZA</td></tr>
+    <tr><td class="gt_row gt_right">2014</td>
+<td class="gt_row gt_left">Brazil</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">BR</td></tr>
+    <tr><td class="gt_row gt_right">2018</td>
+<td class="gt_row gt_left">Russia</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">RU</td></tr>
+    <tr><td class="gt_row gt_right">2022</td>
+<td class="gt_row gt_left">Qatar</td>
+<td class="gt_row gt_left">Asia</td>
+<td class="gt_row gt_left">QA</td></tr>
+    <tr><td class="gt_row gt_right">2026</td>
+<td class="gt_row gt_left">Canada, Mexico, United States</td>
+<td class="gt_row gt_left">North America</td>
+<td class="gt_row gt_left">CA, MX, US</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p>We’ll start by preparing the hosting data for visualization by filling in the gap years where the world cup stopped due to WWII</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co">#add missing years in which world cup was cancelled</span></span>
+<span id="cb63-2"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb63-2" aria-hidden="true" tabindex="-1"></a>df_tm <span class="ot">&lt;-</span> df_host1 <span class="sc">%&gt;%</span> </span>
+<span id="cb63-3"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#add rows with missing years in host_year column</span></span>
+<span id="cb63-4"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(<span class="at">host_year =</span> <span class="fu">full_seq</span>(host_year, <span class="dv">4</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb63-5"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#fill the missing data in the other columns</span></span>
+<span id="cb63-6"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb63-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character),</span>
+<span id="cb63-7"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb63-7" aria-hidden="true" tabindex="-1"></a>                <span class="sc">~</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(.x), <span class="st">&quot;Cancelled&quot;</span>, .x)</span>
+<span id="cb63-8"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb63-8" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb63-9"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb63-9" aria-hidden="true" tabindex="-1"></a>         )</span></code></pre></div>
+<p>We’ll use a chronologically ordered tiles plot (AKA waffle plot) to visualize the timeline of hosting the world cup. Each tile would represent a world cup host. Thus, we need to create a 25-tiles plot (the number of 4-years intervals that represent hosted and cancelled world cup) and order hosts chronologically from left to right, and top to bottom.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Define the position of each tile chronologically</span></span>
+<span id="cb64-2"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb64-2" aria-hidden="true" tabindex="-1"></a>df_tm <span class="ot">&lt;-</span> df_tm <span class="sc">%&gt;%</span></span>
+<span id="cb64-3"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(host_year) <span class="sc">%&gt;%</span> </span>
+<span id="cb64-4"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">5</span>), <span class="co">#number of columns (left to right order)</span></span>
+<span id="cb64-5"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb64-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="fu">rep</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">each =</span> <span class="dv">5</span>) <span class="co">#number of rows (top to bottom order)</span></span>
+<span id="cb64-6"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb64-6" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb64-7"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb64-7" aria-hidden="true" tabindex="-1"></a>gt<span class="sc">::</span><span class="fu">gt</span>(df_tm)</span></code></pre></div>
+<div id="mnvpkuxkat" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#mnvpkuxkat .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mnvpkuxkat .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mnvpkuxkat .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mnvpkuxkat .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mnvpkuxkat .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mnvpkuxkat .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mnvpkuxkat .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mnvpkuxkat .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mnvpkuxkat .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mnvpkuxkat .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mnvpkuxkat .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mnvpkuxkat .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mnvpkuxkat .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mnvpkuxkat .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mnvpkuxkat .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mnvpkuxkat .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mnvpkuxkat .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mnvpkuxkat .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mnvpkuxkat .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mnvpkuxkat .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mnvpkuxkat .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mnvpkuxkat .gt_left {
+  text-align: left;
+}
+
+#mnvpkuxkat .gt_center {
+  text-align: center;
+}
+
+#mnvpkuxkat .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mnvpkuxkat .gt_font_normal {
+  font-weight: normal;
+}
+
+#mnvpkuxkat .gt_font_bold {
+  font-weight: bold;
+}
+
+#mnvpkuxkat .gt_font_italic {
+  font-style: italic;
+}
+
+#mnvpkuxkat .gt_super {
+  font-size: 65%;
+}
+
+#mnvpkuxkat .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#mnvpkuxkat .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mnvpkuxkat .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#mnvpkuxkat .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#mnvpkuxkat .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mnvpkuxkat .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mnvpkuxkat .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">host_year</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">country_name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">continent</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">country_code</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">x</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">y</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right">1930</td>
+<td class="gt_row gt_left">Uruguay</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">UY</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">5</td></tr>
+    <tr><td class="gt_row gt_right">1934</td>
+<td class="gt_row gt_left">Italy</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">IT</td>
+<td class="gt_row gt_right">2</td>
+<td class="gt_row gt_right">5</td></tr>
+    <tr><td class="gt_row gt_right">1938</td>
+<td class="gt_row gt_left">France</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">FR</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">5</td></tr>
+    <tr><td class="gt_row gt_right">1942</td>
+<td class="gt_row gt_left">Cancelled</td>
+<td class="gt_row gt_left">Cancelled</td>
+<td class="gt_row gt_left">Cancelled</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">5</td></tr>
+    <tr><td class="gt_row gt_right">1946</td>
+<td class="gt_row gt_left">Cancelled</td>
+<td class="gt_row gt_left">Cancelled</td>
+<td class="gt_row gt_left">Cancelled</td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_right">5</td></tr>
+    <tr><td class="gt_row gt_right">1950</td>
+<td class="gt_row gt_left">Brazil</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">BR</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">4</td></tr>
+    <tr><td class="gt_row gt_right">1954</td>
+<td class="gt_row gt_left">Switzerland</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">CH</td>
+<td class="gt_row gt_right">2</td>
+<td class="gt_row gt_right">4</td></tr>
+    <tr><td class="gt_row gt_right">1958</td>
+<td class="gt_row gt_left">Sweden</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">SE</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">4</td></tr>
+    <tr><td class="gt_row gt_right">1962</td>
+<td class="gt_row gt_left">Chile</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">CL</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">4</td></tr>
+    <tr><td class="gt_row gt_right">1966</td>
+<td class="gt_row gt_left">England</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">NA</td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_right">4</td></tr>
+    <tr><td class="gt_row gt_right">1970</td>
+<td class="gt_row gt_left">Mexico</td>
+<td class="gt_row gt_left">North America</td>
+<td class="gt_row gt_left">MX</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_right">1974</td>
+<td class="gt_row gt_left">Germany</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">DE</td>
+<td class="gt_row gt_right">2</td>
+<td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_right">1978</td>
+<td class="gt_row gt_left">Argentina</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">AR</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_right">1982</td>
+<td class="gt_row gt_left">Spain</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">ES</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_right">1986</td>
+<td class="gt_row gt_left">Mexico</td>
+<td class="gt_row gt_left">North America</td>
+<td class="gt_row gt_left">MX</td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_right">1990</td>
+<td class="gt_row gt_left">Italy</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">IT</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">2</td></tr>
+    <tr><td class="gt_row gt_right">1994</td>
+<td class="gt_row gt_left">United States</td>
+<td class="gt_row gt_left">North America</td>
+<td class="gt_row gt_left">US</td>
+<td class="gt_row gt_right">2</td>
+<td class="gt_row gt_right">2</td></tr>
+    <tr><td class="gt_row gt_right">1998</td>
+<td class="gt_row gt_left">France</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">FR</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">2</td></tr>
+    <tr><td class="gt_row gt_right">2002</td>
+<td class="gt_row gt_left">Japan, South Korea</td>
+<td class="gt_row gt_left">Asia</td>
+<td class="gt_row gt_left">JP, KR</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">2</td></tr>
+    <tr><td class="gt_row gt_right">2006</td>
+<td class="gt_row gt_left">Germany</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">DE</td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_right">2</td></tr>
+    <tr><td class="gt_row gt_right">2010</td>
+<td class="gt_row gt_left">South Africa</td>
+<td class="gt_row gt_left">Africa</td>
+<td class="gt_row gt_left">ZA</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">1</td></tr>
+    <tr><td class="gt_row gt_right">2014</td>
+<td class="gt_row gt_left">Brazil</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">BR</td>
+<td class="gt_row gt_right">2</td>
+<td class="gt_row gt_right">1</td></tr>
+    <tr><td class="gt_row gt_right">2018</td>
+<td class="gt_row gt_left">Russia</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">RU</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">1</td></tr>
+    <tr><td class="gt_row gt_right">2022</td>
+<td class="gt_row gt_left">Qatar</td>
+<td class="gt_row gt_left">Asia</td>
+<td class="gt_row gt_left">QA</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">1</td></tr>
+    <tr><td class="gt_row gt_right">2026</td>
+<td class="gt_row gt_left">Canada, Mexico, United States</td>
+<td class="gt_row gt_left">North America</td>
+<td class="gt_row gt_left">CA, MX, US</td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_right">1</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p>Let’s have a first look at the time line</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-1" aria-hidden="true" tabindex="-1"></a>df_tm <span class="sc">%&gt;%</span> </span>
 <span id="cb65-2"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y, <span class="at">fill =</span> continent ))<span class="sc">+</span></span>
 <span id="cb65-3"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb65-4"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-4" aria-hidden="true" tabindex="-1"></a>  ggfittext<span class="sc">::</span><span class="fu">geom_fit_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> country_name), <span class="at">size =</span> <span class="dv">13</span>,<span class="at">show.legend =</span> <span class="cn">FALSE</span>)<span class="sc">+</span></span>
-<span id="cb65-5"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#add the time interval of each row</span></span>
-<span id="cb65-6"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> . <span class="sc">%&gt;%</span> </span>
-<span id="cb65-7"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-7" aria-hidden="true" tabindex="-1"></a>              <span class="fu">group_by</span>(y) <span class="sc">%&gt;%</span> </span>
-<span id="cb65-8"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-8" aria-hidden="true" tabindex="-1"></a>              <span class="fu">mutate</span>(<span class="at">range =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&quot;({min(host_year)}-{max(host_year)})&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb65-9"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-9" aria-hidden="true" tabindex="-1"></a>              <span class="fu">ungroup</span>(),</span>
-<span id="cb65-10"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-10" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">label =</span> range),</span>
-<span id="cb65-11"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">x =</span> <span class="sc">-</span><span class="fl">0.5</span>,</span>
-<span id="cb65-12"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">3</span>)<span class="sc">+</span></span>
-<span id="cb65-13"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span> <span class="dv">2</span>))<span class="sc">+</span></span>
-<span id="cb65-14"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">1</span>))<span class="sc">+</span></span>
-<span id="cb65-15"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;History of hosting FIFA world cup&quot;</span>,</span>
-<span id="cb65-16"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Host countries of world cups chronologically orderd and colored by continent&quot;</span>,</span>
-<span id="cb65-17"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> caption_cdc)<span class="sc">+</span></span>
-<span id="cb65-18"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="fl">0.7</span>)<span class="sc">+</span></span>
-<span id="cb65-19"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> conti_cols)<span class="sc">+</span></span>
-<span id="cb65-20"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> conti_cols)<span class="sc">+</span></span>
-<span id="cb65-21"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
-<span id="cb65-22"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb65-23"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb65-24"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb65-25"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb65-26"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>,</span>
-<span id="cb65-27"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">linewidth =</span> <span class="dv">2</span>,<span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>))</span></code></pre></div>
-<p><img src="01-hosting_history_files/figure-html/unnamed-chunk-40-1.png" width="100%" height="100%" /></p>
-<p>This is a condensed and clear representation of our data, which are two desirable features of data visualization.</p>
+<span id="cb65-4"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#add country names within each tile</span></span>
+<span id="cb65-5"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> country_name),</span>
+<span id="cb65-6"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">size =</span> <span class="dv">4</span>,</span>
+<span id="cb65-7"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-7" aria-hidden="true" tabindex="-1"></a>                           <span class="at">show.legend =</span> <span class="cn">FALSE</span>)<span class="sc">+</span></span>
+<span id="cb65-8"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#fill by continent</span></span>
+<span id="cb65-9"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb65-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> conti_cols)</span></code></pre></div>
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.</code></pre>
+<p><img src="01-hosting_history_files/figure-html/unnamed-chunk-41-1.png" width="90%" height="90%" /></p>
+<p>Nice! As you can see hosts are ordered so that the first world cup is in the left-top corner and the 2026 cup is in the right-bottom corner.</p>
+<p>One can easily notice that for years where the world cup was cohosted by more than one country, the text doesn’t fit within the tile. We’ll fix this issue in two steps. First, we can split cohosts in different lines so that they are stacked on top of each other in each tile.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co">#split cohosts into separate lines</span></span>
+<span id="cb67-2"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb67-2" aria-hidden="true" tabindex="-1"></a>df_tm <span class="ot">&lt;-</span> df_tm <span class="sc">%&gt;%</span></span>
+<span id="cb67-3"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="co">#add a new line between cohosts</span></span>
+<span id="cb67-4"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb67-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">country_name =</span> <span class="fu">str_replace_all</span>(country_name, <span class="st">&quot;, &quot;</span>, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>),</span>
+<span id="cb67-5"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb67-5" aria-hidden="true" tabindex="-1"></a>         <span class="co">#order countries by appearance in the timeline</span></span>
+<span id="cb67-6"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb67-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">continent =</span> <span class="fu">factor</span>(continent, <span class="at">levels =</span> <span class="fu">unique</span>(continent)))</span></code></pre></div>
+<p>Second, we’ll use <code>geom_fit_text</code> instead of <code>geom_text</code> to confine the text to the area of each tile. Let’s have another look at the plot after modifying the text.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb68-1" aria-hidden="true" tabindex="-1"></a>(plot <span class="ot">&lt;-</span> df_tm <span class="sc">%&gt;%</span> </span>
+<span id="cb68-2"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb68-3"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(x, y, <span class="at">fill =</span> continent ),</span>
+<span id="cb68-4"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb68-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb68-5"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb68-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#fit country names within each tile</span></span>
+<span id="cb68-6"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb68-6" aria-hidden="true" tabindex="-1"></a>  ggfittext<span class="sc">::</span><span class="fu">geom_fit_text</span>(<span class="fu">aes</span>(x, y, <span class="at">fill =</span> continent,<span class="at">label =</span> country_name), <span class="at">size =</span> <span class="dv">13</span>,<span class="at">show.legend =</span> <span class="cn">FALSE</span>)<span class="sc">+</span></span>
+<span id="cb68-7"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb68-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#fill by continent</span></span>
+<span id="cb68-8"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb68-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> conti_cols))</span></code></pre></div>
+<p><img src="01-hosting_history_files/figure-html/unnamed-chunk-43-1.png" width="90%" height="90%" /></p>
+<p>No doubt that countries’ names are more readable now! We can safely remove the plots axes since they don’t actually add anything and move the legend to the top.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb69-1" aria-hidden="true" tabindex="-1"></a>(plot <span class="ot">&lt;-</span> plot <span class="sc">+</span></span>
+<span id="cb69-2"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb69-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_nothing</span>()<span class="sc">+</span></span>
+<span id="cb69-3"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb69-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>))</span></code></pre></div>
+<p><img src="01-hosting_history_files/figure-html/unnamed-chunk-44-1.png" width="90%" height="90%" /></p>
+<p>Despite the fact that tiles are ordered by year, what’s missing is the year of each cup. How can we add this to the plot? One way would be to indicate the range of years each to the left of each row.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb70-1" aria-hidden="true" tabindex="-1"></a>df_range <span class="ot">&lt;-</span> df_tm <span class="sc">%&gt;%</span> </span>
+<span id="cb70-2"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(y) <span class="sc">%&gt;%</span> </span>
+<span id="cb70-3"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#range of years (first tile - last tile)</span></span>
+<span id="cb70-4"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">range =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&quot;({min(host_year)}-{max(host_year)})&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb70-5"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb70-6"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb70-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(y, range)</span></code></pre></div>
+<p>Let’s add the ranges to the plot and have yet another look</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb71-1" aria-hidden="true" tabindex="-1"></a>(plot <span class="ot">&lt;-</span> plot<span class="sc">+</span></span>
+<span id="cb71-2"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#add the time interval of each row</span></span>
+<span id="cb71-3"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> df_range,</span>
+<span id="cb71-4"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb71-4" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">label =</span> range),</span>
+<span id="cb71-5"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb71-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">x =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
+<span id="cb71-6"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb71-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">4</span>)<span class="sc">+</span></span>
+<span id="cb71-7"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb71-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#expand the plotting area</span></span>
+<span id="cb71-8"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb71-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span> <span class="fu">c</span>(<span class="fl">1.3</span>, <span class="fl">0.2</span>)))</span>
+<span id="cb71-9"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb71-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="01-hosting_history_files/figure-html/unnamed-chunk-46-1.png" width="90%" height="90%" /></p>
+<p>This worked well! We can now easily know the year of hosting of each world cup. Finally, let’s beautify the plot by adding borders and some text for context.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb72-1" aria-hidden="true" tabindex="-1"></a>plot<span class="sc">+</span></span>
+<span id="cb72-2"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;History of hosting FIFA world cup&quot;</span>,</span>
+<span id="cb72-3"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb72-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Host countries of world cups chronologically orderd and colored by continent&quot;</span>,</span>
+<span id="cb72-4"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb72-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> caption_cdc)<span class="sc">+</span></span>
+<span id="cb72-5"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="fl">0.7</span>)<span class="sc">+</span></span>
+<span id="cb72-6"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb72-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb72-7"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb72-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">linewidth =</span> <span class="dv">2</span>,</span>
+<span id="cb72-8"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb72-8" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>,</span>
+<span id="cb72-9"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb72-9" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">color =</span> <span class="st">&quot;black&quot;</span>,</span>
+<span id="cb72-10"><a href="what-is-the-timeline-of-hosting-the-world-cup.html#cb72-10" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">fill =</span> <span class="cn">NA</span>))</span></code></pre></div>
+<p><img src="01-hosting_history_files/figure-html/unnamed-chunk-47-1.png" width="90%" height="90%" /></p>
+<p>YES!! This is a condensed and clear representation of our data, which are two desirable features -when in balance- in data visualization!</p>
 <p><img src="https://media.giphy.com/media/TgL7lPFfyAFITuszOA/giphy.gif" /></p>
 </div>
             </section>

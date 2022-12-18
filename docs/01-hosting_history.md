@@ -111,12 +111,12 @@ gt::gt(head(tbls_lst$list_of_hosts))
 ```
 
 ```{=html}
-<div id="cyojhrmpsn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="fwderivtvy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#cyojhrmpsn .gt_table {
+#fwderivtvy .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -141,7 +141,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-left-color: #D3D3D3;
 }
 
-#cyojhrmpsn .gt_heading {
+#fwderivtvy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -153,7 +153,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-right-color: #D3D3D3;
 }
 
-#cyojhrmpsn .gt_title {
+#fwderivtvy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -165,7 +165,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-bottom-width: 0;
 }
 
-#cyojhrmpsn .gt_subtitle {
+#fwderivtvy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -177,13 +177,13 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-top-width: 0;
 }
 
-#cyojhrmpsn .gt_bottom_border {
+#fwderivtvy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cyojhrmpsn .gt_col_headings {
+#fwderivtvy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -198,7 +198,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-right-color: #D3D3D3;
 }
 
-#cyojhrmpsn .gt_col_heading {
+#fwderivtvy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -218,7 +218,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   overflow-x: hidden;
 }
 
-#cyojhrmpsn .gt_column_spanner_outer {
+#fwderivtvy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -230,15 +230,15 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 4px;
 }
 
-#cyojhrmpsn .gt_column_spanner_outer:first-child {
+#fwderivtvy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cyojhrmpsn .gt_column_spanner_outer:last-child {
+#fwderivtvy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cyojhrmpsn .gt_column_spanner {
+#fwderivtvy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -250,7 +250,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   width: 100%;
 }
 
-#cyojhrmpsn .gt_group_heading {
+#fwderivtvy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -275,7 +275,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   vertical-align: middle;
 }
 
-#cyojhrmpsn .gt_empty_group_heading {
+#fwderivtvy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -290,15 +290,15 @@ gt::gt(head(tbls_lst$list_of_hosts))
   vertical-align: middle;
 }
 
-#cyojhrmpsn .gt_from_md > :first-child {
+#fwderivtvy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cyojhrmpsn .gt_from_md > :last-child {
+#fwderivtvy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cyojhrmpsn .gt_row {
+#fwderivtvy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -317,7 +317,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   overflow-x: hidden;
 }
 
-#cyojhrmpsn .gt_stub {
+#fwderivtvy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -330,7 +330,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#cyojhrmpsn .gt_stub_row_group {
+#fwderivtvy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -344,11 +344,11 @@ gt::gt(head(tbls_lst$list_of_hosts))
   vertical-align: top;
 }
 
-#cyojhrmpsn .gt_row_group_first td {
+#fwderivtvy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cyojhrmpsn .gt_summary_row {
+#fwderivtvy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -358,16 +358,16 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#cyojhrmpsn .gt_first_summary_row {
+#fwderivtvy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cyojhrmpsn .gt_first_summary_row.thick {
+#fwderivtvy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cyojhrmpsn .gt_last_summary_row {
+#fwderivtvy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -377,7 +377,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-bottom-color: #D3D3D3;
 }
 
-#cyojhrmpsn .gt_grand_summary_row {
+#fwderivtvy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -387,7 +387,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#cyojhrmpsn .gt_first_grand_summary_row {
+#fwderivtvy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -397,11 +397,11 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-top-color: #D3D3D3;
 }
 
-#cyojhrmpsn .gt_striped {
+#fwderivtvy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cyojhrmpsn .gt_table_body {
+#fwderivtvy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -410,7 +410,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-bottom-color: #D3D3D3;
 }
 
-#cyojhrmpsn .gt_footnotes {
+#fwderivtvy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -424,7 +424,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-right-color: #D3D3D3;
 }
 
-#cyojhrmpsn .gt_footnote {
+#fwderivtvy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -433,7 +433,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#cyojhrmpsn .gt_sourcenotes {
+#fwderivtvy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -447,7 +447,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-right-color: #D3D3D3;
 }
 
-#cyojhrmpsn .gt_sourcenote {
+#fwderivtvy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -455,64 +455,64 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#cyojhrmpsn .gt_left {
+#fwderivtvy .gt_left {
   text-align: left;
 }
 
-#cyojhrmpsn .gt_center {
+#fwderivtvy .gt_center {
   text-align: center;
 }
 
-#cyojhrmpsn .gt_right {
+#fwderivtvy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cyojhrmpsn .gt_font_normal {
+#fwderivtvy .gt_font_normal {
   font-weight: normal;
 }
 
-#cyojhrmpsn .gt_font_bold {
+#fwderivtvy .gt_font_bold {
   font-weight: bold;
 }
 
-#cyojhrmpsn .gt_font_italic {
+#fwderivtvy .gt_font_italic {
   font-style: italic;
 }
 
-#cyojhrmpsn .gt_super {
+#fwderivtvy .gt_super {
   font-size: 65%;
 }
 
-#cyojhrmpsn .gt_footnote_marks {
+#fwderivtvy .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#cyojhrmpsn .gt_asterisk {
+#fwderivtvy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cyojhrmpsn .gt_indent_1 {
+#fwderivtvy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cyojhrmpsn .gt_indent_2 {
+#fwderivtvy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cyojhrmpsn .gt_indent_3 {
+#fwderivtvy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cyojhrmpsn .gt_indent_4 {
+#fwderivtvy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cyojhrmpsn .gt_indent_5 {
+#fwderivtvy .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -556,12 +556,12 @@ gt::gt(head(tbls_lst$total_bids_by_country))
 ```
 
 ```{=html}
-<div id="vhgtfriwpw" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="qresgpwivq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#vhgtfriwpw .gt_table {
+#qresgpwivq .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -586,7 +586,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-left-color: #D3D3D3;
 }
 
-#vhgtfriwpw .gt_heading {
+#qresgpwivq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -598,7 +598,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-right-color: #D3D3D3;
 }
 
-#vhgtfriwpw .gt_title {
+#qresgpwivq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -610,7 +610,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-bottom-width: 0;
 }
 
-#vhgtfriwpw .gt_subtitle {
+#qresgpwivq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -622,13 +622,13 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-top-width: 0;
 }
 
-#vhgtfriwpw .gt_bottom_border {
+#qresgpwivq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vhgtfriwpw .gt_col_headings {
+#qresgpwivq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -643,7 +643,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-right-color: #D3D3D3;
 }
 
-#vhgtfriwpw .gt_col_heading {
+#qresgpwivq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -663,7 +663,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   overflow-x: hidden;
 }
 
-#vhgtfriwpw .gt_column_spanner_outer {
+#qresgpwivq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -675,15 +675,15 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   padding-right: 4px;
 }
 
-#vhgtfriwpw .gt_column_spanner_outer:first-child {
+#qresgpwivq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vhgtfriwpw .gt_column_spanner_outer:last-child {
+#qresgpwivq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vhgtfriwpw .gt_column_spanner {
+#qresgpwivq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -695,7 +695,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   width: 100%;
 }
 
-#vhgtfriwpw .gt_group_heading {
+#qresgpwivq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -720,7 +720,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   vertical-align: middle;
 }
 
-#vhgtfriwpw .gt_empty_group_heading {
+#qresgpwivq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -735,15 +735,15 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   vertical-align: middle;
 }
 
-#vhgtfriwpw .gt_from_md > :first-child {
+#qresgpwivq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vhgtfriwpw .gt_from_md > :last-child {
+#qresgpwivq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vhgtfriwpw .gt_row {
+#qresgpwivq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -762,7 +762,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   overflow-x: hidden;
 }
 
-#vhgtfriwpw .gt_stub {
+#qresgpwivq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -775,7 +775,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   padding-right: 5px;
 }
 
-#vhgtfriwpw .gt_stub_row_group {
+#qresgpwivq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -789,11 +789,11 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   vertical-align: top;
 }
 
-#vhgtfriwpw .gt_row_group_first td {
+#qresgpwivq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vhgtfriwpw .gt_summary_row {
+#qresgpwivq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -803,16 +803,16 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   padding-right: 5px;
 }
 
-#vhgtfriwpw .gt_first_summary_row {
+#qresgpwivq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vhgtfriwpw .gt_first_summary_row.thick {
+#qresgpwivq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vhgtfriwpw .gt_last_summary_row {
+#qresgpwivq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -822,7 +822,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-bottom-color: #D3D3D3;
 }
 
-#vhgtfriwpw .gt_grand_summary_row {
+#qresgpwivq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -832,7 +832,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   padding-right: 5px;
 }
 
-#vhgtfriwpw .gt_first_grand_summary_row {
+#qresgpwivq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -842,11 +842,11 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-top-color: #D3D3D3;
 }
 
-#vhgtfriwpw .gt_striped {
+#qresgpwivq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vhgtfriwpw .gt_table_body {
+#qresgpwivq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -855,7 +855,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-bottom-color: #D3D3D3;
 }
 
-#vhgtfriwpw .gt_footnotes {
+#qresgpwivq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -869,7 +869,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-right-color: #D3D3D3;
 }
 
-#vhgtfriwpw .gt_footnote {
+#qresgpwivq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -878,7 +878,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   padding-right: 5px;
 }
 
-#vhgtfriwpw .gt_sourcenotes {
+#qresgpwivq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -892,7 +892,7 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   border-right-color: #D3D3D3;
 }
 
-#vhgtfriwpw .gt_sourcenote {
+#qresgpwivq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -900,64 +900,64 @@ gt::gt(head(tbls_lst$total_bids_by_country))
   padding-right: 5px;
 }
 
-#vhgtfriwpw .gt_left {
+#qresgpwivq .gt_left {
   text-align: left;
 }
 
-#vhgtfriwpw .gt_center {
+#qresgpwivq .gt_center {
   text-align: center;
 }
 
-#vhgtfriwpw .gt_right {
+#qresgpwivq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vhgtfriwpw .gt_font_normal {
+#qresgpwivq .gt_font_normal {
   font-weight: normal;
 }
 
-#vhgtfriwpw .gt_font_bold {
+#qresgpwivq .gt_font_bold {
   font-weight: bold;
 }
 
-#vhgtfriwpw .gt_font_italic {
+#qresgpwivq .gt_font_italic {
   font-style: italic;
 }
 
-#vhgtfriwpw .gt_super {
+#qresgpwivq .gt_super {
   font-size: 65%;
 }
 
-#vhgtfriwpw .gt_footnote_marks {
+#qresgpwivq .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#vhgtfriwpw .gt_asterisk {
+#qresgpwivq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vhgtfriwpw .gt_indent_1 {
+#qresgpwivq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vhgtfriwpw .gt_indent_2 {
+#qresgpwivq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vhgtfriwpw .gt_indent_3 {
+#qresgpwivq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vhgtfriwpw .gt_indent_4 {
+#qresgpwivq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vhgtfriwpw .gt_indent_5 {
+#qresgpwivq .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1008,12 +1008,12 @@ gt::gt(head(tbls_lst$host_country_performances))
 ```
 
 ```{=html}
-<div id="lxubniovmv" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="pzdmcqkhob" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#lxubniovmv .gt_table {
+#pzdmcqkhob .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1038,7 +1038,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-left-color: #D3D3D3;
 }
 
-#lxubniovmv .gt_heading {
+#pzdmcqkhob .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1050,7 +1050,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-right-color: #D3D3D3;
 }
 
-#lxubniovmv .gt_title {
+#pzdmcqkhob .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1062,7 +1062,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-bottom-width: 0;
 }
 
-#lxubniovmv .gt_subtitle {
+#pzdmcqkhob .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1074,13 +1074,13 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-top-width: 0;
 }
 
-#lxubniovmv .gt_bottom_border {
+#pzdmcqkhob .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lxubniovmv .gt_col_headings {
+#pzdmcqkhob .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1095,7 +1095,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-right-color: #D3D3D3;
 }
 
-#lxubniovmv .gt_col_heading {
+#pzdmcqkhob .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1115,7 +1115,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   overflow-x: hidden;
 }
 
-#lxubniovmv .gt_column_spanner_outer {
+#pzdmcqkhob .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1127,15 +1127,15 @@ gt::gt(head(tbls_lst$host_country_performances))
   padding-right: 4px;
 }
 
-#lxubniovmv .gt_column_spanner_outer:first-child {
+#pzdmcqkhob .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lxubniovmv .gt_column_spanner_outer:last-child {
+#pzdmcqkhob .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lxubniovmv .gt_column_spanner {
+#pzdmcqkhob .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1147,7 +1147,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   width: 100%;
 }
 
-#lxubniovmv .gt_group_heading {
+#pzdmcqkhob .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1172,7 +1172,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   vertical-align: middle;
 }
 
-#lxubniovmv .gt_empty_group_heading {
+#pzdmcqkhob .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1187,15 +1187,15 @@ gt::gt(head(tbls_lst$host_country_performances))
   vertical-align: middle;
 }
 
-#lxubniovmv .gt_from_md > :first-child {
+#pzdmcqkhob .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lxubniovmv .gt_from_md > :last-child {
+#pzdmcqkhob .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lxubniovmv .gt_row {
+#pzdmcqkhob .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1214,7 +1214,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   overflow-x: hidden;
 }
 
-#lxubniovmv .gt_stub {
+#pzdmcqkhob .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1227,7 +1227,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   padding-right: 5px;
 }
 
-#lxubniovmv .gt_stub_row_group {
+#pzdmcqkhob .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1241,11 +1241,11 @@ gt::gt(head(tbls_lst$host_country_performances))
   vertical-align: top;
 }
 
-#lxubniovmv .gt_row_group_first td {
+#pzdmcqkhob .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lxubniovmv .gt_summary_row {
+#pzdmcqkhob .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1255,16 +1255,16 @@ gt::gt(head(tbls_lst$host_country_performances))
   padding-right: 5px;
 }
 
-#lxubniovmv .gt_first_summary_row {
+#pzdmcqkhob .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lxubniovmv .gt_first_summary_row.thick {
+#pzdmcqkhob .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lxubniovmv .gt_last_summary_row {
+#pzdmcqkhob .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1274,7 +1274,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-bottom-color: #D3D3D3;
 }
 
-#lxubniovmv .gt_grand_summary_row {
+#pzdmcqkhob .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1284,7 +1284,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   padding-right: 5px;
 }
 
-#lxubniovmv .gt_first_grand_summary_row {
+#pzdmcqkhob .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1294,11 +1294,11 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-top-color: #D3D3D3;
 }
 
-#lxubniovmv .gt_striped {
+#pzdmcqkhob .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lxubniovmv .gt_table_body {
+#pzdmcqkhob .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1307,7 +1307,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-bottom-color: #D3D3D3;
 }
 
-#lxubniovmv .gt_footnotes {
+#pzdmcqkhob .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1321,7 +1321,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-right-color: #D3D3D3;
 }
 
-#lxubniovmv .gt_footnote {
+#pzdmcqkhob .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1330,7 +1330,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   padding-right: 5px;
 }
 
-#lxubniovmv .gt_sourcenotes {
+#pzdmcqkhob .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1344,7 +1344,7 @@ gt::gt(head(tbls_lst$host_country_performances))
   border-right-color: #D3D3D3;
 }
 
-#lxubniovmv .gt_sourcenote {
+#pzdmcqkhob .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1352,64 +1352,64 @@ gt::gt(head(tbls_lst$host_country_performances))
   padding-right: 5px;
 }
 
-#lxubniovmv .gt_left {
+#pzdmcqkhob .gt_left {
   text-align: left;
 }
 
-#lxubniovmv .gt_center {
+#pzdmcqkhob .gt_center {
   text-align: center;
 }
 
-#lxubniovmv .gt_right {
+#pzdmcqkhob .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lxubniovmv .gt_font_normal {
+#pzdmcqkhob .gt_font_normal {
   font-weight: normal;
 }
 
-#lxubniovmv .gt_font_bold {
+#pzdmcqkhob .gt_font_bold {
   font-weight: bold;
 }
 
-#lxubniovmv .gt_font_italic {
+#pzdmcqkhob .gt_font_italic {
   font-style: italic;
 }
 
-#lxubniovmv .gt_super {
+#pzdmcqkhob .gt_super {
   font-size: 65%;
 }
 
-#lxubniovmv .gt_footnote_marks {
+#pzdmcqkhob .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#lxubniovmv .gt_asterisk {
+#pzdmcqkhob .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lxubniovmv .gt_indent_1 {
+#pzdmcqkhob .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lxubniovmv .gt_indent_2 {
+#pzdmcqkhob .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lxubniovmv .gt_indent_3 {
+#pzdmcqkhob .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lxubniovmv .gt_indent_4 {
+#pzdmcqkhob .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lxubniovmv .gt_indent_5 {
+#pzdmcqkhob .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1527,21 +1527,21 @@ Parsing data from Web is not a perfect process due to different formatting. We'l
 ## $list_of_hosts
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-5-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-5-1.png" width="90%" height="90%" />
 
 ```
 ## 
 ## $total_bids_by_country
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-5-2.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-5-2.png" width="90%" height="90%" />
 
 ```
 ## 
 ## $host_country_performances
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-5-3.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-5-3.png" width="90%" height="90%" />
 
 ```r
 #Add title of the data to the plot
@@ -1558,21 +1558,21 @@ Parsing data from Web is not a perfect process due to different formatting. We'l
 ## [[1]]
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-5-4.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-5-4.png" width="90%" height="90%" />
 
 ```
 ## 
 ## [[2]]
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-5-5.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-5-5.png" width="90%" height="90%" />
 
 ```
 ## 
 ## [[3]]
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-5-6.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-5-6.png" width="90%" height="90%" />
 
 ```r
 #combine all the tables in a single plot
@@ -1581,7 +1581,7 @@ vis_dat_lst %>%
   theme(legend.position = "bottom")
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-5-7.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-5-7.png" width="90%" height="90%" />
 
 The plots reveal two issues. First, the type of the column "Years" in the second table is character! We'll fix this later, but now let's deal with the second issue. The third table shows missing data in many columns! Let's have a deeper look on this table
 
@@ -1591,12 +1591,12 @@ gt::gt(tbls_lst[[3]])
 ```
 
 ```{=html}
-<div id="prryjmneae" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="yrzlxjbnqz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#prryjmneae .gt_table {
+#yrzlxjbnqz .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1621,7 +1621,7 @@ gt::gt(tbls_lst[[3]])
   border-left-color: #D3D3D3;
 }
 
-#prryjmneae .gt_heading {
+#yrzlxjbnqz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1633,7 +1633,7 @@ gt::gt(tbls_lst[[3]])
   border-right-color: #D3D3D3;
 }
 
-#prryjmneae .gt_title {
+#yrzlxjbnqz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1645,7 +1645,7 @@ gt::gt(tbls_lst[[3]])
   border-bottom-width: 0;
 }
 
-#prryjmneae .gt_subtitle {
+#yrzlxjbnqz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1657,13 +1657,13 @@ gt::gt(tbls_lst[[3]])
   border-top-width: 0;
 }
 
-#prryjmneae .gt_bottom_border {
+#yrzlxjbnqz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#prryjmneae .gt_col_headings {
+#yrzlxjbnqz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1678,7 +1678,7 @@ gt::gt(tbls_lst[[3]])
   border-right-color: #D3D3D3;
 }
 
-#prryjmneae .gt_col_heading {
+#yrzlxjbnqz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1698,7 +1698,7 @@ gt::gt(tbls_lst[[3]])
   overflow-x: hidden;
 }
 
-#prryjmneae .gt_column_spanner_outer {
+#yrzlxjbnqz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1710,15 +1710,15 @@ gt::gt(tbls_lst[[3]])
   padding-right: 4px;
 }
 
-#prryjmneae .gt_column_spanner_outer:first-child {
+#yrzlxjbnqz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#prryjmneae .gt_column_spanner_outer:last-child {
+#yrzlxjbnqz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#prryjmneae .gt_column_spanner {
+#yrzlxjbnqz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1730,7 +1730,7 @@ gt::gt(tbls_lst[[3]])
   width: 100%;
 }
 
-#prryjmneae .gt_group_heading {
+#yrzlxjbnqz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1755,7 +1755,7 @@ gt::gt(tbls_lst[[3]])
   vertical-align: middle;
 }
 
-#prryjmneae .gt_empty_group_heading {
+#yrzlxjbnqz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1770,15 +1770,15 @@ gt::gt(tbls_lst[[3]])
   vertical-align: middle;
 }
 
-#prryjmneae .gt_from_md > :first-child {
+#yrzlxjbnqz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#prryjmneae .gt_from_md > :last-child {
+#yrzlxjbnqz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#prryjmneae .gt_row {
+#yrzlxjbnqz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1797,7 +1797,7 @@ gt::gt(tbls_lst[[3]])
   overflow-x: hidden;
 }
 
-#prryjmneae .gt_stub {
+#yrzlxjbnqz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1810,7 +1810,7 @@ gt::gt(tbls_lst[[3]])
   padding-right: 5px;
 }
 
-#prryjmneae .gt_stub_row_group {
+#yrzlxjbnqz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1824,11 +1824,11 @@ gt::gt(tbls_lst[[3]])
   vertical-align: top;
 }
 
-#prryjmneae .gt_row_group_first td {
+#yrzlxjbnqz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#prryjmneae .gt_summary_row {
+#yrzlxjbnqz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1838,16 +1838,16 @@ gt::gt(tbls_lst[[3]])
   padding-right: 5px;
 }
 
-#prryjmneae .gt_first_summary_row {
+#yrzlxjbnqz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#prryjmneae .gt_first_summary_row.thick {
+#yrzlxjbnqz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#prryjmneae .gt_last_summary_row {
+#yrzlxjbnqz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1857,7 +1857,7 @@ gt::gt(tbls_lst[[3]])
   border-bottom-color: #D3D3D3;
 }
 
-#prryjmneae .gt_grand_summary_row {
+#yrzlxjbnqz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1867,7 +1867,7 @@ gt::gt(tbls_lst[[3]])
   padding-right: 5px;
 }
 
-#prryjmneae .gt_first_grand_summary_row {
+#yrzlxjbnqz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1877,11 +1877,11 @@ gt::gt(tbls_lst[[3]])
   border-top-color: #D3D3D3;
 }
 
-#prryjmneae .gt_striped {
+#yrzlxjbnqz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#prryjmneae .gt_table_body {
+#yrzlxjbnqz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1890,7 +1890,7 @@ gt::gt(tbls_lst[[3]])
   border-bottom-color: #D3D3D3;
 }
 
-#prryjmneae .gt_footnotes {
+#yrzlxjbnqz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1904,7 +1904,7 @@ gt::gt(tbls_lst[[3]])
   border-right-color: #D3D3D3;
 }
 
-#prryjmneae .gt_footnote {
+#yrzlxjbnqz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1913,7 +1913,7 @@ gt::gt(tbls_lst[[3]])
   padding-right: 5px;
 }
 
-#prryjmneae .gt_sourcenotes {
+#yrzlxjbnqz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1927,7 +1927,7 @@ gt::gt(tbls_lst[[3]])
   border-right-color: #D3D3D3;
 }
 
-#prryjmneae .gt_sourcenote {
+#yrzlxjbnqz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1935,64 +1935,64 @@ gt::gt(tbls_lst[[3]])
   padding-right: 5px;
 }
 
-#prryjmneae .gt_left {
+#yrzlxjbnqz .gt_left {
   text-align: left;
 }
 
-#prryjmneae .gt_center {
+#yrzlxjbnqz .gt_center {
   text-align: center;
 }
 
-#prryjmneae .gt_right {
+#yrzlxjbnqz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#prryjmneae .gt_font_normal {
+#yrzlxjbnqz .gt_font_normal {
   font-weight: normal;
 }
 
-#prryjmneae .gt_font_bold {
+#yrzlxjbnqz .gt_font_bold {
   font-weight: bold;
 }
 
-#prryjmneae .gt_font_italic {
+#yrzlxjbnqz .gt_font_italic {
   font-style: italic;
 }
 
-#prryjmneae .gt_super {
+#yrzlxjbnqz .gt_super {
   font-size: 65%;
 }
 
-#prryjmneae .gt_footnote_marks {
+#yrzlxjbnqz .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#prryjmneae .gt_asterisk {
+#yrzlxjbnqz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#prryjmneae .gt_indent_1 {
+#yrzlxjbnqz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#prryjmneae .gt_indent_2 {
+#yrzlxjbnqz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#prryjmneae .gt_indent_3 {
+#yrzlxjbnqz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#prryjmneae .gt_indent_4 {
+#yrzlxjbnqz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#prryjmneae .gt_indent_5 {
+#yrzlxjbnqz .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2635,12 +2635,12 @@ gt::gt(head(tbls_lst$list_of_hosts))
 ```
 
 ```{=html}
-<div id="ueanqiljlp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="qoqkuxmtgy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ueanqiljlp .gt_table {
+#qoqkuxmtgy .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2665,7 +2665,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-left-color: #D3D3D3;
 }
 
-#ueanqiljlp .gt_heading {
+#qoqkuxmtgy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2677,7 +2677,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-right-color: #D3D3D3;
 }
 
-#ueanqiljlp .gt_title {
+#qoqkuxmtgy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2689,7 +2689,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-bottom-width: 0;
 }
 
-#ueanqiljlp .gt_subtitle {
+#qoqkuxmtgy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2701,13 +2701,13 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-top-width: 0;
 }
 
-#ueanqiljlp .gt_bottom_border {
+#qoqkuxmtgy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ueanqiljlp .gt_col_headings {
+#qoqkuxmtgy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2722,7 +2722,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-right-color: #D3D3D3;
 }
 
-#ueanqiljlp .gt_col_heading {
+#qoqkuxmtgy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2742,7 +2742,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   overflow-x: hidden;
 }
 
-#ueanqiljlp .gt_column_spanner_outer {
+#qoqkuxmtgy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2754,15 +2754,15 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 4px;
 }
 
-#ueanqiljlp .gt_column_spanner_outer:first-child {
+#qoqkuxmtgy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ueanqiljlp .gt_column_spanner_outer:last-child {
+#qoqkuxmtgy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ueanqiljlp .gt_column_spanner {
+#qoqkuxmtgy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2774,7 +2774,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   width: 100%;
 }
 
-#ueanqiljlp .gt_group_heading {
+#qoqkuxmtgy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2799,7 +2799,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   vertical-align: middle;
 }
 
-#ueanqiljlp .gt_empty_group_heading {
+#qoqkuxmtgy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2814,15 +2814,15 @@ gt::gt(head(tbls_lst$list_of_hosts))
   vertical-align: middle;
 }
 
-#ueanqiljlp .gt_from_md > :first-child {
+#qoqkuxmtgy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ueanqiljlp .gt_from_md > :last-child {
+#qoqkuxmtgy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ueanqiljlp .gt_row {
+#qoqkuxmtgy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2841,7 +2841,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   overflow-x: hidden;
 }
 
-#ueanqiljlp .gt_stub {
+#qoqkuxmtgy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2854,7 +2854,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#ueanqiljlp .gt_stub_row_group {
+#qoqkuxmtgy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2868,11 +2868,11 @@ gt::gt(head(tbls_lst$list_of_hosts))
   vertical-align: top;
 }
 
-#ueanqiljlp .gt_row_group_first td {
+#qoqkuxmtgy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ueanqiljlp .gt_summary_row {
+#qoqkuxmtgy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2882,16 +2882,16 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#ueanqiljlp .gt_first_summary_row {
+#qoqkuxmtgy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ueanqiljlp .gt_first_summary_row.thick {
+#qoqkuxmtgy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ueanqiljlp .gt_last_summary_row {
+#qoqkuxmtgy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2901,7 +2901,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-bottom-color: #D3D3D3;
 }
 
-#ueanqiljlp .gt_grand_summary_row {
+#qoqkuxmtgy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2911,7 +2911,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#ueanqiljlp .gt_first_grand_summary_row {
+#qoqkuxmtgy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2921,11 +2921,11 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-top-color: #D3D3D3;
 }
 
-#ueanqiljlp .gt_striped {
+#qoqkuxmtgy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ueanqiljlp .gt_table_body {
+#qoqkuxmtgy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2934,7 +2934,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-bottom-color: #D3D3D3;
 }
 
-#ueanqiljlp .gt_footnotes {
+#qoqkuxmtgy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2948,7 +2948,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-right-color: #D3D3D3;
 }
 
-#ueanqiljlp .gt_footnote {
+#qoqkuxmtgy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -2957,7 +2957,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#ueanqiljlp .gt_sourcenotes {
+#qoqkuxmtgy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2971,7 +2971,7 @@ gt::gt(head(tbls_lst$list_of_hosts))
   border-right-color: #D3D3D3;
 }
 
-#ueanqiljlp .gt_sourcenote {
+#qoqkuxmtgy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2979,64 +2979,64 @@ gt::gt(head(tbls_lst$list_of_hosts))
   padding-right: 5px;
 }
 
-#ueanqiljlp .gt_left {
+#qoqkuxmtgy .gt_left {
   text-align: left;
 }
 
-#ueanqiljlp .gt_center {
+#qoqkuxmtgy .gt_center {
   text-align: center;
 }
 
-#ueanqiljlp .gt_right {
+#qoqkuxmtgy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ueanqiljlp .gt_font_normal {
+#qoqkuxmtgy .gt_font_normal {
   font-weight: normal;
 }
 
-#ueanqiljlp .gt_font_bold {
+#qoqkuxmtgy .gt_font_bold {
   font-weight: bold;
 }
 
-#ueanqiljlp .gt_font_italic {
+#qoqkuxmtgy .gt_font_italic {
   font-style: italic;
 }
 
-#ueanqiljlp .gt_super {
+#qoqkuxmtgy .gt_super {
   font-size: 65%;
 }
 
-#ueanqiljlp .gt_footnote_marks {
+#qoqkuxmtgy .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ueanqiljlp .gt_asterisk {
+#qoqkuxmtgy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ueanqiljlp .gt_indent_1 {
+#qoqkuxmtgy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ueanqiljlp .gt_indent_2 {
+#qoqkuxmtgy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ueanqiljlp .gt_indent_3 {
+#qoqkuxmtgy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ueanqiljlp .gt_indent_4 {
+#qoqkuxmtgy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ueanqiljlp .gt_indent_5 {
+#qoqkuxmtgy .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -3100,12 +3100,12 @@ gt::gt(df_host1)
 ```
 
 ```{=html}
-<div id="hmtlrgzeie" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="eusouiuybm" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#hmtlrgzeie .gt_table {
+#eusouiuybm .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -3130,7 +3130,7 @@ gt::gt(df_host1)
   border-left-color: #D3D3D3;
 }
 
-#hmtlrgzeie .gt_heading {
+#eusouiuybm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3142,7 +3142,7 @@ gt::gt(df_host1)
   border-right-color: #D3D3D3;
 }
 
-#hmtlrgzeie .gt_title {
+#eusouiuybm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3154,7 +3154,7 @@ gt::gt(df_host1)
   border-bottom-width: 0;
 }
 
-#hmtlrgzeie .gt_subtitle {
+#eusouiuybm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3166,13 +3166,13 @@ gt::gt(df_host1)
   border-top-width: 0;
 }
 
-#hmtlrgzeie .gt_bottom_border {
+#eusouiuybm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hmtlrgzeie .gt_col_headings {
+#eusouiuybm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3187,7 +3187,7 @@ gt::gt(df_host1)
   border-right-color: #D3D3D3;
 }
 
-#hmtlrgzeie .gt_col_heading {
+#eusouiuybm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3207,7 +3207,7 @@ gt::gt(df_host1)
   overflow-x: hidden;
 }
 
-#hmtlrgzeie .gt_column_spanner_outer {
+#eusouiuybm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3219,15 +3219,15 @@ gt::gt(df_host1)
   padding-right: 4px;
 }
 
-#hmtlrgzeie .gt_column_spanner_outer:first-child {
+#eusouiuybm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hmtlrgzeie .gt_column_spanner_outer:last-child {
+#eusouiuybm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hmtlrgzeie .gt_column_spanner {
+#eusouiuybm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3239,7 +3239,7 @@ gt::gt(df_host1)
   width: 100%;
 }
 
-#hmtlrgzeie .gt_group_heading {
+#eusouiuybm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3264,7 +3264,7 @@ gt::gt(df_host1)
   vertical-align: middle;
 }
 
-#hmtlrgzeie .gt_empty_group_heading {
+#eusouiuybm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3279,15 +3279,15 @@ gt::gt(df_host1)
   vertical-align: middle;
 }
 
-#hmtlrgzeie .gt_from_md > :first-child {
+#eusouiuybm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hmtlrgzeie .gt_from_md > :last-child {
+#eusouiuybm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hmtlrgzeie .gt_row {
+#eusouiuybm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3306,7 +3306,7 @@ gt::gt(df_host1)
   overflow-x: hidden;
 }
 
-#hmtlrgzeie .gt_stub {
+#eusouiuybm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3319,7 +3319,7 @@ gt::gt(df_host1)
   padding-right: 5px;
 }
 
-#hmtlrgzeie .gt_stub_row_group {
+#eusouiuybm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3333,11 +3333,11 @@ gt::gt(df_host1)
   vertical-align: top;
 }
 
-#hmtlrgzeie .gt_row_group_first td {
+#eusouiuybm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hmtlrgzeie .gt_summary_row {
+#eusouiuybm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3347,16 +3347,16 @@ gt::gt(df_host1)
   padding-right: 5px;
 }
 
-#hmtlrgzeie .gt_first_summary_row {
+#eusouiuybm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hmtlrgzeie .gt_first_summary_row.thick {
+#eusouiuybm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hmtlrgzeie .gt_last_summary_row {
+#eusouiuybm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3366,7 +3366,7 @@ gt::gt(df_host1)
   border-bottom-color: #D3D3D3;
 }
 
-#hmtlrgzeie .gt_grand_summary_row {
+#eusouiuybm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3376,7 +3376,7 @@ gt::gt(df_host1)
   padding-right: 5px;
 }
 
-#hmtlrgzeie .gt_first_grand_summary_row {
+#eusouiuybm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3386,11 +3386,11 @@ gt::gt(df_host1)
   border-top-color: #D3D3D3;
 }
 
-#hmtlrgzeie .gt_striped {
+#eusouiuybm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hmtlrgzeie .gt_table_body {
+#eusouiuybm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3399,7 +3399,7 @@ gt::gt(df_host1)
   border-bottom-color: #D3D3D3;
 }
 
-#hmtlrgzeie .gt_footnotes {
+#eusouiuybm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3413,7 +3413,7 @@ gt::gt(df_host1)
   border-right-color: #D3D3D3;
 }
 
-#hmtlrgzeie .gt_footnote {
+#eusouiuybm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -3422,7 +3422,7 @@ gt::gt(df_host1)
   padding-right: 5px;
 }
 
-#hmtlrgzeie .gt_sourcenotes {
+#eusouiuybm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3436,7 +3436,7 @@ gt::gt(df_host1)
   border-right-color: #D3D3D3;
 }
 
-#hmtlrgzeie .gt_sourcenote {
+#eusouiuybm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3444,64 +3444,64 @@ gt::gt(df_host1)
   padding-right: 5px;
 }
 
-#hmtlrgzeie .gt_left {
+#eusouiuybm .gt_left {
   text-align: left;
 }
 
-#hmtlrgzeie .gt_center {
+#eusouiuybm .gt_center {
   text-align: center;
 }
 
-#hmtlrgzeie .gt_right {
+#eusouiuybm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hmtlrgzeie .gt_font_normal {
+#eusouiuybm .gt_font_normal {
   font-weight: normal;
 }
 
-#hmtlrgzeie .gt_font_bold {
+#eusouiuybm .gt_font_bold {
   font-weight: bold;
 }
 
-#hmtlrgzeie .gt_font_italic {
+#eusouiuybm .gt_font_italic {
   font-style: italic;
 }
 
-#hmtlrgzeie .gt_super {
+#eusouiuybm .gt_super {
   font-size: 65%;
 }
 
-#hmtlrgzeie .gt_footnote_marks {
+#eusouiuybm .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#hmtlrgzeie .gt_asterisk {
+#eusouiuybm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hmtlrgzeie .gt_indent_1 {
+#eusouiuybm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hmtlrgzeie .gt_indent_2 {
+#eusouiuybm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hmtlrgzeie .gt_indent_3 {
+#eusouiuybm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hmtlrgzeie .gt_indent_4 {
+#eusouiuybm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hmtlrgzeie .gt_indent_5 {
+#eusouiuybm .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -3624,7 +3624,7 @@ Let's look at a basic bar plot of the data
   geom_bar())
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-20-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-20-1.png" width="90%" height="90%" />
 
 This doesn't look pretty. Let's make it more attractive! First, let's add a some colors.
 
@@ -3649,7 +3649,7 @@ conti_cols <- c(Europe = "#1f78b4",
   scale_fill_manual(values = conti_cols))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-22-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-22-1.png" width="90%" height="90%" />
 
 Now let's add some text to give context to the visualized data.
 
@@ -3661,7 +3661,7 @@ Now let's add some text to give context to the visualized data.
        caption = caption_cdc))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-23-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-23-1.png" width="90%" height="90%" />
 
 Next, let's order continents by number of hosted games
 
@@ -3716,7 +3716,7 @@ Let's put things together and have a look on the updated plot. Also, I think we 
         axis.title = element_blank()))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-26-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-26-1.png" width="90%" height="90%" />
 
 These long bars, there's something about them. Something ... empty. I got an idea! Why not fill them with the names of the hosting countries?! That would look awesome!
 
@@ -3754,7 +3754,7 @@ Let's fill these empty bars with the names of the hosting countries
                             ))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-28-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-28-1.png" width="90%" height="90%" />
 
 This looks really beautiful, but with some deficits. One can notice some names of co-hosting countries and continents that are "overflowing" outside their bar.
 
@@ -3809,7 +3809,7 @@ df_txt_bar2 <- df_txt_bar %>%
   theme_nothing())
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-30-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-30-1.png" width="90%" height="90%" />
 
 This worked nicely! I will finalize this plot by adding an image of world cup in the background! Yes, you can do this in R. I got the code for the function `trasparent` used below from an answer [here](#https://stackoverflow.com/questions/60820565/is-there-a-way-to-add-an-alpha-value-within-geom-image-in-ggplot).
 
@@ -3830,7 +3830,7 @@ bar_host_plt+
                       size = 1)
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-31-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-31-1.png" width="90%" height="90%" />
 
 Isn't that nice?!
 
@@ -3945,7 +3945,7 @@ Let's plot a basic map of the world using ggplot.
   theme(panel.background = element_rect(fill = "lightblue")))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-34-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-34-1.png" width="90%" height="90%" />
 
 Cool! Finally, let's make the map extra flashy by filling hosting countries with their maps.
 
@@ -3984,7 +3984,7 @@ plot +
        caption = caption_cdc)
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-37-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-37-1.png" width="90%" height="90%" />
 
 I'm very happy with the end result!
 
@@ -3996,36 +3996,1145 @@ Have a look at this [excellent blog](https://dieghernan.github.io/202201_maps-fl
 
 What was missing from the previous representation of the data is the time component. In this section we'll explore a visualization method that would allow us to add this crucial aspect.
 
-Let's start by preparing the hosting data for visualization by filling in the gap years where the world cup stopped due to WWII
+Let's have a look on the data.
+
+
+```r
+gt::gt(df_host1)
+```
+
+```{=html}
+<div id="pxuadajrpu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#pxuadajrpu .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pxuadajrpu .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pxuadajrpu .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pxuadajrpu .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pxuadajrpu .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pxuadajrpu .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pxuadajrpu .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pxuadajrpu .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pxuadajrpu .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pxuadajrpu .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#pxuadajrpu .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#pxuadajrpu .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pxuadajrpu .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pxuadajrpu .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#pxuadajrpu .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#pxuadajrpu .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pxuadajrpu .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#pxuadajrpu .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pxuadajrpu .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pxuadajrpu .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pxuadajrpu .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pxuadajrpu .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pxuadajrpu .gt_left {
+  text-align: left;
+}
+
+#pxuadajrpu .gt_center {
+  text-align: center;
+}
+
+#pxuadajrpu .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pxuadajrpu .gt_font_normal {
+  font-weight: normal;
+}
+
+#pxuadajrpu .gt_font_bold {
+  font-weight: bold;
+}
+
+#pxuadajrpu .gt_font_italic {
+  font-style: italic;
+}
+
+#pxuadajrpu .gt_super {
+  font-size: 65%;
+}
+
+#pxuadajrpu .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#pxuadajrpu .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#pxuadajrpu .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#pxuadajrpu .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#pxuadajrpu .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#pxuadajrpu .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#pxuadajrpu .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">host_year</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">country_name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">continent</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">country_code</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right">1930</td>
+<td class="gt_row gt_left">Uruguay</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">UY</td></tr>
+    <tr><td class="gt_row gt_right">1934</td>
+<td class="gt_row gt_left">Italy</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">IT</td></tr>
+    <tr><td class="gt_row gt_right">1938</td>
+<td class="gt_row gt_left">France</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">FR</td></tr>
+    <tr><td class="gt_row gt_right">1950</td>
+<td class="gt_row gt_left">Brazil</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">BR</td></tr>
+    <tr><td class="gt_row gt_right">1954</td>
+<td class="gt_row gt_left">Switzerland</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">CH</td></tr>
+    <tr><td class="gt_row gt_right">1958</td>
+<td class="gt_row gt_left">Sweden</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">SE</td></tr>
+    <tr><td class="gt_row gt_right">1962</td>
+<td class="gt_row gt_left">Chile</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">CL</td></tr>
+    <tr><td class="gt_row gt_right">1966</td>
+<td class="gt_row gt_left">England</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">NA</td></tr>
+    <tr><td class="gt_row gt_right">1970</td>
+<td class="gt_row gt_left">Mexico</td>
+<td class="gt_row gt_left">North America</td>
+<td class="gt_row gt_left">MX</td></tr>
+    <tr><td class="gt_row gt_right">1974</td>
+<td class="gt_row gt_left">Germany</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">DE</td></tr>
+    <tr><td class="gt_row gt_right">1978</td>
+<td class="gt_row gt_left">Argentina</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">AR</td></tr>
+    <tr><td class="gt_row gt_right">1982</td>
+<td class="gt_row gt_left">Spain</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">ES</td></tr>
+    <tr><td class="gt_row gt_right">1986</td>
+<td class="gt_row gt_left">Mexico</td>
+<td class="gt_row gt_left">North America</td>
+<td class="gt_row gt_left">MX</td></tr>
+    <tr><td class="gt_row gt_right">1990</td>
+<td class="gt_row gt_left">Italy</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">IT</td></tr>
+    <tr><td class="gt_row gt_right">1994</td>
+<td class="gt_row gt_left">United States</td>
+<td class="gt_row gt_left">North America</td>
+<td class="gt_row gt_left">US</td></tr>
+    <tr><td class="gt_row gt_right">1998</td>
+<td class="gt_row gt_left">France</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">FR</td></tr>
+    <tr><td class="gt_row gt_right">2002</td>
+<td class="gt_row gt_left">Japan, South Korea</td>
+<td class="gt_row gt_left">Asia</td>
+<td class="gt_row gt_left">JP, KR</td></tr>
+    <tr><td class="gt_row gt_right">2006</td>
+<td class="gt_row gt_left">Germany</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">DE</td></tr>
+    <tr><td class="gt_row gt_right">2010</td>
+<td class="gt_row gt_left">South Africa</td>
+<td class="gt_row gt_left">Africa</td>
+<td class="gt_row gt_left">ZA</td></tr>
+    <tr><td class="gt_row gt_right">2014</td>
+<td class="gt_row gt_left">Brazil</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">BR</td></tr>
+    <tr><td class="gt_row gt_right">2018</td>
+<td class="gt_row gt_left">Russia</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">RU</td></tr>
+    <tr><td class="gt_row gt_right">2022</td>
+<td class="gt_row gt_left">Qatar</td>
+<td class="gt_row gt_left">Asia</td>
+<td class="gt_row gt_left">QA</td></tr>
+    <tr><td class="gt_row gt_right">2026</td>
+<td class="gt_row gt_left">Canada, Mexico, United States</td>
+<td class="gt_row gt_left">North America</td>
+<td class="gt_row gt_left">CA, MX, US</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+```
+
+We'll start by preparing the hosting data for visualization by filling in the gap years where the world cup stopped due to WWII
 
 
 ```r
 #add missing years in which world cup was cancelled
 df_tm <- df_host1 %>% 
+  #add rows with missing years in host_year column
   complete(host_year = full_seq(host_year, 4)) %>% 
-  mutate(continent = ifelse(is.na(continent), "Cancelled", continent),
-         country_name = ifelse(is.na(country_name), "Cancelled", country_name))
-#make a 6x5 grid from the hosting data and add the coordinate of each cell in the grid
-df_tm <- df_tm[1:30,] %>% 
-  mutate(y = rep(6:1, each = 5),
-         x = rep(1:5, 6),
-         country_name = case_when(
-           str_detect(country_name, "Canada") ~ "Canada\nMexico\nUnited States", #add a new line between cohosts
-           str_detect(country_name, "Japan") ~ "Japan\nSouth Korea", #add new line between cohosts
-           TRUE ~ country_name),
-         continent = factor(continent, levels = unique(continent))) %>% 
-  filter(!is.na(continent))
+  #fill the missing data in the other columns
+  mutate(across(where(is.character),
+                ~ ifelse(is.na(.x), "Cancelled", .x)
+                )
+         )
 ```
 
-Let's use chronologically ordered tiles (AKA waffle plot) to look at the timeline of hosting the world cup.
+We'll use a chronologically ordered tiles plot (AKA waffle plot) to visualize the timeline of hosting the world cup. Each tile would represent a world cup host. Thus, we need to create a 25-tiles plot (the number of 4-years intervals that represent hosted and cancelled world cup) and order hosts chronologically from left to right, and top to bottom.
+
+
+```r
+#Define the position of each tile chronologically
+df_tm <- df_tm %>%
+  arrange(host_year) %>% 
+  mutate(x = rep(1:5, 5), #number of columns (left to right order)
+         y = rep(5:1, each = 5) #number of rows (top to bottom order)
+         )
+gt::gt(df_tm)
+```
+
+```{=html}
+<div id="mnvpkuxkat" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#mnvpkuxkat .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mnvpkuxkat .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mnvpkuxkat .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mnvpkuxkat .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mnvpkuxkat .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mnvpkuxkat .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mnvpkuxkat .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mnvpkuxkat .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mnvpkuxkat .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mnvpkuxkat .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mnvpkuxkat .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mnvpkuxkat .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mnvpkuxkat .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mnvpkuxkat .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mnvpkuxkat .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mnvpkuxkat .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mnvpkuxkat .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mnvpkuxkat .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mnvpkuxkat .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mnvpkuxkat .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mnvpkuxkat .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mnvpkuxkat .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mnvpkuxkat .gt_left {
+  text-align: left;
+}
+
+#mnvpkuxkat .gt_center {
+  text-align: center;
+}
+
+#mnvpkuxkat .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mnvpkuxkat .gt_font_normal {
+  font-weight: normal;
+}
+
+#mnvpkuxkat .gt_font_bold {
+  font-weight: bold;
+}
+
+#mnvpkuxkat .gt_font_italic {
+  font-style: italic;
+}
+
+#mnvpkuxkat .gt_super {
+  font-size: 65%;
+}
+
+#mnvpkuxkat .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#mnvpkuxkat .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mnvpkuxkat .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#mnvpkuxkat .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#mnvpkuxkat .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mnvpkuxkat .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mnvpkuxkat .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">host_year</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">country_name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">continent</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">country_code</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">x</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">y</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right">1930</td>
+<td class="gt_row gt_left">Uruguay</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">UY</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">5</td></tr>
+    <tr><td class="gt_row gt_right">1934</td>
+<td class="gt_row gt_left">Italy</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">IT</td>
+<td class="gt_row gt_right">2</td>
+<td class="gt_row gt_right">5</td></tr>
+    <tr><td class="gt_row gt_right">1938</td>
+<td class="gt_row gt_left">France</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">FR</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">5</td></tr>
+    <tr><td class="gt_row gt_right">1942</td>
+<td class="gt_row gt_left">Cancelled</td>
+<td class="gt_row gt_left">Cancelled</td>
+<td class="gt_row gt_left">Cancelled</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">5</td></tr>
+    <tr><td class="gt_row gt_right">1946</td>
+<td class="gt_row gt_left">Cancelled</td>
+<td class="gt_row gt_left">Cancelled</td>
+<td class="gt_row gt_left">Cancelled</td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_right">5</td></tr>
+    <tr><td class="gt_row gt_right">1950</td>
+<td class="gt_row gt_left">Brazil</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">BR</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">4</td></tr>
+    <tr><td class="gt_row gt_right">1954</td>
+<td class="gt_row gt_left">Switzerland</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">CH</td>
+<td class="gt_row gt_right">2</td>
+<td class="gt_row gt_right">4</td></tr>
+    <tr><td class="gt_row gt_right">1958</td>
+<td class="gt_row gt_left">Sweden</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">SE</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">4</td></tr>
+    <tr><td class="gt_row gt_right">1962</td>
+<td class="gt_row gt_left">Chile</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">CL</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">4</td></tr>
+    <tr><td class="gt_row gt_right">1966</td>
+<td class="gt_row gt_left">England</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">NA</td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_right">4</td></tr>
+    <tr><td class="gt_row gt_right">1970</td>
+<td class="gt_row gt_left">Mexico</td>
+<td class="gt_row gt_left">North America</td>
+<td class="gt_row gt_left">MX</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_right">1974</td>
+<td class="gt_row gt_left">Germany</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">DE</td>
+<td class="gt_row gt_right">2</td>
+<td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_right">1978</td>
+<td class="gt_row gt_left">Argentina</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">AR</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_right">1982</td>
+<td class="gt_row gt_left">Spain</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">ES</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_right">1986</td>
+<td class="gt_row gt_left">Mexico</td>
+<td class="gt_row gt_left">North America</td>
+<td class="gt_row gt_left">MX</td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_right">1990</td>
+<td class="gt_row gt_left">Italy</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">IT</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">2</td></tr>
+    <tr><td class="gt_row gt_right">1994</td>
+<td class="gt_row gt_left">United States</td>
+<td class="gt_row gt_left">North America</td>
+<td class="gt_row gt_left">US</td>
+<td class="gt_row gt_right">2</td>
+<td class="gt_row gt_right">2</td></tr>
+    <tr><td class="gt_row gt_right">1998</td>
+<td class="gt_row gt_left">France</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">FR</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">2</td></tr>
+    <tr><td class="gt_row gt_right">2002</td>
+<td class="gt_row gt_left">Japan, South Korea</td>
+<td class="gt_row gt_left">Asia</td>
+<td class="gt_row gt_left">JP, KR</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">2</td></tr>
+    <tr><td class="gt_row gt_right">2006</td>
+<td class="gt_row gt_left">Germany</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">DE</td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_right">2</td></tr>
+    <tr><td class="gt_row gt_right">2010</td>
+<td class="gt_row gt_left">South Africa</td>
+<td class="gt_row gt_left">Africa</td>
+<td class="gt_row gt_left">ZA</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">1</td></tr>
+    <tr><td class="gt_row gt_right">2014</td>
+<td class="gt_row gt_left">Brazil</td>
+<td class="gt_row gt_left">South America</td>
+<td class="gt_row gt_left">BR</td>
+<td class="gt_row gt_right">2</td>
+<td class="gt_row gt_right">1</td></tr>
+    <tr><td class="gt_row gt_right">2018</td>
+<td class="gt_row gt_left">Russia</td>
+<td class="gt_row gt_left">Europe</td>
+<td class="gt_row gt_left">RU</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">1</td></tr>
+    <tr><td class="gt_row gt_right">2022</td>
+<td class="gt_row gt_left">Qatar</td>
+<td class="gt_row gt_left">Asia</td>
+<td class="gt_row gt_left">QA</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">1</td></tr>
+    <tr><td class="gt_row gt_right">2026</td>
+<td class="gt_row gt_left">Canada, Mexico, United States</td>
+<td class="gt_row gt_left">North America</td>
+<td class="gt_row gt_left">CA, MX, US</td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_right">1</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+```
+
+Let's have a first look at the time line
 
 
 ```r
 df_tm %>% 
   ggplot(aes(x, y, fill = continent ))+
   geom_tile(color = "black", size = 1)+
-  ggfittext::geom_fit_text(aes(label = country_name), size = 13,show.legend = FALSE)+
-  scale_color_manual(values = conti_cols)+
+  #add country names within each tile
+  geom_text(aes(label = country_name),
+                           size = 4,
+                           show.legend = FALSE)+
+  #fill by continent
   scale_fill_manual(values = conti_cols)
 ```
 
@@ -4034,44 +5143,97 @@ df_tm %>%
 ## ℹ Please use `linewidth` instead.
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-39-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-41-1.png" width="90%" height="90%" />
 
-That's a good start! Let's add the year information and further beautify the plot.
+Nice! As you can see hosts are ordered so that the first world cup is in the left-top corner and the 2026 cup is in the right-bottom corner.
+
+One can easily notice that for years where the world cup was cohosted by more than one country, the text doesn't fit within the tile. We'll fix this issue in two steps. First, we can split cohosts in different lines so that they are stacked on top of each other in each tile.
 
 
 ```r
-df_tm %>% 
-  ggplot(aes(x, y, fill = continent ))+
-  geom_tile(color = "black", size = 1)+
-  ggfittext::geom_fit_text(aes(label = country_name), size = 13,show.legend = FALSE)+
+#split cohosts into separate lines
+df_tm <- df_tm %>%
+  mutate(#add a new line between cohosts
+         country_name = str_replace_all(country_name, ", ", "\n"),
+         #order countries by appearance in the timeline
+         continent = factor(continent, levels = unique(continent)))
+```
+
+Second, we'll use `geom_fit_text` instead of `geom_text` to confine the text to the area of each tile. Let's have another look at the plot after modifying the text.
+
+
+```r
+(plot <- df_tm %>% 
+  ggplot()+
+  geom_tile(aes(x, y, fill = continent ),
+            color = "black", size = 1)+
+  #fit country names within each tile
+  ggfittext::geom_fit_text(aes(x, y, fill = continent,label = country_name), size = 13,show.legend = FALSE)+
+  #fill by continent
+  scale_fill_manual(values = conti_cols))
+```
+
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-43-1.png" width="90%" height="90%" />
+
+No doubt that countries' names are more readable now! We can safely remove the plots axes since they don't actually add anything and move the legend to the top.
+
+
+```r
+(plot <- plot +
+    theme_nothing()+
+    theme(legend.position = "top"))
+```
+
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-44-1.png" width="90%" height="90%" />
+
+Despite the fact that tiles are ordered by year, what's missing is the year of each cup. How can we add this to the plot? One way would be to indicate the range of years each to the left of each row.
+
+
+```r
+df_range <- df_tm %>% 
+  group_by(y) %>% 
+  #range of years (first tile - last tile)
+  mutate(range = glue::glue("({min(host_year)}-{max(host_year)})")) %>%
+  ungroup() %>%
+  distinct(y, range)
+```
+
+Let's add the ranges to the plot and have yet another look
+
+
+```r
+(plot <- plot+
   #add the time interval of each row
-  geom_text(data = . %>% 
-              group_by(y) %>% 
-              mutate(range = glue::glue("({min(host_year)}-{max(host_year)})")) %>% 
-              ungroup(),
-            aes(label = range),
-            x = -0.5,
-            size = 3)+
-  scale_x_discrete(expand = expansion(add = 2))+
-  guides(fill = guide_legend(nrow = 1))+
+  geom_text(data = df_range,
+            aes(y = y, label = range),
+            x = -0.1,
+            size = 4)+
+  #expand the plotting area
+  scale_x_discrete(expand = expansion(add = c(1.3, 0.2)))
+)
+```
+
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-46-1.png" width="90%" height="90%" />
+
+This worked well! We can now easily know the year of hosting of each world cup. Finally, let's beautify the plot by adding borders and some text for context.
+
+
+```r
+plot+
   labs(title = "History of hosting FIFA world cup",
        subtitle = "Host countries of world cups chronologically orderd and colored by continent",
        caption = caption_cdc)+
   coord_fixed(0.7)+
-  scale_color_manual(values = conti_cols)+
-  scale_fill_manual(values = conti_cols)+
   theme(title = element_text(size = 10),
-        axis.line = element_blank(),
-        axis.ticks = element_blank(),
-        axis.text = element_blank(),
-        axis.title = element_blank(),
-        legend.position = "top",
-        panel.border = element_rect(linewidth = 2,linetype = "solid", color = "black"))
+        panel.border = element_rect(linewidth = 2,
+                                    linetype = "solid",
+                                    color = "black",
+                                    fill = NA))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-40-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-47-1.png" width="90%" height="90%" />
 
-This is a condensed and clear representation of our data, which are two desirable features of data visualization.
+YES!! This is a condensed and clear representation of our data, which are two desirable features -when in balance- in data visualization!
 
 ![](https://media.giphy.com/media/TgL7lPFfyAFITuszOA/giphy.gif)
 
@@ -4117,7 +5279,7 @@ Next, add a layer of bars showing the times of bids using a transparent color
   geom_col(aes(country_name, bids), fill = "#35978f", alpha = 0.3))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-42-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-49-1.png" width="90%" height="90%" />
 
 Then, add yet another layer of bars showing the times hosted using solid version of the same color
 
@@ -4128,7 +5290,7 @@ Then, add yet another layer of bars showing the times hosted using solid version
   coord_flip())
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-43-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-50-1.png" width="90%" height="90%" />
 
 Finally, add world cup image in the background, text, and customize the theme
 
@@ -4153,7 +5315,7 @@ Finally, add world cup image in the background, text, and customize the theme
         title = element_text(colour = "#01665e", size = 9)))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-44-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-51-1.png" width="90%" height="90%" />
 
 Nice! The plot shows that most of the time, it takes more than one bid to host the world cup.
 
@@ -4170,7 +5332,7 @@ First, let's plot the number of bids on the x-axis and the time hosted on the y-
   geom_point(color = "#35978f"))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-45-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-52-1.png" width="90%" height="90%" />
 
 Next, let's add the name of the country to the repreresentitive point
 
@@ -4181,7 +5343,7 @@ Next, let's add the name of the country to the repreresentitive point
             size = 4))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-46-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-53-1.png" width="90%" height="90%" />
 
 Oh no! Since many countries share the same bids and hosting statitics, we end up with a dramatic case of text over-plotting.
 
@@ -4208,7 +5370,7 @@ point_bid_plt$layers[[2]] <- NULL
                      expand = expansion(add = c(1,0.5))))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-47-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-54-1.png" width="90%" height="90%" />
 
 As the name says, `geom_text_repel()` makes the text repel away from each other to avoid over-plotting. The text also repel away from the edges of the plot. To avoid the undesired effect of later, we expanded the plotting are using the function `expansion()` in x and y direction
 
@@ -4233,7 +5395,7 @@ point_bid_plt+
         title = element_text(colour = "#01665e"))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-48-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-55-1.png" width="90%" height="90%" />
 
 It's now clear that Germany has the lion's share of submitted bids, while Morocco is obviously lacks a bit of luck!
 
@@ -4267,7 +5429,7 @@ df_bid_host1 <- tbls_lst$list_of_hosts %>%
             fill = "#c7eae5", color = "white", size = 0.5) )
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-50-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-57-1.png" width="90%" height="90%" />
 
 Next, add another layer of tiles with solid color showing the years of hosting the world cup.
 
@@ -4282,7 +5444,7 @@ df_bid_host2 <- df_bid_host1 %>%
             fill="#35978f", color = "black", size = 0.5))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-51-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-58-1.png" width="90%" height="90%" />
 
 Whether you're a football fan or have an observant eye, it's not difficult to tell that there are gap years in the plot in which the world cup was cancelled. Let's highlight this part of the plot to, first, give a complete picture of the history of hosting the championship and , second, to make it clear that it's not a case of missing data.
 
@@ -4305,7 +5467,7 @@ Whether you're a football fan or have an observant eye, it's not difficult to te
   scale_x_continuous(breaks = seq(1930, 2026,4)))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-52-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-59-1.png" width="90%" height="90%" />
 
 Let's finish by adding the title and removing the y axis
 
@@ -4325,7 +5487,7 @@ Let's finish by adding the title and removing the y axis
         panel.grid.major.x = element_blank()))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-53-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-60-1.png" width="90%" height="90%" />
 
 This a comprehensive, yet clear, visualization of bidding and hosting the world cup! We can simultaneously make interesting observations about the years (e.g. 1990 and 2019 received the largest number of bids!) and the history of the hosting countries (e.g. 2026 will be the first world cup to be hosted by three countries!).
 
@@ -4370,7 +5532,7 @@ Let's piece everything together for one last time. We start by establishing the 
   scale_fill_manual(values = res_cols))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-55-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-62-1.png" width="90%" height="90%" />
 
 We then break the x-axis by 4 years interval, add country flag, and the world cup in the background.
 
@@ -4394,7 +5556,7 @@ We then break the x-axis by 4 years interval, add country flag, and the world cu
                       size = 1.2))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-56-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-63-1.png" width="90%" height="90%" />
 
 Highlight and annotate the cancelled years
 
@@ -4415,7 +5577,7 @@ Highlight and annotate the cancelled years
            label = "World Cups of 1942 and 1946 were both cancelled because of WW2"))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-57-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-64-1.png" width="90%" height="90%" />
 
 Finally, add the title and the control the theme
 
@@ -4445,7 +5607,7 @@ Finally, add the title and the control the theme
         ))
 ```
 
-<img src="01-hosting_history_files/figure-html/unnamed-chunk-58-1.png" width="100%" height="100%" />
+<img src="01-hosting_history_files/figure-html/unnamed-chunk-65-1.png" width="90%" height="90%" />
 
 WOW! We've managed to summarize the history of world cup in a single plot!
 
