@@ -687,20 +687,20 @@ YES!! This is a condensed and clear representation of our data, which are two de
 
 ## What is the history of bidding for world cup?
 
-Now let us shift our focus to yet another interesting question. In this section we will explore the bidding history to host the world cup.
+Now let's shift our focus to yet another interesting question. In this section we will explore the bidding history to host the world cup.
 
-Let's start by making a bar-plot that show the number of successful bids for each country of all submitted bids.
+Let's start by making a bar-plot that show the number of successful bids out of all submitted bids for each country.
 
-First, sort the countries based on the number of bids, then the times hosted.
+We start by sorting the countries based on the number of world cup bids, then the times hosted.
 
 ```{r}
 (bar_bid_df1 <- tbls_lst$total_bids_by_country %>% 
-   distinct(country_name, bids, times_hosted) %>%
+   distinct(country_name, bids, times_hosted) %>% #select unique entries 
   arrange(bids,times_hosted) %>% 
   mutate(country_name = factor(country_name, levels = unique(country_name))) )
 ```
 
-Next, add a layer of bars showing the times of bids using a transparent color
+Next, we add a layer of bars showing the times of bids using a transparent color
 
 ```{r}
 (bar_bid_plt <- bar_bid_df1 %>% 
@@ -708,7 +708,7 @@ Next, add a layer of bars showing the times of bids using a transparent color
   geom_col(aes(country_name, bids), fill = "#35978f", alpha = 0.3))
 ```
 
-Then, add yet another layer of bars showing the times hosted using solid version of the same color
+Oh, obviously we would benefit from flipping the axes to avoid overlap of countries' names. We can also add yet another layer of bars showing the times hosted using a solid version of the same color.
 
 ```{r}
 (bar_bid_plt <-bar_bid_plt +
@@ -716,15 +716,10 @@ Then, add yet another layer of bars showing the times hosted using solid version
   coord_flip())
 ```
 
-Finally, add world cup image in the background, text, and customize the theme
+Almost done! Let's change the background color and add title.
 
 ```{r}
-(bar_bid_plt +
-   #add world cup image
-  ggimage::geom_image(data = data.frame(x = 16, y = 7),
-                      aes(x,y),
-                      image = wc_img,image_fun = transparent,
-                      size = 1.1)+
+(bar_bid_plt <- bar_bid_plt +
    #add text
   labs(title = "History of hosting FIFA world cup",
      subtitle = "Number of world cup bids compared to times hosted",
@@ -738,13 +733,25 @@ Finally, add world cup image in the background, text, and customize the theme
         title = element_text(colour = "#01665e", size = 9)))
 ```
 
+We'll finish this plot by adding an image of the world cup to the background!
+
+```{r}
+bar_bid_plt+
+  #add world cup image
+  ggimage::geom_image(data = data.frame(x = 16, y = 7),
+                      aes(x,y),
+                      image = wc_img,image_fun = transparent,
+                      size = 1.1)
+
+```
+
 Nice! The plot shows that most of the time, it takes more than one bid to host the world cup.
 
 ![](https://media.giphy.com/media/mxCK3EcADG1F7krLP6/giphy.gif)
 
-Let's enforce the relationship between bids and times hosted using a point plot.
+Next, we'll focus on the relationship between bidding times and number of hosting world cup using a point plot.
 
-First, let's plot the number of bids on the x-axis and the time hosted on the y-axis
+let's start by simply ploting the number of bids on the x-axis and the time hosted on the y-axis
 
 ```{r}
 (point_bid_plt <- bar_bid_df1 %>% 
@@ -752,7 +759,7 @@ First, let's plot the number of bids on the x-axis and the time hosted on the y-
   geom_point(color = "#35978f"))
 ```
 
-Next, let's add the name of the country to the repreresentitive point
+Next, we need to know what each point represent. To do that, we add the name of the country to the corresponding point.
 
 ```{r}
 (point_bid_plt <- point_bid_plt+
@@ -760,7 +767,7 @@ Next, let's add the name of the country to the repreresentitive point
             size = 4))
 ```
 
-Oh no! Since many countries share the same bids and hosting statitics, we end up with a dramatic case of text over-plotting.
+Oh no! Since many countries have the same number bids and hosting statistics, we end up with a dramatic case of text over-plotting.
 
 ![](https://i.gifer.com/3esj.gif)
 
@@ -769,6 +776,8 @@ To overcome this, we'll replace `geom_text()` with `geom_text_repel()` from the 
 ```{r}
 #remove the last layer added of geom_text() before using geom_text_repel()
 point_bid_plt$layers[[2]] <- NULL
+
+#add countries' names while avoiding text overlap
 (point_bid_plt <- point_bid_plt+
   ggrepel::geom_text_repel(aes(label = country_name),
                            size = 4,
@@ -784,9 +793,9 @@ point_bid_plt$layers[[2]] <- NULL
                      expand = expansion(add = c(1,0.5))))
 ```
 
-As the name says, `geom_text_repel()` makes the text repel away from each other to avoid over-plotting. The text also repel away from the edges of the plot. To avoid the undesired effect of later, we expanded the plotting are using the function `expansion()` in x and y direction
+Nice! We achieved the desired effect using `geom_text_repel()` which makes the text repel away from each other to avoid over-plotting. The text also repel away from the edges of the plot. To avoid the undesired effect of the later, we expanded the plotting area using the function `expansion()` in x and y direction
 
-Finally, add world cup image, the title, and beautify the plot by coloring the background
+Let's finish this plot by adding world cup image, the title, and beautify the plot by coloring the background
 
 ```{r}
 point_bid_plt+
@@ -806,24 +815,30 @@ point_bid_plt+
         title = element_text(colour = "#01665e"))
 ```
 
-It's now clear that Germany has the lion's share of submitted bids, while Morocco is obviously lacks a bit of luck!
+It's clear that Germany has the lion's share of submitted bids, while Morocco is obviously lacks a bit of luck!
 
-What's missing from the plots above is the time where bids and hosting took place. Wouldn't it be interesting to have a single plot showing the number and dates of world cup bids? I would say YES!
+What's missing in the plots above is the **time** where bids and hosting took place.
+
+Wouldn't it be interesting to have a single plot showing for each country **when** each **bid** and **hosting** took place? I would say YES!
 
 ![](https://media.giphy.com/media/h1oqRd3zec0MrP34Xc/giphy.gif)
 
 Let's work towards building this exciting plot!
 
-The data is ready for visual inspection! The idea is to look on the data in the form of a tile plot showing the year on the x axis and country on the y axis. Bids will be represented using faint colored boxes.
+We'll start by merging data about hosting and bidding.
 
 ```{r}
 df_bid_host1 <- tbls_lst$list_of_hosts %>%
-   full_join(tbls_lst$total_bids_by_country) %>% 
+  full_join(tbls_lst$total_bids_by_country) %>% 
+  #remove years when the world cup was cancelled
   filter(!str_detect(country_name, "Cancelled")) %>% 
+  #order countries based on numer of bids
   arrange(bids) %>% 
   mutate(country_name = factor(country_name, levels = unique(country_name)),
          bids = factor(bids, levels = sort(unique(bids), decreasing = TRUE)))
 ```
+
+The data is ready for visual inspection! The idea is to make a tile plot showing the year on the x axis and country on the y axis.
 
 ```{r}
 (tile_bid_host_plt <- df_bid_host1 %>% 
@@ -832,19 +847,27 @@ df_bid_host1 <- tbls_lst$list_of_hosts %>%
             fill = "#c7eae5", color = "white", size = 0.5) )
 ```
 
-Next, add another layer of tiles with solid color showing the years of hosting the world cup.
+This plot shows the year at which each country **bid** to host the world cup!
+
+Next, we add the **hosting** information by selecting the countries that hosted the world cup at least once
 
 ```{r}
-#select data with at least one hosting
 df_bid_host2 <- df_bid_host1 %>% 
               filter(times_hosted>=1 & host_year == year)
+```
+
+Now we add another layer of tiles with solid color showing the years of hosting the world cup.
+
+```{r}
 (tile_bid_host_plt <- tile_bid_host_plt +
   geom_tile(data = df_bid_host2,
             aes(year, country_name),
             fill="#35978f", color = "black", size = 0.5))
 ```
 
-Whether you're a football fan or have an observant eye, it's not difficult to tell that there are gap years in the plot in which the world cup was cancelled. Let's highlight this part of the plot to, first, give a complete picture of the history of hosting the championship and , second, to make it clear that it's not a case of missing data.
+This looks nice!
+
+Whether you're a football fan or have an observant eye, it's not difficult to tell that there are gap years in the plot in which the world cup was *cancelled*. Let's highlight this part of the plot to, first, give a complete picture of the history of hosting the championship and , second, to make it clear that it's not a case of missing data.
 
 ```{r}
 (tile_bid_host_plt <- tile_bid_host_plt +
@@ -864,20 +887,21 @@ Whether you're a football fan or have an observant eye, it's not difficult to te
   scale_x_continuous(breaks = seq(1930, 2026,4)))
 ```
 
-Let's finish by adding the title and removing the y axis
+Let's finish by adding the title, removing the y axis, rotating the x-axis text to make it more readable, and other minor things.
 
 ```{r}
 (tile_bid_host_plt <- tile_bid_host_plt +
+    #add title for context
   labs(title = "History of hosting FIFA world cup",
        subtitle = "Timeline of bidding (faint boxes;no outline) and hosting (dark boxes;black outline) countries of FIFA world cup",
        caption = caption_cdc)+
   theme(title = element_text(size = 9),
-        axis.text.x = element_text(size = 8, angle = 45,hjust = 1),
-        axis.ticks.y = element_blank(),
+        axis.text.x = element_text(size = 8, angle = 45,hjust = 1), #rotate dates
+        axis.ticks.y = element_blank(),#remove y axis
         axis.line.y = element_blank(),
         axis.title.y = element_blank(),
         axis.text.y = element_text(size = 7.6),
-        panel.grid.major = element_line(colour = "grey80"),
+        panel.grid.major = element_line(colour = "grey80"),#add horizontal grid
         panel.grid.major.x = element_blank()))
 ```
 
@@ -885,10 +909,13 @@ This a comprehensive, yet clear, visualization of bidding and hosting the world 
 
 ![](https://media.giphy.com/media/KfJAmevRamCTGUkKUd/giphy.gif)
 
-Let's take this plot to the next level and augment it with the results of the hosting country. Furthermore, as a cherry on top, will add respective flag of each country. To start with, we'll get the country code that would allow us to find a country's flag.
+But wait, this is not all ...
+
+Let's take this plot to next level and augment it with the results of the hosting countries!
+
+To start with, we define colors of the different results (First place, runner up, third place, ... etc)
 
 ```{r}
-#colors of the different results (First place, runner up, third place, ... etc)
 res_cols <- c("#FFD700",
               "#d9d9d9",
               "#CD7F32",
@@ -901,11 +928,7 @@ res_cols <- c("#FFD700",
 names(res_cols) <- results_order[-length(results_order )]
 ```
 
-Already tired? We're almost there!
-
-![](https://media.giphy.com/media/J6J2RvOQLTiXI3yWKH/giphy.gif)
-
-Let's piece everything together for one last time. We start by establishing the tiles layer and color the bids and hosts.
+Let's piece everything together for one last time. We start by defining the tiles layer and color the bids and hosts differently.
 
 ```{r}
 (tile_bid_host_plt2 <- df_bid_host1 %>% 
@@ -922,7 +945,7 @@ Let's piece everything together for one last time. We start by establishing the 
   scale_fill_manual(values = res_cols))
 ```
 
-We then break the x-axis by 4 years interval, add country flag, and the world cup in the background.
+We then break the x-axis by 4 years interval and add the world cup in the background. Furthermore, as a cherry on top, will add respective flag of each country.
 
 ```{r}
 (tile_bid_host_plt2 <- tile_bid_host_plt2+
@@ -943,7 +966,11 @@ We then break the x-axis by 4 years interval, add country flag, and the world cu
                       size = 1.2))
 ```
 
-Highlight and annotate the cancelled years
+Already tired? We're almost there!
+
+![](https://media.giphy.com/media/J6J2RvOQLTiXI3yWKH/giphy.gif)
+
+Next, we highlight and annotate the cancelled years
 
 ```{r}
 (tile_bid_host_plt2 <- tile_bid_host_plt2 +
@@ -961,10 +988,10 @@ Highlight and annotate the cancelled years
            label = "World Cups of 1942 and 1946 were both cancelled because of WW2"))
 ```
 
-Finally, add the title and the control the theme
+Finally, add the title for context and the modify the theme
 
 ```{r}
-(tile_bid_host_plt2 <- tile_bid_host_plt2 +
+tile_bid_host_plt2 +
   #define title and subtitle
   labs(title = "History of hosting FIFA world cup",
        subtitle = "Timeline of bidding (faint boxes;no outline) and hosting (dark boxes;black outline) countries of FIFA world cup",
@@ -985,10 +1012,10 @@ Finally, add the title and the control the theme
         legend.text = element_text(size = 6.9),
         legend.spacing.x = unit(0.1,"cm" ),
         legend.position = "top"
-        ))
+        )
 ```
 
-WOW! We've managed to summarize the history of world cup in a single plot!
+WOW! We managed to summarize the history of world cup in a single plot!
 
 Mission accomplished!
 
