@@ -10,7 +10,8 @@ Let's start by loading the libraries that we'll utilize in our analysis
 ```{r message=FALSE, warning=FALSE}
 #web scrapping
 library(rvest)
-#everything tidy?
+library(robotstxt)
+#
 library(tidyverse)
 #handling spatial-data 
 library(rnaturalearth)
@@ -32,94 +33,124 @@ library(ggfittext)
 theme_set(cowplot::theme_cowplot())
 #get image
 library(ggwordcloud)
-wc_img <- here::here("images/wc12.png")
-#define function to control transparency
+```
 
+Define variables...
+```{r}
+#source of scraped data
+url_2 <- "https://en.wikipedia.org/wiki/Economics_of_the_FIFA_World_Cup"
+robotstxt::paths_allowed(url_2)#check if the webpage is accessible for scraping
+# get flags form this repo
+flagrepo <- "https://raw.githubusercontent.com/hjnilsson/country-flags/master/png250px/"
+#world cup image
+wc_img <- here::here("images/wc12.png")
+
+
+```
+
+and functions.
+```{r}
+#define function to control transparency
 transparent_0.1 <- function(img) {
   magick::image_fx(img, expression = glue::glue("0.1*a"), channel = "alpha")
 }
 transparent_0.2 <- function(img) {
   magick::image_fx(img, expression = glue::glue("0.2*a"), channel = "alpha")
 }
-# get flags form this repo
-flagrepo <- "https://raw.githubusercontent.com/hjnilsson/country-flags/master/png250px/"
+```
+
+Scrape data from wikipedia article
+```{r}
+# get the Costs of World Cups
+df_4 <- url_2 %>%
+  xml2::read_html() %>% 
+  html_element(".wikitable") %>% # select table with data of interest
+  html_table()
 
 ```
 
+Clean and prepare data for the anlaysis
 ```{r}
 #
-# Extract the amount of money
-url_2 <- "https://en.wikipedia.org/wiki/Economics_of_the_FIFA_World_Cup"
-
-tbls_lst_2 <-  url_2 %>%
-  read_html %>%
-  html_table()
-#
-df_4 <- tbls_lst_2[[2]] %>% 
-  janitor::clean_names() %>%
-  mutate(host = str_replace(host,  "/\\s", "-")) %>%
-  extract(host, c("country","year"), "([A-Z-]+) (\\([0-9]+\\))") %>%
-  separate_rows(country,sep = "-") %>%
+df_4 <- df_4 %>%
+  janitor::clean_names() %>% #clean column names
+  mutate(host = str_replace(host,  "/\\s", "-")) %>% 
+  filter(general_cost != "n.a.") %>% #remove world cup with unknown cost
+  extract(host, c("country","year"), "([A-Z-]+) (\\([0-9]+\\))") %>% #put country name and year into separate columns
+  separate_rows(country, sep = "-") %>% #separate cohosts into individual rows
   mutate(year = parse_number(year),
-         #x = strex::str_first_currency(general_cost)[[4]],
-         x =  parse_number(general_cost),
-         y = ifelse(str_detect(general_cost, "million"),x/1000,x))
-df_4$iso2 <- countrycode(df_4$country, "ioc", "iso2c")
+         x =  parse_number(general_cost),#get cost in numbers
+         cost = ifelse(str_detect(general_cost, "million"),x/1000,x),#cost in billions
+         x = NULL,
+         general_cost = NULL)
 
+#add country iso2c code
+df_4$iso2 <- countrycode(df_4$country, "ioc", "iso2c")
 ```
 
+Bar plot of cost of hosting world cup
 ```{r}
 ggplot()+
-  geom_col(data = df_4 %>% distinct(year, y),
-           aes(year, y),
-           fill = "grey90", color = "black", size = 1)+
-  geom_text(data = df_4 %>% distinct(year, y),
-            aes(year, y, label = y),
+  geom_col(data = df_4 %>% distinct(year, cost),
+           aes(year, cost),
+           fill = "grey90")+
+  geom_text(data = df_4 %>% distinct(year, cost),
+            aes(year, cost, label = cost),
             size = 5, nudge_y = 8)+
   scale_y_continuous(breaks = c(1,10,100,200))+
   labs(y = "Billion $")
 ```
 
+Add country flag on top of bars, fill bars with dollar signs, and add image to background.
 
 ```{r}
 ggplot()+
-  geom_col(data = df_4 %>% distinct(year, y),
-           aes(year, y))+
-  geom_text(data = df_4 %>% distinct(year, y) %>% mutate(y2 =y, y = glue::glue("${y} bn")),
+  #basic bar for each worldcup
+  geom_col(data = df_4 %>% distinct(year, cost),
+           aes(year, cost))+
+  #add cost on top of each bar
+  geom_text(data = df_4 %>% 
+              distinct(year, cost) %>%
+              mutate(y2 =cost, y = glue::glue("${cost} bn")),
             aes(year, y2, label = y),
             size = 4, nudge_y = 20)+
+  #add country flags on top of the bars but below the cost
   ggimage::geom_flag(data = df_4 %>%
                        filter(!country %in% c("JPN", "KOR")),
-                     aes(year, y+8, image = iso2),
-                     size = 0.07)+
+                     aes(year, cost+8, image = iso2),
+                     size = 0.06)+
+  #the same as the previous step but for flags of cohosting countries
   ggimage::geom_flag(data = df_4 %>%
                        filter(country %in% c("JPN", "KOR")) %>%
                        mutate(year=ifelse(str_detect(country, "JPN"), year+1.5, year)),
-                     aes(year-0.7, y+8, image = iso2),
-                     size = 0.05)+
-   ggpattern::geom_col_pattern(data = df_4 %>% distinct(year,  y),
-                               aes(year, y),
+                     aes(year-0.7, cost+8, image = iso2),
+                     size = 0.035)+
+  #fill bars with dollar signs
+  ggpattern::geom_col_pattern(data = df_4 %>% distinct(year, cost),
+                               aes(year, cost),
                                pattern_filename = I("images/Gold-Dollar-Sign-PNG-HD.png"), 
                                pattern = 'image', 
                                pattern_type = 'tile',
                                pattern_scale = -1,
-                               fill = "#a1d99b"
-                               )+
+                               fill = "#a1d99b")+
+  #add world cup image to the background
     ggimage::geom_image(data = data.frame(x = 1995, y = 120),
                       aes(x,y),
                       image = wc_img,image_fun = transparent_0.2,
                       size = 1.2)+
-      scale_x_continuous(breaks = unique(df_4$year))+
+  #control x and y axis
+      scale_x_continuous(breaks = full_seq(range(df_4$year), 4))+
   scale_y_continuous(breaks = c(1,10,100,200))+
   labs(y = "", x = "")+
+  #control plot theme
     theme(plot.background = element_rect(fill =  "#e5f5e0"),
-        panel.background = element_rect(fill =  "#e5f5e0"),
-        panel.grid.major = element_line(colour = "#e5f5e0"),
-        axis.line = element_blank(),
-        axis.ticks = element_blank(),
-        axis.text.y = element_blank())
-
+          panel.background = element_rect(fill =  "#e5f5e0"),
+          panel.grid.major = element_line(colour = "#e5f5e0"),
+          axis.line = element_blank(),
+          axis.ticks = element_blank(),
+          axis.text.y = element_blank())
 ```
+
 
 ```{r}
 flags <- c()
@@ -135,7 +166,7 @@ for (iso in df_4$iso2) {
 
 ```
 
-
+We can do the opposite and instead fill the bars with the country flag
 ```{r}
 ggplot()+
     ggimage::geom_image(data = data.frame(x = 1995, y = 30),
@@ -144,14 +175,14 @@ ggplot()+
                     image_fun = transparent_0.1,
                     size = 1.2)+
     ggimage::geom_image(data = df_4 %>%
-                          distinct(year, y) %>%
-                          mutate(y2 = y+(y*0.85)) ,
+                          distinct(year, cost) %>%
+                          mutate(y2 = cost+(cost*0.85)) ,
                         aes(year, y2),
-                        size = df_4 %>% distinct(year, y) %>% mutate(x = ceiling(log10(y*10))/10) %>% pull(x),
+                        size = df_4 %>% distinct(year, cost) %>% mutate(x = ceiling(log10(cost*10))/10) %>% pull(x),
                     image = "images/Gold-Dollar-Sign-PNG-HD.png",
                     image_fun = transparent_0.2)+
    ggpattern::geom_col_pattern(data = df_4 ,
-                               aes(year, y, fill = country),
+                               aes(year, cost, fill = country),
                                position = position_dodge(),
                                pattern_gravity = I("West"),
                                pattern_filename = I(flags), 
@@ -160,10 +191,10 @@ ggplot()+
                                pattern_scale = -1,
                                show.legend = FALSE)+
   geom_text(data = df_4 %>%
-              distinct(year, y) %>%
-              mutate(y2 = y+(y*0.45),
-                     y = glue::glue("${y} bn")),
-            aes(year, y2, label = y),
+              distinct(year, cost) %>%
+              mutate(y2 = cost+(cost*0.45),
+                     y = glue::glue("$cost} bn")),
+            aes(year, y2, label = cost),
             size = 4)+
   geom_text(data = df_4%>%
               arrange(country) %>%
@@ -187,72 +218,31 @@ ggplot()+
       axis.text.x = element_text(size = 15))
 ```
 
+country flag as points connected by a line and put y axis on log10 scale
 ```{r}
 ggplot()+
-    ggimage::geom_image(data = expand_grid(x = c(seq(1990, 2022,length.out = 6)),
-                                           y = c(1, 10, 100)),
-                      aes(x,y),
-                      image = "images/Gold-Dollar-Sign-PNG-HD.png",image_fun = transparent_0.2,
-                      size = 0.3)+
- ggpattern::geom_col_pattern(data = df_4 ,
-                             aes(year, y, fill = country),
-                             position = position_dodge(),
-                             pattern_gravity = I("West"),
-                             pattern_filename = I(flags), 
-                             pattern = 'image', 
-                             pattern_type = 'tile',
-                             pattern_scale = -1,
-                             show.legend = FALSE)+
-  scale_y_continuous(breaks = c(1,10,100,200),
-                     trans = scales::pseudo_log_trans(base = 10),
-                     expand = expansion(add = c(NA,0.5))
-                     )+
-    scale_x_continuous(breaks = unique(df_4$year))+
-  geom_text(data = df_4 %>% distinct(year, y) %>% mutate(y2 = y+(y*0.45), y = glue::glue("${y} bn")),
-            aes(year, y2, label = y),
-            size = 4)+
-    geom_text(data = df_4%>%
-                arrange(country) %>%
-                group_by(year) %>%
-                summarise(iso2 = paste(iso2, collapse = "-")),
-            aes(year, label = iso2),
-            y = -0.07,
-            size = 4)+
-  labs(y = "", x = "")+
-    theme(plot.background = element_rect(fill =  "#e5f5e0"),
-        panel.background = element_rect(fill =  "#e5f5e0"),
-        panel.grid.major = element_line(colour = "#e5f5e0"),
-        axis.line = element_blank(),
-        axis.ticks = element_blank(),
-        axis.text.y = element_blank())
-
-```
-
-```{r}
-
-ggplot()+
-  geom_line(data = df_4 %>% distinct(year, y),
-            aes(year, y),
+  geom_line(data = df_4 %>% distinct(year, cost),
+            aes(year, cost),
             color = "white",
             size = 1)+
   ggflags::geom_flag(data = df_4,
-                     aes(year, y, country = tolower(iso2)),
+                     aes(year, cost, country = tolower(iso2)),
                      size = 9)+
   scale_y_continuous(breaks = c(1,10,100,200),
                      trans = scales::pseudo_log_trans(base = 10),
                      expand = expansion(add = c(0.5,0.5))
                      )+
     scale_x_continuous(breaks = unique(df_4$year))+
-  geom_text(data = df_4 %>% distinct(year, y) %>% mutate(y2 = y+(y*0.45)+1, y = glue::glue("${y} bn")),
+  geom_text(data = df_4 %>% distinct(year, cost) %>% mutate(y2 = cost+(cost*0.45)+1, y = glue::glue("${cost} bn")),
             aes(year, y2, label = y),
             size = 4)+
     geom_text(data = df_4%>%
                 arrange(country) %>%
                 group_by(year) %>%
                 summarise(iso2 = paste(iso2, collapse = "-"),
-                          y = unique(y)) %>% 
+                          cost = unique(cost)) %>% 
                 ungroup() %>% 
-                mutate(y2 = y-(y*0.45)-1),
+                mutate(y2 = cost-(cost*0.45)-1),
             aes(year,y2 ,  label = iso2),
             size = 4)+
   labs(y = "", x = "")+
@@ -262,19 +252,12 @@ ggplot()+
         axis.line = element_blank(),
         axis.ticks = element_blank(),
         axis.text.y = element_blank())
-
 ```
 
 
-```{r}
-img_path <- "images/png-transparent-fifa-world-cup-trophy-vince-lombardi-trophy-award-soccer-trophy-sport-medal-black.png"
+```{r eval=FALSE, include=FALSE}
+#fill world cup with dollar signs
 
-wordcloud2::wordcloud2(wordcloud2::demoFreq,
-                       figPath = img_path,
-                       size = 1.5,color = "skyblue")
-```
-
-```{r}
 #https://lepennec.github.io/ggwordcloud/articles/ggwordcloud.html
 img_path <- "images/png-transparent-fifa-world-cup-trophy-vince-lombardi-trophy-award-soccer-trophy-sport-medal-black.png"
 ggplot() +
@@ -297,79 +280,10 @@ ggsave("images/worldcloud_dollar.png")
 ```
 
 
-```{r}
-
-ggplot()+
-    ggimage::geom_image(data = data.frame(x = 1995, y = 30),
-                  aes(x,y),
-                  image = wc_img,
-                  image_fun = transparent_0.1,
-                  size = 1.2)+
-    ggimage::geom_image(data = df_4 %>%
-                          distinct(year, y) ,
-                        aes(year, y),
-                        size = df_4 %>% distinct(year, y) %>% mutate(x = ceiling(log10(y*10))/10) %>% pull(x),
-                    image = "images/Gold-Dollar-Sign-PNG-HD.png",
-                    image_fun = transparent_0.2,
-                    nudge_y = 45)+
-  geom_line(data = df_4 %>% distinct(year, y),
-            aes(year, y),
-            color = "white",
-            size = 1)+
-  ggflags::geom_flag(data = df_4,
-                     aes(year, y, country = tolower(iso2)),
-                     size = 9)+
-  scale_y_continuous(breaks = c(1,10,100,200),
-                     expand = expansion(add = c(10,55))
-                     )+
-    scale_x_continuous(breaks = unique(df_4$year))+
-  geom_text(data = df_4 %>% distinct(year, y),
-            aes(year, y, label =  glue::glue("${y} bn")),
-            size = 4,
-            nudge_y = 20)+
-  labs(y = "", x = "")+
-    theme(plot.background = element_rect(fill =  "#e5f5e0"),
-        panel.background = element_rect(fill =  "#e5f5e0"),
-        panel.grid.major = element_line(colour = "#e5f5e0"),
-        axis.line = element_blank(),
-        axis.ticks = element_blank(),
-        axis.text.y = element_blank())
-
-```
+Data on cost of sports events (Olympics, worldcup)
 
 
-```{r}
-
-ggplot()+
-    ggimage::geom_image(data = data.frame(x = 1995, y = 140),
-                  aes(x,y),
-                  image = "images/worldcloud_dollar.png",
-                  image_fun = transparent_0.2,
-                  size = 2)+
-  geom_line(data = df_4 %>% distinct(year, y),
-            aes(year, y),
-            color = "white",
-            size = 1)+
-  ggflags::geom_flag(data = df_4,
-                     aes(year, y, country = tolower(iso2)),
-                     size = 9)+
-  scale_y_continuous(breaks = c(1,10,100,200),
-                     expand = expansion(add = c(10,55))
-                     )+
-    scale_x_continuous(breaks = unique(df_4$year))+
-  geom_text(data = df_4 %>% distinct(year, y),
-            aes(year, y, label =  glue::glue("${y} bn")),
-            size = 4,
-            nudge_y = 25)+
-  labs(y = "", x = "")+
-    theme(plot.background = element_rect(fill =  "#e5f5e0"),
-        panel.background = element_rect(fill =  "#e5f5e0"),
-        panel.grid.major = element_line(colour = "#e5f5e0"),
-        axis.line = element_blank(),
-        axis.ticks = element_blank(),
-        axis.text.y = element_blank())
-```
-
+Retreive data
 ```{r}
 #https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/CPQEHN
 wc_server <- "dataverse.harvard.edu"
@@ -379,26 +293,26 @@ wc_file <- dataverse::dataset_files(dataset = wc_doi,
 
 wc_data_raw <- energy <- dataverse::get_dataframe_by_name(
   filename = wc_file[[1]]$label,
-  .f = readxl::read_xlsx,original = TRUE,
+  .f = readxl::read_xlsx,
+  original = TRUE,
   dataset = wc_doi, 
   server = wc_server)
 ```
 
-
+clean data and make it ready for analysis
 ```{r}
 wc_data <- wc_data_raw %>%
   janitor::clean_names()
 wc_data <- wc_data[-1,-2]
 wc_data <- wc_data %>%
-  tidyr::fill(x1,
-              .direction = "down") %>% 
-  dplyr::rename(event_type = "x1") %>%
-  dplyr::select(!starts_with("source")) %>% 
-  tidyr::separate(x3, into = c("year", "host"), sep = 5) %>% 
-  tidyr::extract(host, into = "host" , regex = "([[:alpha:]\\s\\&]+)") %>% 
-  mutate(host = str_trim(host), 
+  tidyr::fill(x1, .direction = "down") %>% #fill missing values with previous ones
+  dplyr::rename(event_type = "x1") %>% 
+  dplyr::select(!starts_with("source")) %>% #remove columns starts with "source"
+  tidyr::separate(x3, into = c("year", "host"), sep = 5) %>% #separate x3 at the fifth position into two new columns
+  tidyr::extract(host, into = "host" , regex = "([[:alpha:]\\s\\&]+)") %>% #extract host name (includes letters, spaces, and &)
+  mutate(host = str_trim(host), #remove trailing whitespaces
          year = as.integer(year)) %>% 
-  mutate(across(matches("cost|number|revenue"), as.numeric))
+  mutate(across(matches("cost|number|revenue"), as.numeric)) #convert columns into numeric
 ```
 
 ```{r}
@@ -406,77 +320,126 @@ wc_data <- wc_data %>%
   mutate(host = case_when(
     host == "West Germany" ~ "Germany",
     host == "England" ~ "UK",
-    TRUE ~ as.character(host)),
-    host_type = ifelse(host %in% maps::world.cities$country.etc, "country", "city"),
+    TRUE ~ as.character(host)), #rename country name when needed
+    host_type = ifelse(host %in% maps::world.cities$country.etc, "country", "city"),#is the host name a city or a country?
     host_type = ifelse(host == "Japan & South Korea", "country", host_type)) %>%
-  left_join(maps::world.cities , by = c("host"="name")) %>%
-  mutate(host_country = ifelse(host_type=="country", host, country.etc),
-         host_city = ifelse(host_type=="city", host, NA),
+  left_join(maps::world.cities , by = c("host"="name")) %>% #merge the data with table that connects country with city
+  mutate(host_country = ifelse(host_type=="country", host, country.etc), #set host country name
+         host_city = ifelse(host_type=="city", host, NA), #set host city name
          host_country = case_when(
            host_city == "PyeongChang" ~ "South Korea",
            host_city == "Japan & South Korea" ~ "Japan & South Korea",
-           host_city =="Lake Placid" ~ "US",
+           host_city =="Lake Placid" ~ "USA",
            TRUE ~ as.character(host_country)
-         ))
+           )) %>%
+  pivot_longer(matches("cost|revenue"),
+               names_to = "cash_source",
+               values_to = "cash_value") %>%
+  mutate(cash_type = str_extract(cash_source, "cost|revenue"),
+         cash_value = cash_value/1e9)
 ```
 
-```{r}
-wc_data %>% 
-  ggplot()+
-  geom_violin(aes(cost_of_organisation, y = event_type, fill = event_type))
-```
 
 
 ```{r}
-wc_data %>% 
-  pivot_longer(matches("cost"),
-               names_to = "cost_type",
-               values_to = "cost_value") %>% 
-  ggplot(aes(year,cost_value, color = event_type, group = event_type))+
+wc_data%>% 
+  filter(cash_type == "cost") %>%view
+  ggplot(aes(year,cash_value, color = event_type, group = event_type))+
   geom_point()+
   geom_line()+
   scale_y_continuous(trans = "log10")+
-  facet_wrap(~cost_type)
+  facet_wrap(~cash_source)
 ```
+
+
+```{r}
+wc_data%>% 
+  filter(cash_type == "revenue") %>%
+  ggplot(aes(year,cash_value, color = event_type, group = event_type))+
+  geom_point()+
+  geom_line()+
+  scale_y_continuous(trans = "log10")+
+  facet_wrap(~cash_source)
+```
+
 
 ```{r}
 wc_data %>% 
-  pivot_longer(matches("cost"),
-               names_to = "cost_type",
-               values_to = "cost_value") %>% 
+  filter(cash_type == "cost") %>%
   group_by(host_country, event_type, year) %>% 
-  summarize(cost_value = mean(cost_value)) %>% 
+  summarize(cost_value = mean(cash_value,  na.rm = TRUE)) %>% 
   ungroup() %>% 
   group_by(host_country) %>% 
-  mutate(country_avg_cost = mean(cost_value)) %>% 
+  mutate(country_avg_cost = mean(cost_value, na.rm = TRUE)) %>% 
   ungroup() %>% 
   arrange(country_avg_cost) %>% 
   mutate(host_country = fct_inorder(host_country)) %>% 
   ggplot(aes(cost_value, host_country))+
-  geom_point(aes(color = event_type))+
   geom_line(aes(group = host_country))+
+  geom_point(aes(shape = event_type, color = year), size = 3)+
+  scale_x_continuous(trans = "log10")+
+  theme(
+    legend.position = c(0.8, 0.3)
+  )
+```
+
+
+
+```{r}
+wc_data %>% 
+  filter(cash_type == "revenue") %>% 
+  group_by(host_country, event_type, year) %>% 
+  summarize(cost_value = mean(cash_value,  na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  group_by(host_country) %>% 
+  mutate(country_avg_cost = mean(cost_value, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  arrange(country_avg_cost) %>% 
+  mutate(host_country = fct_inorder(host_country)) %>% 
+  ggplot(aes(cost_value, host_country))+
+  geom_line(aes(group = host_country))+
+  geom_point(aes(shape = event_type, color = year), size = 3)+
   scale_x_continuous(trans = "log10")
-```
 
-```{r}
-wc_data %>% 
-  ggplot(aes(year,number_of_athletes, color = event_type, group = event_type))+
-  geom_point()+
-  geom_line()+
-  scale_y_continuous(trans = "log10")
 ```
 
 
 ```{r}
 wc_data %>% 
-  pivot_longer(matches("revenue"),
-               names_to = "revenue_type",
-               values_to = "revenue_value") %>% 
-  ggplot(aes(year,revenue_value, color = event_type, group = event_type))+
-  geom_point()+
-  geom_line()+
+  #filter(host_country == "Germany") %>%
+  group_by(host_country, event_type, year, cash_type) %>% 
+  summarize(cost_value = mean(cash_value,  na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  group_by(host_country, cash_type) %>% 
+  mutate(country_avg_cost = mean(cost_value, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  arrange(country_avg_cost) %>% 
+  mutate(host_country = fct_inorder(host_country)) %>% 
+  ggplot(aes( host_country, cost_value, group = paste(host_country, year)))+
+  geom_line(aes(color = event_type), position = position_dodge(width = 0.7))+
+  geom_point(aes(shape = cash_type), size = 3,position = position_dodge(width = 0.7))+
   scale_y_continuous(trans = "log10")+
-  facet_wrap(~revenue_type)
+  coord_flip()
 ```
 
+
+```{r}
+wc_data %>% 
+  #filter(host_country == "Germany") %>%
+  group_by(host_country, event_type, year, cash_type) %>% 
+  summarize(cost_value = mean(cash_value,  na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  group_by(host_country, cash_type) %>% 
+  mutate(country_avg_cost = mean(cost_value, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  arrange(country_avg_cost) %>% view
+  mutate(host_country = fct_inorder(host_country),
+         cost_value = cost_value/1000,
+         cost_value = ifelse(cash_type == "cost", cost_value*-1, cost_value)) %>% 
+  ggplot(aes( host_country, cost_value, group = paste(host_country, year)))+
+  geom_line(aes(color = event_type), position = position_dodge(width = 0.7))+
+  geom_point(aes(shape = cash_type), size = 3,position = position_dodge(width = 0.7))+
+  coord_flip()+
+  facet_wrap(~event_type,ncol = 1, scales= "free_y")
+```
 
