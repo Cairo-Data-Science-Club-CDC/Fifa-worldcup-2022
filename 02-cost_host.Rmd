@@ -45,7 +45,8 @@ flagrepo <- "https://raw.githubusercontent.com/hjnilsson/country-flags/master/pn
 #world cup image
 wc_img <- here::here("images/wc12.png")
 
-
+#
+url3 <- "https://en.wikipedia.org/wiki/Cost_of_the_Olympic_Games"
 ```
 
 and functions.
@@ -282,7 +283,6 @@ ggsave("images/worldcloud_dollar.png")
 
 Data on cost of sports events (Olympics, worldcup)
 
-
 Retreive data
 ```{r}
 #https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/CPQEHN
@@ -340,106 +340,12 @@ wc_data <- wc_data %>%
 ```
 
 
-
 ```{r}
-wc_data%>% 
-  filter(cash_type == "cost") %>%view
-  ggplot(aes(year,cash_value, color = event_type, group = event_type))+
-  geom_point()+
-  geom_line()+
-  scale_y_continuous(trans = "log10")+
-  facet_wrap(~cash_source)
-```
+# get the Costs of World Cups
+df_5 <- url3 %>%
+  xml2::read_html() %>% 
+  html_element(".wikitable") %>% # select table with data of interest
+  html_table()
 
-
-```{r}
-wc_data%>% 
-  filter(cash_type == "revenue") %>%
-  ggplot(aes(year,cash_value, color = event_type, group = event_type))+
-  geom_point()+
-  geom_line()+
-  scale_y_continuous(trans = "log10")+
-  facet_wrap(~cash_source)
-```
-
-
-```{r}
-wc_data %>% 
-  filter(cash_type == "cost") %>%
-  group_by(host_country, event_type, year) %>% 
-  summarize(cost_value = mean(cash_value,  na.rm = TRUE)) %>% 
-  ungroup() %>% 
-  group_by(host_country) %>% 
-  mutate(country_avg_cost = mean(cost_value, na.rm = TRUE)) %>% 
-  ungroup() %>% 
-  arrange(country_avg_cost) %>% 
-  mutate(host_country = fct_inorder(host_country)) %>% 
-  ggplot(aes(cost_value, host_country))+
-  geom_line(aes(group = host_country))+
-  geom_point(aes(shape = event_type, color = year), size = 3)+
-  scale_x_continuous(trans = "log10")+
-  theme(
-    legend.position = c(0.8, 0.3)
-  )
-```
-
-
-
-```{r}
-wc_data %>% 
-  filter(cash_type == "revenue") %>% 
-  group_by(host_country, event_type, year) %>% 
-  summarize(cost_value = mean(cash_value,  na.rm = TRUE)) %>% 
-  ungroup() %>% 
-  group_by(host_country) %>% 
-  mutate(country_avg_cost = mean(cost_value, na.rm = TRUE)) %>% 
-  ungroup() %>% 
-  arrange(country_avg_cost) %>% 
-  mutate(host_country = fct_inorder(host_country)) %>% 
-  ggplot(aes(cost_value, host_country))+
-  geom_line(aes(group = host_country))+
-  geom_point(aes(shape = event_type, color = year), size = 3)+
-  scale_x_continuous(trans = "log10")
-
-```
-
-
-```{r}
-wc_data %>% 
-  #filter(host_country == "Germany") %>%
-  group_by(host_country, event_type, year, cash_type) %>% 
-  summarize(cost_value = mean(cash_value,  na.rm = TRUE)) %>% 
-  ungroup() %>% 
-  group_by(host_country, cash_type) %>% 
-  mutate(country_avg_cost = mean(cost_value, na.rm = TRUE)) %>% 
-  ungroup() %>% 
-  arrange(country_avg_cost) %>% 
-  mutate(host_country = fct_inorder(host_country)) %>% 
-  ggplot(aes( host_country, cost_value, group = paste(host_country, year)))+
-  geom_line(aes(color = event_type), position = position_dodge(width = 0.7))+
-  geom_point(aes(shape = cash_type), size = 3,position = position_dodge(width = 0.7))+
-  scale_y_continuous(trans = "log10")+
-  coord_flip()
-```
-
-
-```{r}
-wc_data %>% 
-  #filter(host_country == "Germany") %>%
-  group_by(host_country, event_type, year, cash_type) %>% 
-  summarize(cost_value = mean(cash_value,  na.rm = TRUE)) %>% 
-  ungroup() %>% 
-  group_by(host_country, cash_type) %>% 
-  mutate(country_avg_cost = mean(cost_value, na.rm = TRUE)) %>% 
-  ungroup() %>% 
-  arrange(country_avg_cost) %>% view
-  mutate(host_country = fct_inorder(host_country),
-         cost_value = cost_value/1000,
-         cost_value = ifelse(cash_type == "cost", cost_value*-1, cost_value)) %>% 
-  ggplot(aes( host_country, cost_value, group = paste(host_country, year)))+
-  geom_line(aes(color = event_type), position = position_dodge(width = 0.7))+
-  geom_point(aes(shape = cash_type), size = 3,position = position_dodge(width = 0.7))+
-  coord_flip()+
-  facet_wrap(~event_type,ncol = 1, scales= "free_y")
 ```
 
